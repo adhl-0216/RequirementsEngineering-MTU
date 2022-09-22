@@ -126,7 +126,7 @@ namespace HotelSYS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 239);
+            this.ClientSize = new System.Drawing.Size(482, 261);
             this.Controls.Add(this.grpRoomType);
             this.Controls.Add(this.cboRoomTypes);
             this.Controls.Add(this.lblSelectRoomTypes);
