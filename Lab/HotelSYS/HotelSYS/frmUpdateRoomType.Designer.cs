@@ -29,6 +29,7 @@ namespace HotelSYS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateRoomType));
             this.lblSelectRoomTypes = new System.Windows.Forms.Label();
             this.cboRoomTypes = new System.Windows.Forms.ComboBox();
             this.grpRoomType = new System.Windows.Forms.GroupBox();
@@ -130,6 +131,7 @@ namespace HotelSYS
             this.Controls.Add(this.grpRoomType);
             this.Controls.Add(this.cboRoomTypes);
             this.Controls.Add(this.lblSelectRoomTypes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUpdateRoomType";
             this.Text = "Hotel Del Luna - [Update Room Type]";
             this.Load += new System.EventHandler(this.frmUpdateRoomType_Load);
