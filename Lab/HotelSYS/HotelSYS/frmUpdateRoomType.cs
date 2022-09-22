@@ -41,13 +41,10 @@ namespace HotelSYS
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            //validate data
-
             //Update data in DB
             //NOT DOING THIS NOW
 
-            //Display confirmation message
-
+            //validate data
             if (txtDesc.Text.Equals(""))
             {
                 DialogResult nullTC = MessageBox.Show("Description must be entered.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -62,6 +59,7 @@ namespace HotelSYS
                 return;
             }
 
+            //Display confirmation message
             DialogResult cfm = MessageBox.Show("Room Type has been updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Reset UI
