@@ -67,9 +67,9 @@ namespace HotelSYS
             this.grpRoomType.Controls.Add(this.lblDesc);
             this.grpRoomType.Controls.Add(this.txtRate);
             this.grpRoomType.Controls.Add(this.lblRate);
-            this.grpRoomType.Location = new System.Drawing.Point(43, 83);
+            this.grpRoomType.Location = new System.Drawing.Point(43, 86);
             this.grpRoomType.Name = "grpRoomType";
-            this.grpRoomType.Size = new System.Drawing.Size(393, 230);
+            this.grpRoomType.Size = new System.Drawing.Size(393, 124);
             this.grpRoomType.TabIndex = 2;
             this.grpRoomType.TabStop = false;
             this.grpRoomType.Text = "Update Room Type Details";
@@ -77,14 +77,13 @@ namespace HotelSYS
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(149, 186);
+            this.btnSubmit.Location = new System.Drawing.Point(147, 89);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 12;
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-
             // 
             // txtDesc
             // 
@@ -127,7 +126,7 @@ namespace HotelSYS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 407);
+            this.ClientSize = new System.Drawing.Size(482, 239);
             this.Controls.Add(this.grpRoomType);
             this.Controls.Add(this.cboRoomTypes);
             this.Controls.Add(this.lblSelectRoomTypes);
