@@ -41,28 +41,32 @@ namespace HotelSYS
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //validate data
+
             //check if RoomNo is numeric
             string RoomNoAsStr = txtRoomNo.Text;
 
-            if (Regex.IsMatch(RoomNoAsStr, @"^\d+$"))
+            if (!Regex.IsMatch(RoomNoAsStr, @"^\d+$"))
             {
-                MessageBox.Show("RoomNo must be numeric", "Invalid Data Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Room Number must be numeric", "Invalid Data Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtRoomNo.Clear();
+                txtRoomNo.Focus();
+
+                //set status
+
+
+            }
+            else
+            {
+                //save data***
+
+                //display confrimation
+                MessageBox.Show("Room has been added", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //reset UI
+                cboRoomType.SelectedIndex = -1;
                 txtRoomNo.Clear();
                 txtRoomNo.Focus();
             }
-
-            //set status
-
-            //save data***
-
-            //display confrimation
-            MessageBox.Show("Room has been added","Information", MessageBoxButtons.OK ,MessageBoxIcon.Information );
-
-            //reset UI
-            cboRoomType.SelectedIndex = -1;
-            txtRoomNo.Clear();
-            txtRoomNo.Focus();
-
         }
     }
 }
