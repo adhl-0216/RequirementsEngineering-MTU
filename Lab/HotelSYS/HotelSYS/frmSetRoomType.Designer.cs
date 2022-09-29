@@ -128,6 +128,7 @@ namespace HotelSYS
             this.Controls.Add(this.lblTypeCode);
             this.Name = "frmSetRoomType";
             this.Text = "Hotel Del Luna - [Set Room Type]";
+            this.Load += new System.EventHandler(this.frmSetRoomType_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

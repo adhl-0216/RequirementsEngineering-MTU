@@ -61,5 +61,10 @@ namespace HotelSYS
             txtTypeCode.Focus();
 
         }
+
+        private void frmSetRoomType_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
