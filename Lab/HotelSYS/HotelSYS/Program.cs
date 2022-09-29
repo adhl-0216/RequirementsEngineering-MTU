@@ -16,9 +16,12 @@ namespace HotelSYS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //         Application.Run(new frmSetRoomType());
-            //         Application.Run(new frmMainMenu());
+/*            
+            Application.Run(new frmSetRoomType());
+            Application.Run(new frmMainMenu());
             Application.Run(new frmUpdateRoomType());
+*/
+            Application.Run(new frmAddRoom());
          
         }
     }

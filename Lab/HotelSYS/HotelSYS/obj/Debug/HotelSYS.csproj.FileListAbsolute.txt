@@ -33,3 +33,4 @@ C:\Users\t00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Lab\HotelSY
 C:\Users\t00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Lab\HotelSYS\HotelSYS\obj\Debug\HotelSYS.csproj.CoreCompileInputs.cache
 C:\Users\t00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Lab\HotelSYS\HotelSYS\obj\Debug\HotelSYS.exe
 C:\Users\t00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Lab\HotelSYS\HotelSYS\obj\Debug\HotelSYS.pdb
+C:\Users\t00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Lab\HotelSYS\HotelSYS\obj\Debug\HotelSYS.frmAddRoom.resources
