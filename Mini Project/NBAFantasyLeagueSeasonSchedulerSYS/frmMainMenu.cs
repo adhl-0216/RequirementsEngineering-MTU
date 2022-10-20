@@ -34,5 +34,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             frmManageGames frmManageGames = new frmManageGames();
             frmManageGames.ShowDialog();
         }
+
+        private void frmMainMenu_Load(object sender, EventArgs e)
+        {
+            this.menuStrip1.Items.OfType<ToolStripMenuItem>().ToList().ForEach(x =>
+            {
+                x.MouseHover += (obj, arg) => ((ToolStripDropDownItem)obj).ShowDropDown();
+            });
+        }
+
+        private void addTeamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddTeam frmAddTeam = new frmAddTeam();
+            frmAddTeam.ShowDialog();
+        }
     }
 }
