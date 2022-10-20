@@ -16,5 +16,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         {
             InitializeComponent();
         }
+
+        private void scheduleGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

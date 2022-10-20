@@ -34,6 +34,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.manageTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managePlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scheduleGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rescheduleGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logGameResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateTeamProfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,21 +61,95 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // 
             // manageTeamsToolStripMenuItem
             // 
+            this.manageTeamsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTeamToolStripMenuItem,
+            this.updateTeamToolStripMenuItem,
+            this.managePlayersToolStripMenuItem,
+            this.removeTeamToolStripMenuItem});
             this.manageTeamsToolStripMenuItem.Name = "manageTeamsToolStripMenuItem";
             this.manageTeamsToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.manageTeamsToolStripMenuItem.Text = "Manage Teams";
             // 
             // manageGamesToolStripMenuItem
             // 
+            this.manageGamesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.scheduleGamesToolStripMenuItem,
+            this.rescheduleGamesToolStripMenuItem,
+            this.cancelGameToolStripMenuItem,
+            this.logGameResultsToolStripMenuItem});
             this.manageGamesToolStripMenuItem.Name = "manageGamesToolStripMenuItem";
             this.manageGamesToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
             this.manageGamesToolStripMenuItem.Text = "Manage Games";
             // 
             // adminToolStripMenuItem
             // 
+            this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewScheduleToolStripMenuItem,
+            this.generateTeamProfilesToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "Admin";
+            // 
+            // addTeamToolStripMenuItem
+            // 
+            this.addTeamToolStripMenuItem.Name = "addTeamToolStripMenuItem";
+            this.addTeamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addTeamToolStripMenuItem.Text = "Add Team";
+            // 
+            // updateTeamToolStripMenuItem
+            // 
+            this.updateTeamToolStripMenuItem.Name = "updateTeamToolStripMenuItem";
+            this.updateTeamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateTeamToolStripMenuItem.Text = "Update Team";
+            // 
+            // managePlayersToolStripMenuItem
+            // 
+            this.managePlayersToolStripMenuItem.Name = "managePlayersToolStripMenuItem";
+            this.managePlayersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.managePlayersToolStripMenuItem.Text = "Manage Players";
+            // 
+            // removeTeamToolStripMenuItem
+            // 
+            this.removeTeamToolStripMenuItem.Name = "removeTeamToolStripMenuItem";
+            this.removeTeamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeTeamToolStripMenuItem.Text = "Remove Team";
+            // 
+            // scheduleGamesToolStripMenuItem
+            // 
+            this.scheduleGamesToolStripMenuItem.Name = "scheduleGamesToolStripMenuItem";
+            this.scheduleGamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scheduleGamesToolStripMenuItem.Text = "Schedule Games";
+            this.scheduleGamesToolStripMenuItem.Click += new System.EventHandler(this.scheduleGamesToolStripMenuItem_Click);
+            // 
+            // rescheduleGamesToolStripMenuItem
+            // 
+            this.rescheduleGamesToolStripMenuItem.Name = "rescheduleGamesToolStripMenuItem";
+            this.rescheduleGamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rescheduleGamesToolStripMenuItem.Text = "Reschedule Game";
+            // 
+            // cancelGameToolStripMenuItem
+            // 
+            this.cancelGameToolStripMenuItem.Name = "cancelGameToolStripMenuItem";
+            this.cancelGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelGameToolStripMenuItem.Text = "Cancel Games";
+            // 
+            // logGameResultsToolStripMenuItem
+            // 
+            this.logGameResultsToolStripMenuItem.Name = "logGameResultsToolStripMenuItem";
+            this.logGameResultsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logGameResultsToolStripMenuItem.Text = "Log Game Results";
+            // 
+            // viewScheduleToolStripMenuItem
+            // 
+            this.viewScheduleToolStripMenuItem.Name = "viewScheduleToolStripMenuItem";
+            this.viewScheduleToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.viewScheduleToolStripMenuItem.Text = "View Schedule";
+            // 
+            // generateTeamProfilesToolStripMenuItem
+            // 
+            this.generateTeamProfilesToolStripMenuItem.Name = "generateTeamProfilesToolStripMenuItem";
+            this.generateTeamProfilesToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.generateTeamProfilesToolStripMenuItem.Text = "Generate Team Profiles";
             // 
             // frmMainMenu
             // 
@@ -94,6 +178,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private System.Windows.Forms.ToolStripMenuItem manageTeamsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageGamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addTeamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateTeamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managePlayersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeTeamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scheduleGamesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rescheduleGamesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cancelGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logGameResultsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewScheduleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateTeamProfilesToolStripMenuItem;
     }
 }
 
