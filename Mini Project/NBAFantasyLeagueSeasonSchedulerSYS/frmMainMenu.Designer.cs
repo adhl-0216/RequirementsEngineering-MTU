@@ -69,6 +69,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.manageTeamsToolStripMenuItem.Name = "manageTeamsToolStripMenuItem";
             this.manageTeamsToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.manageTeamsToolStripMenuItem.Text = "Manage Teams";
+            this.manageTeamsToolStripMenuItem.Click += new System.EventHandler(this.manageTeamsToolStripMenuItem_Click);
             // 
             // manageGamesToolStripMenuItem
             // 
@@ -80,6 +81,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.manageGamesToolStripMenuItem.Name = "manageGamesToolStripMenuItem";
             this.manageGamesToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
             this.manageGamesToolStripMenuItem.Text = "Manage Games";
+            this.manageGamesToolStripMenuItem.Click += new System.EventHandler(this.manageGamesToolStripMenuItem_Click);
             // 
             // adminToolStripMenuItem
             // 
@@ -89,6 +91,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // addTeamToolStripMenuItem
             // 
@@ -113,13 +116,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.removeTeamToolStripMenuItem.Name = "removeTeamToolStripMenuItem";
             this.removeTeamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeTeamToolStripMenuItem.Text = "Remove Team";
-            // 
-            // scheduleGamesToolStripMenuItem
-            // 
-            this.scheduleGamesToolStripMenuItem.Name = "scheduleGamesToolStripMenuItem";
-            this.scheduleGamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.scheduleGamesToolStripMenuItem.Text = "Schedule Games";
-            this.scheduleGamesToolStripMenuItem.Click += new System.EventHandler(this.scheduleGamesToolStripMenuItem_Click);
             // 
             // rescheduleGamesToolStripMenuItem
             // 

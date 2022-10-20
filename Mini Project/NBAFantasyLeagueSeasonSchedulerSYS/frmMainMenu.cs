@@ -17,9 +17,22 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             InitializeComponent();
         }
 
-        private void scheduleGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void manageTeamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmManageTeams frmManageTeams = new frmManageTeams();   
+            frmManageTeams.ShowDialog();
+        }
 
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdmin frmAdmin = new frmAdmin();
+            frmAdmin.ShowDialog();
+        }
+
+        private void manageGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageGames frmManageGames = new frmManageGames();
+            frmManageGames.ShowDialog();
         }
     }
 }
