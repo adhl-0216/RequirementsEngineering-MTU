@@ -30,5 +30,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         {
             Parent.Show();
         }
+
+        private void frmManageTeams_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdateTeam_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

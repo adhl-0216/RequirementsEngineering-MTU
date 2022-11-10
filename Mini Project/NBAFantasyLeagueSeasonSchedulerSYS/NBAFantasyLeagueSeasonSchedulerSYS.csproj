@@ -58,6 +58,12 @@
     <Compile Include="Admin\frmViewSchedule.Designer.cs">
       <DependentUpon>frmViewSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Teams\frmRemoveTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teams\frmRemoveTeam.Designer.cs">
+      <DependentUpon>frmRemoveTeam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Games\frmCancelGames.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,12 +118,6 @@
     <Compile Include="frmManageTeams.Designer.cs">
       <DependentUpon>frmManageTeams.cs</DependentUpon>
     </Compile>
-    <Compile Include="Teams\frmRemoveTeam.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Teams\frmRemoveTeam.Designer.cs">
-      <DependentUpon>frmRemoveTeam.cs</DependentUpon>
-    </Compile>
     <Compile Include="Teams\frmUpdateTeam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +126,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Teams\frmRemoveTeam.resx">
+      <DependentUpon>frmRemoveTeam.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Teams\frmAddTeam.resx">
       <DependentUpon>frmAddTeam.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,10 +152,8 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Teams\frmRemoveTeam.resx">
-      <DependentUpon>frmRemoveTeam.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Teams\frmUpdateTeam.resx">
       <DependentUpon>frmUpdateTeam.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +170,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\1500x500.jfif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

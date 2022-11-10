@@ -31,7 +31,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void frmAddTeam_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Parent.Show();
+            if (Parent!=null)
+                Parent.Show();
         }
     }
 }

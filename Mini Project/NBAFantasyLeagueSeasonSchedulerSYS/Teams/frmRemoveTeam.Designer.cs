@@ -1,5 +1,5 @@
 ﻿
-namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
+namespace NBAFantasyLeagueSeasonSchedulerSYS
 {
     partial class frmRemoveTeam
     {

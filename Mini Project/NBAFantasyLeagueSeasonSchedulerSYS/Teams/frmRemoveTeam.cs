@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
+namespace NBAFantasyLeagueSeasonSchedulerSYS
 {
     public partial class frmRemoveTeam : Form
     {
@@ -17,8 +17,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         {
             InitializeComponent();
         }
-
-        public frmRemoveTeam(Form parent )
+        public frmRemoveTeam(Form parent)
         {
             InitializeComponent();
             Parent = parent;
@@ -26,7 +25,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
 
         private void frmRemoveTeam_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Parent.Show();
+            if (Parent != null)
+                Parent.Show();
         }
     }
 }

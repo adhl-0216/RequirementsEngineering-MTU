@@ -27,3 +27,5 @@ C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFant
 C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmAdmin.resources
 C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmManageGames.resources
 C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmManageTeams.resources
+C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmUpdateTeam.resources
+C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmRemoveTeam.resources

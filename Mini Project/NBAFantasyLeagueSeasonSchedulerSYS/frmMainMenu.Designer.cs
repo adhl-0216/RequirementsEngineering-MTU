@@ -34,7 +34,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.manageTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.managePlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rescheduleGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +42,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateTeamProfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scheduleGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +63,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.manageTeamsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addTeamToolStripMenuItem,
             this.updateTeamToolStripMenuItem,
-            this.managePlayersToolStripMenuItem,
             this.removeTeamToolStripMenuItem});
             this.manageTeamsToolStripMenuItem.Name = "manageTeamsToolStripMenuItem";
             this.manageTeamsToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
@@ -82,22 +81,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.updateTeamToolStripMenuItem.Name = "updateTeamToolStripMenuItem";
             this.updateTeamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateTeamToolStripMenuItem.Text = "Update Team";
-            // 
-            // managePlayersToolStripMenuItem
-            // 
-            this.managePlayersToolStripMenuItem.Name = "managePlayersToolStripMenuItem";
-            this.managePlayersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.managePlayersToolStripMenuItem.Text = "Manage Players";
+            this.updateTeamToolStripMenuItem.Click += new System.EventHandler(this.updateTeamToolStripMenuItem_Click);
             // 
             // removeTeamToolStripMenuItem
             // 
             this.removeTeamToolStripMenuItem.Name = "removeTeamToolStripMenuItem";
             this.removeTeamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeTeamToolStripMenuItem.Text = "Remove Team";
+            this.removeTeamToolStripMenuItem.Click += new System.EventHandler(this.removeTeamToolStripMenuItem_Click);
             // 
             // manageGamesToolStripMenuItem
             // 
             this.manageGamesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.scheduleGamesToolStripMenuItem,
             this.rescheduleGamesToolStripMenuItem,
             this.cancelGameToolStripMenuItem,
             this.logGameResultsToolStripMenuItem});
@@ -146,6 +142,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.generateTeamProfilesToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.generateTeamProfilesToolStripMenuItem.Text = "Generate Team Profiles";
             // 
+            // scheduleGamesToolStripMenuItem
+            // 
+            this.scheduleGamesToolStripMenuItem.Name = "scheduleGamesToolStripMenuItem";
+            this.scheduleGamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scheduleGamesToolStripMenuItem.Text = "Schedule Games";
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,13 +178,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addTeamToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateTeamToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem managePlayersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeTeamToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rescheduleGamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logGameResultsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewScheduleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateTeamProfilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scheduleGamesToolStripMenuItem;
     }
 }
 

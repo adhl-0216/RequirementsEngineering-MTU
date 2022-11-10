@@ -12,6 +12,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 {
     public partial class frmMainMenu : Form
     {
+        private static frmManageTeams frmManageTeams;
+        private static frmManageGames frmManageGames;
+        private static frmAdmin frmAdmin;
         public frmMainMenu()
         {
             InitializeComponent();
@@ -24,33 +27,52 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             });
         }
 
+        //modules
         private void manageTeamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmManageTeams frmManageTeams = new frmManageTeams(this);   
+            frmManageTeams = new frmManageTeams(this);
             frmManageTeams.Show();
+        }
+        private void manageGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmManageGames = new frmManageGames(this);
+            frmManageGames.Show();
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmAdmin frmAdmin = new frmAdmin(this);
+            frmAdmin = new frmAdmin(this);
             frmAdmin.Show();
         }
 
-        private void manageGamesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmManageGames frmManageGames = new frmManageGames(this);
-            frmManageGames.Show();
-        }
 
-
+        // functional components
+        // Teams
         private void addTeamToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmAddTeam frmAddTeam = new frmAddTeam();
+            frmManageTeams = new frmManageTeams(this);
+            frmAddTeam frmAddTeam = new frmAddTeam(frmManageTeams);
             frmAddTeam.Show();
+        }
+
+        private void updateTeamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmManageTeams = new frmManageTeams(this);
+            frmUpdateTeam frmUpdateTeam = new frmUpdateTeam(frmManageTeams);
+            frmUpdateTeam.Show();
+        }
+
+        private void removeTeamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmManageTeams = new frmManageTeams(this);
+            frmRemoveTeam frmRemoveTeam = new frmRemoveTeam(frmManageTeams);
+            frmRemoveTeam.Show();
         }
     }
 }

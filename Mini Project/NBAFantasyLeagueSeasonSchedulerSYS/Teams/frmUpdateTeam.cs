@@ -18,9 +18,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             InitializeComponent();
         }
 
+        public frmUpdateTeam(Form parent)
+        {
+            InitializeComponent();
+            Parent = parent;
+        }
+
         private void frmUpdateTeam_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (Parent != null)
+                Parent.Show();
         }
     }
 }
