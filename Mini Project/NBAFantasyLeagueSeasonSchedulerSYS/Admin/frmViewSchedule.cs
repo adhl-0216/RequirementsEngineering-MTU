@@ -8,20 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NBAFantasyLeagueSeasonSchedulerSYS
+namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
 {
-    public partial class frmAdmin : Form
+    public partial class frmViewSchedule : Form
     {
         private static new Form Parent;
-        public frmAdmin(Form parent)
+        public frmViewSchedule()
         {
             InitializeComponent();
-            Parent = parent;
-        }
-
-        private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Parent.Show();
         }
     }
 }

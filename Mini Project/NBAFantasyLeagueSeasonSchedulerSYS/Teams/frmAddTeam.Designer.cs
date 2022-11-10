@@ -117,6 +117,8 @@
             this.Controls.Add(this.txtTeamName);
             this.Name = "frmAddTeam";
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Teams] - [Add Team]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddTeam_FormClosing);
+            this.Load += new System.EventHandler(this.frmAddTeam_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

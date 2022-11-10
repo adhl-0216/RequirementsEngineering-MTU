@@ -46,10 +46,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAddTeam.cs">
+    <Compile Include="Admin\frmGenerateTeamProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddTeam.Designer.cs">
+    <Compile Include="Admin\frmGenerateTeamProfile.Designer.cs">
+      <DependentUpon>frmGenerateTeamProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\frmViewSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmViewSchedule.Designer.cs">
+      <DependentUpon>frmViewSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Games\frmCancelGames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Games\frmCancelGames.Designer.cs">
+      <DependentUpon>frmCancelGames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Games\frmLogGameResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Games\frmLogGameResults.Designer.cs">
+      <DependentUpon>frmLogGameResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Games\frmReschedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Games\frmReschedule.Designer.cs">
+      <DependentUpon>frmReschedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Games\frmSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Games\frmSchedule.Designer.cs">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teams\frmAddTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teams\frmAddTeam.Designer.cs">
       <DependentUpon>frmAddTeam.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAdmin.cs">
@@ -76,9 +112,21 @@
     <Compile Include="frmManageTeams.Designer.cs">
       <DependentUpon>frmManageTeams.cs</DependentUpon>
     </Compile>
+    <Compile Include="Teams\frmRemoveTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teams\frmRemoveTeam.Designer.cs">
+      <DependentUpon>frmRemoveTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teams\frmUpdateTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teams\frmUpdateTeam.Designer.cs">
+      <DependentUpon>frmUpdateTeam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAddTeam.resx">
+    <EmbeddedResource Include="Teams\frmAddTeam.resx">
       <DependentUpon>frmAddTeam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdmin.resx">
@@ -102,6 +150,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Teams\frmRemoveTeam.resx">
+      <DependentUpon>frmRemoveTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teams\frmUpdateTeam.resx">
+      <DependentUpon>frmUpdateTeam.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,5 +169,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

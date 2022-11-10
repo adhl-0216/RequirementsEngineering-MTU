@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmManageGames";
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Games]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManageGames_FormClosing);
             this.ResumeLayout(false);
 
         }

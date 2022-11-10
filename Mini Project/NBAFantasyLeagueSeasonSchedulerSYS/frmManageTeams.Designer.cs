@@ -100,6 +100,7 @@
             this.Name = "frmManageTeams";
             this.Padding = new System.Windows.Forms.Padding(12);
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Teams]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManageTeams_FormClosing);
             this.grpTeamDetails.ResumeLayout(false);
             this.ResumeLayout(false);
 

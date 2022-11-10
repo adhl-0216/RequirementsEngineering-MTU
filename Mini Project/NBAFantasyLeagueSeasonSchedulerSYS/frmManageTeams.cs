@@ -12,14 +12,23 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 {
     public partial class frmManageTeams : Form
     {
-        public frmManageTeams()
+        private static new Form Parent;
+        public frmManageTeams(Form parent)
         {
             InitializeComponent();
+            Parent = parent;
         }
 
         private void btnAddTeam_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            frmAddTeam frmAddTeam = new frmAddTeam(this);
+            frmAddTeam.Show();
+        }
 
+        private void frmManageTeams_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Parent.Show();
         }
     }
 }

@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NBAFantasyLeagueSeasonSchedulerSYS
+namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
 {
-    public partial class frmAddTeam : Form
+    public partial class frmGenerateTeamProfile : Form
     {
-        public frmAddTeam()
+        private static new Form Parent;
+        public frmGenerateTeamProfile()
         {
             InitializeComponent();
         }

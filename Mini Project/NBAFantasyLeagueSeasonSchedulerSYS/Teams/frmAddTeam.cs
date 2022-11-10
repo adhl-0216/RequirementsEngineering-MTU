@@ -10,16 +10,26 @@ using System.Windows.Forms;
 
 namespace NBAFantasyLeagueSeasonSchedulerSYS
 {
-    public partial class frmAdmin : Form
+    public partial class frmAddTeam : Form
     {
         private static new Form Parent;
-        public frmAdmin(Form parent)
+        public frmAddTeam(Form parent)
         {
             InitializeComponent();
             Parent = parent;
         }
 
-        private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        public frmAddTeam()
+        {
+            InitializeComponent();
+        }
+
+        private void frmAddTeam_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmAddTeam_FormClosing(object sender, FormClosingEventArgs e)
         {
             Parent.Show();
         }

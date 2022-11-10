@@ -1,6 +1,7 @@
-﻿namespace NBAFantasyLeagueSeasonSchedulerSYS
+﻿
+namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
 {
-    partial class frmAdmin
+    partial class frmRemoveTeam
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +31,14 @@
         {
             this.SuspendLayout();
             // 
-            // frmAdmin
+            // frmRemoveTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "frmAdmin";
-            this.Text = "NBA Fantasy League Season Scheduler - [Admin]";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);
+            this.Name = "frmRemoveTeam";
+            this.Text = "frmRemoveTeam";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRemoveTeam_FormClosing);
             this.ResumeLayout(false);
 
         }
