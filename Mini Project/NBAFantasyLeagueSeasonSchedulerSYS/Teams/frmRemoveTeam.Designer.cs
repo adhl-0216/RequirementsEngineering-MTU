@@ -37,8 +37,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmRemoveTeam";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmRemoveTeam";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRemoveTeam_FormClosing);
+            this.Load += new System.EventHandler(this.frmRemoveTeam_Load);
             this.ResumeLayout(false);
 
         }

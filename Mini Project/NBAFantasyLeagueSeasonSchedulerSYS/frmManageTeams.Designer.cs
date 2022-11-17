@@ -71,6 +71,7 @@
             this.btnRemoveTeam.TabIndex = 7;
             this.btnRemoveTeam.Text = "Remove Team";
             this.btnRemoveTeam.UseVisualStyleBackColor = true;
+            this.btnRemoveTeam.Click += new System.EventHandler(this.btnRemoveTeam_Click);
             // 
             // btnUpdateTeam
             // 
@@ -103,6 +104,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmManageTeams";
             this.Padding = new System.Windows.Forms.Padding(12);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Teams]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManageTeams_FormClosing);
             this.Load += new System.EventHandler(this.frmManageTeams_Load);

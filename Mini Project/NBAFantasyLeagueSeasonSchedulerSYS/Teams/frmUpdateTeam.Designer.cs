@@ -37,6 +37,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmUpdateTeam";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUpdateTeam";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmUpdateTeam_FormClosing);
             this.ResumeLayout(false);

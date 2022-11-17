@@ -12,7 +12,6 @@ C:\Users\T00229173\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Projec
 C:\Users\T00229173\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\NBAFantasyLeagueSeasonSchedulerSYS.exe
 C:\Users\T00229173\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\NBAFantasyLeagueSeasonSchedulerSYS.pdb
 C:\Users\T00229173\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.AssemblyReference.cache
-C:\Users\T00229173\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.SuggestedBindingRedirects.cache
 C:\Users\T00229173\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmMainMenu.resources
 C:\Users\T00229173\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Properties.Resources.resources
 C:\Users\T00229173\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.GenerateResource.cache
@@ -29,3 +28,5 @@ C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFant
 C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmManageTeams.resources
 C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmUpdateTeam.resources
 C:\Users\T00229173\Source\Repos\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmRemoveTeam.resources
+C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmRemoveTeam.resources
+C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.frmUpdateTeam.resources

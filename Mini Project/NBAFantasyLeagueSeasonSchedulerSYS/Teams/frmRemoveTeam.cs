@@ -28,5 +28,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             if (Parent != null)
                 Parent.Show();
         }
+
+        private void frmRemoveTeam_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

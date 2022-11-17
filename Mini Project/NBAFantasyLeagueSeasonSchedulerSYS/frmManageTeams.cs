@@ -38,7 +38,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void btnUpdateTeam_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            frmUpdateTeam frmUpdateTeam = new frmUpdateTeam(this);
+            frmUpdateTeam.Show();
+        }
 
+        private void btnRemoveTeam_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRemoveTeam frmRemoveTeam = new frmRemoveTeam(this);
+            frmRemoveTeam.Show();
         }
     }
 }
