@@ -48,7 +48,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             */
 
             Boolean valid = false;
-
+            String successMsg = "Team Added Successfully! \n\n";
             TextBox[] txtBoxes = { txtTeamName, txtGM, txtHeadCoach, txtAsstCoach, txtHomeCourt };
 
             void errorMsg(String msg)
@@ -56,30 +56,44 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                 MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            foreach (TextBox txtBox in txtBoxes)
+            while (!valid)
             {
-                if (txtBox.Text.Equals(""))
+                foreach (TextBox txtBox in txtBoxes)
                 {
-                    errorMsg("Field can not be empty!");
-                    txtBox.Focus();
-                    break;
+                    if (txtBox.Text.Equals(""))
+                    {
+                        errorMsg("Field can not be empty!");
+                        txtBox.Focus();
+                        return;
+                    }
+                    else if (txtBox == txtGM || txtBox == txtHeadCoach || txtBox == txtAsstCoach)
+                    {
+                        if (txtBox.Text.Any(char.IsDigit))
+                        {
+                            errorMsg("Field can not contain numbers!");
+                            txtBox.Clear();
+                            txtBox.Focus();
+                            return;
+                        }
+                    }
                 }
-
-                if (txtBox.Text.Contains("*[0-9]"))
-                {
-                    errorMsg("Field can not contain numbers!");
-                    txtBox.Focus();
-                    break;
-                }
-
                 valid = true;
             }
+
 
             /*            Console.WriteLine(teamName+GM+headCoach + asstCoach + homeCourt);
             */
 
-            Strinf successMsg = "";
-            if (valid) MessageBox.Show("Team Added Successfully!", "Success",MessageBoxButtons.OK);
+            if (valid) {
+                foreach (TextBox txtBox in txtBoxes)
+                {
+                    successMsg += txtBox.Text + "\n";
+                    txtBox.Clear();
+                }
+                MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK,MessageBoxIcon.Information); 
+            }
+
+
         }
 
         private void txtTeamName_TextChanged(object sender, EventArgs e)
