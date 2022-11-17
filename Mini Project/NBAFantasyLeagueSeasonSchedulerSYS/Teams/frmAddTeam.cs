@@ -80,10 +80,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                 valid = true;
             }
 
-
-            /*            Console.WriteLine(teamName+GM+headCoach + asstCoach + homeCourt);
-            */
-
             if (valid) {
                 foreach (TextBox txtBox in txtBoxes)
                 {
