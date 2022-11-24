@@ -29,5 +29,20 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             if (Parent != null)
                 Parent.Show();
         }
+
+        private void frmUpdateTeam_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdateTeam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTeamName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
