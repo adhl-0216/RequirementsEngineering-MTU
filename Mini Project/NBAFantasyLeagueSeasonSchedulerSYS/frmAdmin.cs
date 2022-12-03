@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,25 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Parent.Show();
+        }
+
+        private void frmAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTeamProfs_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmGenerateTeamProfile frmGenerateTeamProfile = new frmGenerateTeamProfile(this);
+            frmGenerateTeamProfile.Show();
+        }
+
+        private void btnViewSchedule_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmViewSchedule frmViewSchedule = new frmViewSchedule(this);
+            frmViewSchedule.Show();
         }
     }
 }

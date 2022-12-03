@@ -126,6 +126,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Admin\frmGenerateTeamProfile.resx">
+      <DependentUpon>frmGenerateTeamProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\frmViewSchedule.resx">
+      <DependentUpon>frmViewSchedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Teams\frmRemoveTeam.resx">
       <DependentUpon>frmRemoveTeam.cs</DependentUpon>
     </EmbeddedResource>

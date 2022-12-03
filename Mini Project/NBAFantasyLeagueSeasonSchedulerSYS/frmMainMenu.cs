@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,5 +75,14 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             frmRemoveTeam frmRemoveTeam = new frmRemoveTeam(frmManageTeams);
             frmRemoveTeam.Show();
         }
+        //Admin
+        private void generateTeamProfilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmAdmin = new frmAdmin(this);
+            frmGenerateTeamProfile frmGenerateTeamProfile = new frmGenerateTeamProfile(frmAdmin);
+            frmGenerateTeamProfile.Show();
+        }
+        
     }
 }

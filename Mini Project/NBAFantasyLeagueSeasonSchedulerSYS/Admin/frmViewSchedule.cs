@@ -16,6 +16,24 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         public frmViewSchedule()
         {
             InitializeComponent();
+        }        
+        public frmViewSchedule(Form parent)
+        {
+            InitializeComponent();
+            Parent = parent;
+        }
+
+        private void frmViewSchedule_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmViewSchedule_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Parent != null)
+            {
+                Parent.Show();
+            }
         }
     }
 }

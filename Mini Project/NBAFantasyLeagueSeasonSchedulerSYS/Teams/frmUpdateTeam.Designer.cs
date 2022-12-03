@@ -36,6 +36,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.btnUpdateTeam = new System.Windows.Forms.Button();
             this.pnlInputs = new System.Windows.Forms.Panel();
             this.pnlTeamName = new System.Windows.Forms.Panel();
+            this.cboTeamName = new System.Windows.Forms.ComboBox();
             this.lblTeamName = new System.Windows.Forms.Label();
             this.pnlHeadCoach = new System.Windows.Forms.Panel();
             this.lblHeadCoach = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.lblHomeCourt = new System.Windows.Forms.Label();
             this.txtHomeCourt = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.cboTeamName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.pnlInputs.SuspendLayout();
             this.pnlTeamName.SuspendLayout();
@@ -64,20 +64,21 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // 
             this.lblInstructions.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblInstructions.AutoSize = true;
-            this.lblInstructions.Location = new System.Drawing.Point(315, 137);
-            this.lblInstructions.Margin = new System.Windows.Forms.Padding(8);
+            this.lblInstructions.Location = new System.Drawing.Point(472, 211);
+            this.lblInstructions.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
             this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Padding = new System.Windows.Forms.Padding(8);
-            this.lblInstructions.Size = new System.Drawing.Size(252, 94);
+            this.lblInstructions.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.lblInstructions.Size = new System.Drawing.Size(374, 144);
             this.lblInstructions.TabIndex = 19;
             this.lblInstructions.Text = resources.GetString("lblInstructions.Text");
             // 
             // btnUpdateTeam
             // 
             this.btnUpdateTeam.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnUpdateTeam.Location = new System.Drawing.Point(227, 362);
+            this.btnUpdateTeam.Location = new System.Drawing.Point(340, 557);
+            this.btnUpdateTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUpdateTeam.Name = "btnUpdateTeam";
-            this.btnUpdateTeam.Size = new System.Drawing.Size(131, 38);
+            this.btnUpdateTeam.Size = new System.Drawing.Size(196, 58);
             this.btnUpdateTeam.TabIndex = 16;
             this.btnUpdateTeam.Text = "Update Team";
             this.btnUpdateTeam.UseVisualStyleBackColor = true;
@@ -89,10 +90,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.pnlInputs.Controls.Add(this.pnlAsstCoach);
             this.pnlInputs.Controls.Add(this.pnlGM);
             this.pnlInputs.Controls.Add(this.pnlHomeCourt);
-            this.pnlInputs.Location = new System.Drawing.Point(12, 51);
+            this.pnlInputs.Location = new System.Drawing.Point(18, 78);
+            this.pnlInputs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlInputs.Name = "pnlInputs";
-            this.pnlInputs.Padding = new System.Windows.Forms.Padding(4);
-            this.pnlInputs.Size = new System.Drawing.Size(292, 288);
+            this.pnlInputs.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlInputs.Size = new System.Drawing.Size(438, 443);
             this.pnlInputs.TabIndex = 18;
             // 
             // pnlTeamName
@@ -102,20 +104,36 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTeamName.Controls.Add(this.cboTeamName);
             this.pnlTeamName.Controls.Add(this.lblTeamName);
-            this.pnlTeamName.Location = new System.Drawing.Point(7, 7);
+            this.pnlTeamName.Location = new System.Drawing.Point(10, 11);
+            this.pnlTeamName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlTeamName.Name = "pnlTeamName";
-            this.pnlTeamName.Padding = new System.Windows.Forms.Padding(4);
+            this.pnlTeamName.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlTeamName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlTeamName.Size = new System.Drawing.Size(278, 27);
+            this.pnlTeamName.Size = new System.Drawing.Size(417, 42);
             this.pnlTeamName.TabIndex = 9;
+            // 
+            // cboTeamName
+            // 
+            this.cboTeamName.FormattingEnabled = true;
+            this.cboTeamName.Items.AddRange(new object[] {
+            "\'16-17 Golden State Warriors",
+            "\'95-96 Chicago Bulls "});
+            this.cboTeamName.Location = new System.Drawing.Point(172, 5);
+            this.cboTeamName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboTeamName.MaxDropDownItems = 10;
+            this.cboTeamName.Name = "cboTeamName";
+            this.cboTeamName.Size = new System.Drawing.Size(236, 28);
+            this.cboTeamName.TabIndex = 4;
+            this.cboTeamName.SelectedIndexChanged += new System.EventHandler(this.cboTeamName_SelectedIndexChanged);
             // 
             // lblTeamName
             // 
             this.lblTeamName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblTeamName.AutoSize = true;
-            this.lblTeamName.Location = new System.Drawing.Point(4, 4);
+            this.lblTeamName.Location = new System.Drawing.Point(6, 6);
+            this.lblTeamName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTeamName.Name = "lblTeamName";
-            this.lblTeamName.Size = new System.Drawing.Size(65, 13);
+            this.lblTeamName.Size = new System.Drawing.Size(95, 20);
             this.lblTeamName.TabIndex = 3;
             this.lblTeamName.Text = "Team Name";
             this.lblTeamName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -127,20 +145,22 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeadCoach.Controls.Add(this.lblHeadCoach);
             this.pnlHeadCoach.Controls.Add(this.txtHeadCoach);
-            this.pnlHeadCoach.Location = new System.Drawing.Point(7, 75);
+            this.pnlHeadCoach.Location = new System.Drawing.Point(10, 115);
+            this.pnlHeadCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlHeadCoach.Name = "pnlHeadCoach";
-            this.pnlHeadCoach.Padding = new System.Windows.Forms.Padding(4);
+            this.pnlHeadCoach.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlHeadCoach.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlHeadCoach.Size = new System.Drawing.Size(278, 27);
+            this.pnlHeadCoach.Size = new System.Drawing.Size(417, 42);
             this.pnlHeadCoach.TabIndex = 10;
             // 
             // lblHeadCoach
             // 
             this.lblHeadCoach.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblHeadCoach.AutoSize = true;
-            this.lblHeadCoach.Location = new System.Drawing.Point(4, 4);
+            this.lblHeadCoach.Location = new System.Drawing.Point(6, 6);
+            this.lblHeadCoach.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeadCoach.Name = "lblHeadCoach";
-            this.lblHeadCoach.Size = new System.Drawing.Size(67, 13);
+            this.lblHeadCoach.Size = new System.Drawing.Size(98, 20);
             this.lblHeadCoach.TabIndex = 3;
             this.lblHeadCoach.Text = "Head Coach";
             this.lblHeadCoach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,9 +168,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // txtHeadCoach
             // 
             this.txtHeadCoach.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtHeadCoach.Location = new System.Drawing.Point(115, 4);
+            this.txtHeadCoach.Location = new System.Drawing.Point(175, 6);
+            this.txtHeadCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeadCoach.Name = "txtHeadCoach";
-            this.txtHeadCoach.Size = new System.Drawing.Size(159, 20);
+            this.txtHeadCoach.Size = new System.Drawing.Size(236, 26);
             this.txtHeadCoach.TabIndex = 3;
             // 
             // pnlAsstCoach
@@ -160,20 +181,22 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlAsstCoach.Controls.Add(this.lblAsstCoach);
             this.pnlAsstCoach.Controls.Add(this.txtAsstCoach);
-            this.pnlAsstCoach.Location = new System.Drawing.Point(7, 109);
+            this.pnlAsstCoach.Location = new System.Drawing.Point(10, 168);
+            this.pnlAsstCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlAsstCoach.Name = "pnlAsstCoach";
-            this.pnlAsstCoach.Padding = new System.Windows.Forms.Padding(4);
+            this.pnlAsstCoach.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlAsstCoach.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlAsstCoach.Size = new System.Drawing.Size(278, 27);
+            this.pnlAsstCoach.Size = new System.Drawing.Size(417, 42);
             this.pnlAsstCoach.TabIndex = 10;
             // 
             // lblAsstCoach
             // 
             this.lblAsstCoach.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblAsstCoach.AutoSize = true;
-            this.lblAsstCoach.Location = new System.Drawing.Point(4, 4);
+            this.lblAsstCoach.Location = new System.Drawing.Point(6, 6);
+            this.lblAsstCoach.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAsstCoach.Name = "lblAsstCoach";
-            this.lblAsstCoach.Size = new System.Drawing.Size(83, 13);
+            this.lblAsstCoach.Size = new System.Drawing.Size(125, 20);
             this.lblAsstCoach.TabIndex = 3;
             this.lblAsstCoach.Text = "Assistant Coach";
             this.lblAsstCoach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -181,9 +204,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // txtAsstCoach
             // 
             this.txtAsstCoach.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtAsstCoach.Location = new System.Drawing.Point(115, 4);
+            this.txtAsstCoach.Location = new System.Drawing.Point(175, 6);
+            this.txtAsstCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAsstCoach.Name = "txtAsstCoach";
-            this.txtAsstCoach.Size = new System.Drawing.Size(159, 20);
+            this.txtAsstCoach.Size = new System.Drawing.Size(236, 26);
             this.txtAsstCoach.TabIndex = 4;
             // 
             // pnlGM
@@ -193,20 +217,22 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlGM.Controls.Add(this.lblGM);
             this.pnlGM.Controls.Add(this.txtGM);
-            this.pnlGM.Location = new System.Drawing.Point(7, 41);
+            this.pnlGM.Location = new System.Drawing.Point(10, 63);
+            this.pnlGM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlGM.Name = "pnlGM";
-            this.pnlGM.Padding = new System.Windows.Forms.Padding(4);
+            this.pnlGM.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlGM.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlGM.Size = new System.Drawing.Size(278, 27);
+            this.pnlGM.Size = new System.Drawing.Size(417, 42);
             this.pnlGM.TabIndex = 10;
             // 
             // lblGM
             // 
             this.lblGM.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblGM.AutoSize = true;
-            this.lblGM.Location = new System.Drawing.Point(4, 4);
+            this.lblGM.Location = new System.Drawing.Point(6, 6);
+            this.lblGM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGM.Name = "lblGM";
-            this.lblGM.Size = new System.Drawing.Size(89, 13);
+            this.lblGM.Size = new System.Drawing.Size(133, 20);
             this.lblGM.TabIndex = 3;
             this.lblGM.Text = "General Manager";
             this.lblGM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -214,9 +240,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // txtGM
             // 
             this.txtGM.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtGM.Location = new System.Drawing.Point(115, 4);
+            this.txtGM.Location = new System.Drawing.Point(175, 6);
+            this.txtGM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtGM.Name = "txtGM";
-            this.txtGM.Size = new System.Drawing.Size(159, 20);
+            this.txtGM.Size = new System.Drawing.Size(236, 26);
             this.txtGM.TabIndex = 2;
             // 
             // pnlHomeCourt
@@ -226,22 +253,23 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHomeCourt.Controls.Add(this.lblHomeCourt);
             this.pnlHomeCourt.Controls.Add(this.txtHomeCourt);
-            this.pnlHomeCourt.Location = new System.Drawing.Point(7, 143);
+            this.pnlHomeCourt.Location = new System.Drawing.Point(10, 220);
+            this.pnlHomeCourt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlHomeCourt.Name = "pnlHomeCourt";
-            this.pnlHomeCourt.Padding = new System.Windows.Forms.Padding(4);
+            this.pnlHomeCourt.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlHomeCourt.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlHomeCourt.Size = new System.Drawing.Size(278, 138);
+            this.pnlHomeCourt.Size = new System.Drawing.Size(417, 212);
             this.pnlHomeCourt.TabIndex = 10;
             // 
             // lblHomeCourt
             // 
             this.lblHomeCourt.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblHomeCourt.AutoSize = true;
-            this.lblHomeCourt.Location = new System.Drawing.Point(4, 4);
-            this.lblHomeCourt.Margin = new System.Windows.Forms.Padding(4);
+            this.lblHomeCourt.Location = new System.Drawing.Point(6, 6);
+            this.lblHomeCourt.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lblHomeCourt.Name = "lblHomeCourt";
-            this.lblHomeCourt.Padding = new System.Windows.Forms.Padding(4);
-            this.lblHomeCourt.Size = new System.Drawing.Size(71, 21);
+            this.lblHomeCourt.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lblHomeCourt.Size = new System.Drawing.Size(107, 32);
             this.lblHomeCourt.TabIndex = 3;
             this.lblHomeCourt.Text = "Home Court";
             this.lblHomeCourt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -249,44 +277,34 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // txtHomeCourt
             // 
             this.txtHomeCourt.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtHomeCourt.Location = new System.Drawing.Point(115, 4);
+            this.txtHomeCourt.Location = new System.Drawing.Point(175, 6);
+            this.txtHomeCourt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHomeCourt.Multiline = true;
             this.txtHomeCourt.Name = "txtHomeCourt";
-            this.txtHomeCourt.Size = new System.Drawing.Size(159, 130);
+            this.txtHomeCourt.Size = new System.Drawing.Size(236, 200);
             this.txtHomeCourt.TabIndex = 5;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Perpetua Titling MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblTitle.Location = new System.Drawing.Point(18, 14);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(176, 26);
+            this.lblTitle.Size = new System.Drawing.Size(265, 38);
             this.lblTitle.TabIndex = 17;
             this.lblTitle.Text = "Team Details";
             // 
-            // cboTeamName
-            // 
-            this.cboTeamName.FormattingEnabled = true;
-            this.cboTeamName.Items.AddRange(new object[] {
-            "\'16-17 Golden State Warriors",
-            "\'95-96 Chicago Bulls "});
-            this.cboTeamName.Location = new System.Drawing.Point(115, 3);
-            this.cboTeamName.MaxDropDownItems = 10;
-            this.cboTeamName.Name = "cboTeamName";
-            this.cboTeamName.Size = new System.Drawing.Size(159, 21);
-            this.cboTeamName.TabIndex = 4;
-            this.cboTeamName.SelectedIndexChanged += new System.EventHandler(this.cboTeamName_SelectedIndexChanged);
-            // 
             // frmUpdateTeam
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 412);
+            this.ClientSize = new System.Drawing.Size(876, 634);
             this.Controls.Add(this.lblInstructions);
             this.Controls.Add(this.btnUpdateTeam);
             this.Controls.Add(this.pnlInputs);
             this.Controls.Add(this.lblTitle);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmUpdateTeam";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Teams] - [Update Team]";

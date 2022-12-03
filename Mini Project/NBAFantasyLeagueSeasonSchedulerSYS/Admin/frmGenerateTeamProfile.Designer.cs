@@ -29,12 +29,33 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(242, 116);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(171, 28);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // frmGenerateTeamProfile
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmGenerateTeamProfile";
+            this.Controls.Add(this.comboBox1);
+            this.Name = "frmGenerateTeamProfile";
+            this.Text = "NBA Fantasy League Season Scheduler - [Admin] - [Team Profiles]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGenerateTeamProfile_FormClosing);
+            this.Load += new System.EventHandler(this.frmGenerateTeamProfile_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

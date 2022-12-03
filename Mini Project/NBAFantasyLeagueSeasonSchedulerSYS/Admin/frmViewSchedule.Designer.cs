@@ -29,10 +29,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmViewSchedule
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmViewSchedule";
+            this.Name = "frmViewSchedule";
+            this.Text = "NBA Fantasy League Season Scheduler - [Admin] - [View Schedule]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmViewSchedule_FormClosing);
+            this.Load += new System.EventHandler(this.frmViewSchedule_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
