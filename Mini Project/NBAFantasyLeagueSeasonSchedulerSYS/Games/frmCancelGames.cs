@@ -13,9 +13,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     public partial class frmCancelGames : Form
     {
         private static new Form Parent;
-        public frmCancelGames()
+        public frmCancelGames(Form parent)
         {
             InitializeComponent();
+            Parent = parent;
+        }
+
+        private void frmCancelGames_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Parent.Show();
         }
     }
 }

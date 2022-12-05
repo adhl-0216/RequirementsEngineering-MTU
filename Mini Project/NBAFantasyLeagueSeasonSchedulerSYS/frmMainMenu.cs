@@ -1,4 +1,5 @@
 ﻿using NBAFantasyLeagueSeasonSchedulerSYS.Admin;
+using NBAFantasyLeagueSeasonSchedulerSYS.Games;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,6 +76,40 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             frmRemoveTeam frmRemoveTeam = new frmRemoveTeam(frmManageTeams);
             frmRemoveTeam.Show();
         }
+
+        //Manage Games
+        private void scheduleGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmManageGames frmManageGames = new frmManageGames(this);
+            frmSchedule frmSchedule = new frmSchedule(frmManageGames);
+            frmSchedule.Show();
+        }
+
+        private void rescheduleGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmManageGames frmManageGames = new frmManageGames(this);
+            frmReschedule frmReschedule = new frmReschedule(frmManageGames);
+            frmReschedule.Show();
+        }
+
+        private void cancelGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmManageGames frmManageGames = new frmManageGames(this);
+            frmCancelGames frmCancelGames = new frmCancelGames(frmManageGames);
+            frmCancelGames.Show();
+        }
+
+        private void logGameResultsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmManageGames frmManageGames = new frmManageGames(this);
+            frmLogGameResults frmLogGameResults = new frmLogGameResults(frmManageGames);
+            frmLogGameResults.Show();
+        }
+
         //Admin
         private void generateTeamProfilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -83,6 +118,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             frmGenerateTeamProfile frmGenerateTeamProfile = new frmGenerateTeamProfile(frmAdmin);
             frmGenerateTeamProfile.Show();
         }
-        
+
+        private void viewScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmAdmin = new frmAdmin(this);
+            frmViewSchedule frmViewSchedule = new frmViewSchedule(frmAdmin);
+            frmViewSchedule.Show();
+        }
     }
 }

@@ -132,6 +132,18 @@
     <EmbeddedResource Include="Admin\frmViewSchedule.resx">
       <DependentUpon>frmViewSchedule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Games\frmCancelGames.resx">
+      <DependentUpon>frmCancelGames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Games\frmLogGameResults.resx">
+      <DependentUpon>frmLogGameResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Games\frmReschedule.resx">
+      <DependentUpon>frmReschedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Games\frmSchedule.resx">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Teams\frmRemoveTeam.resx">
       <DependentUpon>frmRemoveTeam.cs</DependentUpon>
     </EmbeddedResource>

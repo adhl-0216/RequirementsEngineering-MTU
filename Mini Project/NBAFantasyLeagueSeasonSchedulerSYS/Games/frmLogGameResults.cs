@@ -13,9 +13,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     public partial class frmLogGameResults : Form
     {
         private static new Form Parent;
-        public frmLogGameResults()
+        public frmLogGameResults(Form parent)
         {
             InitializeComponent();
+            Parent = parent;
+        }
+
+        private void frmLogGameResults_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Parent.Show();
         }
     }
 }
