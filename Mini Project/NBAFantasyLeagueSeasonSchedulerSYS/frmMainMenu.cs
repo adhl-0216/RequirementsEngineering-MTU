@@ -23,7 +23,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         }
         private void frmMainMenu_Load(object sender, EventArgs e)
         {
-            this.menuStrip1.Items.OfType<ToolStripMenuItem>().ToList().ForEach(x =>
+            this.mnuMainMenu.Items.OfType<ToolStripMenuItem>().ToList().ForEach(x =>
             {
                 x.MouseHover += (obj, arg) => ((ToolStripDropDownItem)obj).ShowDropDown();
             });

@@ -26,6 +26,21 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             frmAddTeam.Show();
         }
 
+        private static string[] teamNames = {
+                "'95-96 Chicago Bulls",
+                "'16-17 Golden State Warriors",
+                "'70-71 Milwaukee Bucks",
+                "'07-08 Boston Celtics",
+                "'08-09 Cleveland Cavaliers",
+                "'12-13 Oklahoma City Thunder",
+                "'88-89 Detroit Pistons",
+                "'86-87 Los Angeles Lakers",
+                "'82-83 Philadelphia 76ers",
+                "'98-99 San Antonio Spurs"
+        };
+
+        public static string[] TeamNames { get => teamNames; set => teamNames = value; }
+
         private void frmManageTeams_FormClosing(object sender, FormClosingEventArgs e)
         {
             Parent.Show();

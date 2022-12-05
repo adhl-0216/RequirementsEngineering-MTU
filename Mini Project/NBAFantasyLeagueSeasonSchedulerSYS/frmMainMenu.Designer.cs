@@ -30,7 +30,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainMenu));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuMainMenu = new System.Windows.Forms.MenuStrip();
             this.manageTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,22 +43,22 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateTeamProfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.mnuMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // mnuMainMenu
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMainMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.mnuMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageTeamsToolStripMenuItem,
             this.manageGamesToolStripMenuItem,
             this.adminToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(934, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "mnuMainMenu";
+            this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mnuMainMenu.Name = "mnuMainMenu";
+            this.mnuMainMenu.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.mnuMainMenu.Size = new System.Drawing.Size(934, 24);
+            this.mnuMainMenu.TabIndex = 0;
+            this.mnuMainMenu.Text = "mnuMainMenu";
             // 
             // manageTeamsToolStripMenuItem
             // 
@@ -107,28 +107,28 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // scheduleGamesToolStripMenuItem
             // 
             this.scheduleGamesToolStripMenuItem.Name = "scheduleGamesToolStripMenuItem";
-            this.scheduleGamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scheduleGamesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.scheduleGamesToolStripMenuItem.Text = "Schedule Games";
             this.scheduleGamesToolStripMenuItem.Click += new System.EventHandler(this.scheduleGamesToolStripMenuItem_Click);
             // 
             // rescheduleGamesToolStripMenuItem
             // 
             this.rescheduleGamesToolStripMenuItem.Name = "rescheduleGamesToolStripMenuItem";
-            this.rescheduleGamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rescheduleGamesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.rescheduleGamesToolStripMenuItem.Text = "Reschedule Game";
             this.rescheduleGamesToolStripMenuItem.Click += new System.EventHandler(this.rescheduleGamesToolStripMenuItem_Click);
             // 
             // cancelGameToolStripMenuItem
             // 
             this.cancelGameToolStripMenuItem.Name = "cancelGameToolStripMenuItem";
-            this.cancelGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cancelGameToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.cancelGameToolStripMenuItem.Text = "Cancel Games";
             this.cancelGameToolStripMenuItem.Click += new System.EventHandler(this.cancelGameToolStripMenuItem_Click);
             // 
             // logGameResultsToolStripMenuItem
             // 
             this.logGameResultsToolStripMenuItem.Name = "logGameResultsToolStripMenuItem";
-            this.logGameResultsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logGameResultsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.logGameResultsToolStripMenuItem.Text = "Log Game Results";
             this.logGameResultsToolStripMenuItem.Click += new System.EventHandler(this.logGameResultsToolStripMenuItem_Click);
             // 
@@ -164,15 +164,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(934, 526);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.mnuMainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.mnuMainMenu;
+            this.MaximizeBox = false;
             this.Name = "frmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Main Menu]";
             this.Load += new System.EventHandler(this.frmMainMenu_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mnuMainMenu.ResumeLayout(false);
+            this.mnuMainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +181,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mnuMainMenu;
         private System.Windows.Forms.ToolStripMenuItem manageTeamsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageGamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;

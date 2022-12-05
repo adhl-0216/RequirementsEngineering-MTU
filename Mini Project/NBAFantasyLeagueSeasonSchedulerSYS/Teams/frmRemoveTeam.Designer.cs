@@ -29,24 +29,21 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRemoveTeam));
             this.cboSelectTeam = new System.Windows.Forms.ComboBox();
             this.lblSelectTeam = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtgTeamDetails = new System.Windows.Forms.DataGridView();
             this.btnRemoveTeam = new System.Windows.Forms.Button();
-            this.dataTeams = new System.Windows.Forms.DataGridView();
             this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hCoach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.home = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teams_File = new NBAFantasyLeagueSeasonSchedulerSYS.Teams_File();
-            this.teamsFileBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.headCoach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asstCoach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.homeCourt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTeams)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teams_File)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teamsFileBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTeamDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // cboSelectTeam
@@ -54,7 +51,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.cboSelectTeam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboSelectTeam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSelectTeam.FormattingEnabled = true;
-            this.cboSelectTeam.Location = new System.Drawing.Point(107, 6);
+            this.cboSelectTeam.Location = new System.Drawing.Point(242, 6);
             this.cboSelectTeam.MaxDropDownItems = 10;
             this.cboSelectTeam.Name = "cboSelectTeam";
             this.cboSelectTeam.Size = new System.Drawing.Size(411, 21);
@@ -89,20 +86,39 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.dataTeams);
+            this.panel1.Controls.Add(this.dtgTeamDetails);
             this.panel1.Controls.Add(this.cboSelectTeam);
             this.panel1.Controls.Add(this.lblSelectTeam);
             this.panel1.Location = new System.Drawing.Point(18, 64);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(8);
-            this.panel1.Size = new System.Drawing.Size(533, 275);
+            this.panel1.Size = new System.Drawing.Size(668, 306);
             this.panel1.TabIndex = 19;
+            // 
+            // dtgTeamDetails
+            // 
+            this.dtgTeamDetails.AllowUserToAddRows = false;
+            this.dtgTeamDetails.AllowUserToDeleteRows = false;
+            this.dtgTeamDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgTeamDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.teamID,
+            this.teamName,
+            this.manager,
+            this.headCoach,
+            this.asstCoach,
+            this.homeCourt});
+            this.dtgTeamDetails.Location = new System.Drawing.Point(9, 31);
+            this.dtgTeamDetails.Name = "dtgTeamDetails";
+            this.dtgTeamDetails.ReadOnly = true;
+            this.dtgTeamDetails.Size = new System.Drawing.Size(644, 264);
+            this.dtgTeamDetails.TabIndex = 2;
+            this.dtgTeamDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTeams_CellContentClick);
             // 
             // btnRemoveTeam
             // 
             this.btnRemoveTeam.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnRemoveTeam.Location = new System.Drawing.Point(240, 353);
+            this.btnRemoveTeam.Location = new System.Drawing.Point(308, 384);
             this.btnRemoveTeam.Name = "btnRemoveTeam";
             this.btnRemoveTeam.Size = new System.Drawing.Size(75, 32);
             this.btnRemoveTeam.TabIndex = 20;
@@ -110,67 +126,55 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.btnRemoveTeam.UseVisualStyleBackColor = true;
             this.btnRemoveTeam.Click += new System.EventHandler(this.btnRemoveTeam_Click);
             // 
-            // dataTeams
-            // 
-            this.dataTeams.AllowUserToAddRows = false;
-            this.dataTeams.AllowUserToDeleteRows = false;
-            this.dataTeams.AutoGenerateColumns = false;
-            this.dataTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataTeams.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.teamID,
-            this.teamName,
-            this.hCoach,
-            this.home});
-            this.dataTeams.DataSource = this.teamsFileBindingSource;
-            this.dataTeams.Location = new System.Drawing.Point(9, 33);
-            this.dataTeams.Name = "dataTeams";
-            this.dataTeams.ReadOnly = true;
-            this.dataTeams.Size = new System.Drawing.Size(509, 231);
-            this.dataTeams.TabIndex = 2;
-            // 
             // teamID
             // 
+            this.teamID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.teamID.HeaderText = "ID";
             this.teamID.Name = "teamID";
             this.teamID.ReadOnly = true;
+            this.teamID.Width = 43;
             // 
             // teamName
             // 
+            this.teamName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.teamName.HeaderText = "NAME";
             this.teamName.Name = "teamName";
             this.teamName.ReadOnly = true;
             // 
-            // hCoach
+            // manager
             // 
-            this.hCoach.HeaderText = "HEAD COACH";
-            this.hCoach.Name = "hCoach";
-            this.hCoach.ReadOnly = true;
+            this.manager.HeaderText = "MANAGER";
+            this.manager.Name = "manager";
+            this.manager.ReadOnly = true;
             // 
-            // home
+            // headCoach
             // 
-            this.home.HeaderText = "HOME COURT";
-            this.home.Name = "home";
-            this.home.ReadOnly = true;
+            this.headCoach.HeaderText = "HEAD COACH";
+            this.headCoach.Name = "headCoach";
+            this.headCoach.ReadOnly = true;
             // 
-            // teams_File
+            // asstCoach
             // 
-            this.teams_File.DataSetName = "Teams_File";
-            this.teams_File.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.asstCoach.HeaderText = "ASSISTANT COACH";
+            this.asstCoach.Name = "asstCoach";
+            this.asstCoach.ReadOnly = true;
             // 
-            // teamsFileBindingSource
+            // homeCourt
             // 
-            this.teamsFileBindingSource.DataSource = this.teams_File;
-            this.teamsFileBindingSource.Position = 0;
+            this.homeCourt.HeaderText = "HOME COURT";
+            this.homeCourt.Name = "homeCourt";
+            this.homeCourt.ReadOnly = true;
             // 
             // frmRemoveTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 397);
+            this.ClientSize = new System.Drawing.Size(704, 428);
             this.Controls.Add(this.btnRemoveTeam);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmRemoveTeam";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -179,9 +183,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.Load += new System.EventHandler(this.frmRemoveTeam_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTeams)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teams_File)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teamsFileBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTeamDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,12 +196,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRemoveTeam;
-        private System.Windows.Forms.DataGridView dataTeams;
+        private System.Windows.Forms.DataGridView dtgTeamDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn teamID;
         private System.Windows.Forms.DataGridViewTextBoxColumn teamName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hCoach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn home;
-        private System.Windows.Forms.BindingSource teamsFileBindingSource;
-        private Teams_File teams_File;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn headCoach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn asstCoach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn homeCourt;
     }
 }

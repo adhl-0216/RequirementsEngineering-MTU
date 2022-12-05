@@ -102,8 +102,10 @@
             this.ClientSize = new System.Drawing.Size(624, 281);
             this.Controls.Add(this.pboBanner);
             this.Controls.Add(this.grpTeamDetails);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmManageTeams";
             this.Padding = new System.Windows.Forms.Padding(12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
