@@ -46,6 +46,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             };
 
             cboSelectTeam.Items.AddRange(teamNames);
+
+            Teams_File teams = new Teams_File();
+            teams.Rows.Add()
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
@@ -61,7 +64,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                     MessageBox.Show(selectedTeam + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cboSelectTeam.Items.Remove(cboSelectTeam.SelectedItem);
                     cboSelectTeam.SelectedIndex = -1;
-                    txtTeamDetails.Clear();
                 }
             }else
             {
@@ -78,7 +80,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             int teamPts = 15;
             selectedTeam = cboSelectTeam.Text;
             teamDetails = String.Format("Name: {0} \nGM: {1} \nHead Coach: {2} \nAssistant Coach: {3} \nRecord: {4} - {5}", selectedTeam, gm, hCoach, aCoach, teamPts, 27 - teamPts);
-            txtTeamDetails.Text = teamDetails;
         }
     }
 }

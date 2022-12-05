@@ -58,6 +58,14 @@
     <Compile Include="Admin\frmViewSchedule.Designer.cs">
       <DependentUpon>frmViewSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Teams File.cs">
+      <DependentUpon>Teams File.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Teams File.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teams File.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Teams\frmRemoveTeam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +192,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Teams File.xsc">
+      <DependentUpon>Teams File.xsd</DependentUpon>
+    </None>
+    <None Include="Teams File.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Teams File.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Teams File.xss">
+      <DependentUpon>Teams File.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
