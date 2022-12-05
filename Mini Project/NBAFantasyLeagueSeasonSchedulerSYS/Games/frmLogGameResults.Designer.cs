@@ -29,6 +29,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogGameResults));
             this.SuspendLayout();
             // 
             // frmLogGameResults
@@ -36,9 +37,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogGameResults";
-            this.Text = "frmLogGameResults";
+            this.Text = "NBA Fantasy League Season Scheduler - [Manage Games] - [Log Game Result]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogGameResults_FormClosing);
+            this.Load += new System.EventHandler(this.frmLogGameResults_Load);
             this.ResumeLayout(false);
 
         }

@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.btnViewSchedule = new System.Windows.Forms.Button();
             this.btnTeamProfs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnViewSchedule
             // 
-            this.btnViewSchedule.Location = new System.Drawing.Point(247, 222);
+            this.btnViewSchedule.Location = new System.Drawing.Point(165, 144);
+            this.btnViewSchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewSchedule.Name = "btnViewSchedule";
-            this.btnViewSchedule.Size = new System.Drawing.Size(197, 57);
+            this.btnViewSchedule.Size = new System.Drawing.Size(131, 37);
             this.btnViewSchedule.TabIndex = 0;
             this.btnViewSchedule.Text = "View Schedule";
             this.btnViewSchedule.UseVisualStyleBackColor = true;
@@ -44,9 +46,10 @@
             // 
             // btnTeamProfs
             // 
-            this.btnTeamProfs.Location = new System.Drawing.Point(537, 222);
+            this.btnTeamProfs.Location = new System.Drawing.Point(358, 144);
+            this.btnTeamProfs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTeamProfs.Name = "btnTeamProfs";
-            this.btnTeamProfs.Size = new System.Drawing.Size(197, 57);
+            this.btnTeamProfs.Size = new System.Drawing.Size(131, 37);
             this.btnTeamProfs.TabIndex = 1;
             this.btnTeamProfs.Text = "Team Profiles";
             this.btnTeamProfs.UseVisualStyleBackColor = true;
@@ -54,12 +57,12 @@
             // 
             // frmAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnTeamProfs);
             this.Controls.Add(this.btnViewSchedule);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdmin";
             this.Text = "NBA Fantasy League Season Scheduler - [Admin]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);

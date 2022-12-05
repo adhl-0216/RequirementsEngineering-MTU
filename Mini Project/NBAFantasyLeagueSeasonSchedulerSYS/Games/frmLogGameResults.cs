@@ -23,5 +23,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         {
             Parent.Show();
         }
+
+        private void frmLogGameResults_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

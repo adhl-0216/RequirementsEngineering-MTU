@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageGames));
             this.btnScheduleGames = new System.Windows.Forms.Button();
             this.btnLogGameRes = new System.Windows.Forms.Button();
             this.btnRescheduleGame = new System.Windows.Forms.Button();
@@ -83,6 +84,7 @@
             this.Controls.Add(this.btnRescheduleGame);
             this.Controls.Add(this.btnLogGameRes);
             this.Controls.Add(this.btnScheduleGames);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManageGames";
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Games]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManageGames_FormClosing);

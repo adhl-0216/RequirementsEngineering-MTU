@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageTeams));
             this.grpTeamDetails = new System.Windows.Forms.GroupBox();
             this.btnAddTeam = new System.Windows.Forms.Button();
             this.btnRemoveTeam = new System.Windows.Forms.Button();
@@ -102,6 +103,7 @@
             this.Controls.Add(this.pboBanner);
             this.Controls.Add(this.grpTeamDetails);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManageTeams";
             this.Padding = new System.Windows.Forms.Padding(12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
