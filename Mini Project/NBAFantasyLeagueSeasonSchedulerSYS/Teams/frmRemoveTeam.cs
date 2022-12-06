@@ -15,7 +15,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     {
         private static new Form Parent;
         private Team selectedTeam;
-        private static List<Team> allTeams = frmManageTeams.AllTeams;
+        private static List<Team> allTeams = frmMainMenu.AllTeams;
 
         public frmRemoveTeam(Form parent)
         {
@@ -50,7 +50,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             if (selectedTeam != null) { 
                 DialogResult dialogResult = MessageBox.Show("Remove " + selectedTeam.TeamName + " from the system ?", "Remove Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if ( dialogResult == DialogResult.Yes){
-                    MessageBox.Show(selectedTeam + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(selectedTeam.TeamName + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cboSelectTeam.Items.Remove(cboSelectTeam.SelectedItem);
                     allTeams.Remove(selectedTeam);
                     cboSelectTeam.SelectedIndex = -1;

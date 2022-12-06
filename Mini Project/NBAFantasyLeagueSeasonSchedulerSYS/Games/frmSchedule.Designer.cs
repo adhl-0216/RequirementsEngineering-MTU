@@ -32,6 +32,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSchedule));
             this.btnSchedule = new System.Windows.Forms.Button();
             this.dtgTeamDetails = new System.Windows.Forms.DataGridView();
+            this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.headCoach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asstCoach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.homeCourt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTeamDetails)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,14 +49,64 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.btnSchedule.TabIndex = 0;
             this.btnSchedule.Text = "SCHEDULE";
             this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // dtgTeamDetails
             // 
+            this.dtgTeamDetails.AllowUserToAddRows = false;
+            this.dtgTeamDetails.AllowUserToDeleteRows = false;
             this.dtgTeamDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTeamDetails.Location = new System.Drawing.Point(60, 13);
+            this.dtgTeamDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.teamID,
+            this.teamName,
+            this.manager,
+            this.headCoach,
+            this.asstCoach,
+            this.homeCourt});
+            this.dtgTeamDetails.Location = new System.Drawing.Point(72, 51);
             this.dtgTeamDetails.Name = "dtgTeamDetails";
-            this.dtgTeamDetails.Size = new System.Drawing.Size(665, 255);
-            this.dtgTeamDetails.TabIndex = 1;
+            this.dtgTeamDetails.ReadOnly = true;
+            this.dtgTeamDetails.Size = new System.Drawing.Size(644, 264);
+            this.dtgTeamDetails.TabIndex = 3;
+            // 
+            // teamID
+            // 
+            this.teamID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.teamID.HeaderText = "ID";
+            this.teamID.Name = "teamID";
+            this.teamID.ReadOnly = true;
+            this.teamID.Width = 43;
+            // 
+            // teamName
+            // 
+            this.teamName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.teamName.HeaderText = "NAME";
+            this.teamName.Name = "teamName";
+            this.teamName.ReadOnly = true;
+            // 
+            // manager
+            // 
+            this.manager.HeaderText = "MANAGER";
+            this.manager.Name = "manager";
+            this.manager.ReadOnly = true;
+            // 
+            // headCoach
+            // 
+            this.headCoach.HeaderText = "HEAD COACH";
+            this.headCoach.Name = "headCoach";
+            this.headCoach.ReadOnly = true;
+            // 
+            // asstCoach
+            // 
+            this.asstCoach.HeaderText = "ASSISTANT COACH";
+            this.asstCoach.Name = "asstCoach";
+            this.asstCoach.ReadOnly = true;
+            // 
+            // homeCourt
+            // 
+            this.homeCourt.HeaderText = "HOME COURT";
+            this.homeCourt.Name = "homeCourt";
+            this.homeCourt.ReadOnly = true;
             // 
             // frmSchedule
             // 
@@ -73,5 +129,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.DataGridView dtgTeamDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teamID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teamName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn headCoach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn asstCoach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn homeCourt;
     }
 }

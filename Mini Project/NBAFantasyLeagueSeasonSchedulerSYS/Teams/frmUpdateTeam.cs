@@ -14,7 +14,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     public partial class frmUpdateTeam : Form
     {
         private static new Form Parent;
-        private List<Team> allTeams = frmManageTeams.AllTeams;
+        private List<Team> allTeams = frmMainMenu.AllTeams;
         private Team selectedTeam;
 
         public frmUpdateTeam(Form parent)

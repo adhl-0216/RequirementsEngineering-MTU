@@ -27,19 +27,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             frmAddTeam.Show();
         }
 
-        private static string[] teamNames = {
-                "'95-96 Chicago Bulls",
-                "'16-17 Golden State Warriors",
-                "'70-71 Milwaukee Bucks",
-                "'07-08 Boston Celtics",
-                "'08-09 Cleveland Cavaliers",
-                "'12-13 Oklahoma City Thunder",
-                "'88-89 Detroit Pistons",
-                "'86-87 Los Angeles Lakers",
-                "'82-83 Philadelphia 76ers",
-                "'98-99 San Antonio Spurs"
-        };
-
         private void frmManageTeams_FormClosing(object sender, FormClosingEventArgs e)
         {
             Parent.Show();
@@ -51,7 +38,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void frmManageTeams_Load(object sender, EventArgs e)
         {
-            Team t1 = new Team("'95-96 Chicago Bulls", "Jerry Krause", "Phil Jackson", "Jim Cleamons", "United Centre, 1901 W Madison St, Chicago, IL 60612, United States");
+/*          Team t1 = new Team("'95-96 Chicago Bulls", "Jerry Krause", "Phil Jackson", "Jim Cleamons", "United Centre, 1901 W Madison St, Chicago, IL 60612, United States");
 
             Team t2 = new Team("'16-17 Golden State Warriors", "Bob Myers", "Steve Kerr", "Mike Brown", "Oracle Arena");
 
@@ -72,6 +59,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             Team t10 = new Team("'98-99 San Antonio Spurs", "Gregg Popovich", "Gregg Popovich", "Mike Budenholzer", "Alamodome");
             
             AllTeams = new List<Team> { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 }; 
+*/
         }
 
         private void btnUpdateTeam_Click(object sender, EventArgs e)
