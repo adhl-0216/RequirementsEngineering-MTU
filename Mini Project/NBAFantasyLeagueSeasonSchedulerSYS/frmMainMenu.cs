@@ -19,7 +19,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private static frmManageGames frmManageGames;
         private static frmAdmin frmAdmin;
         private static List<Team> allTeams;
+        private static List<Game> allGames;
         internal static List<Team> AllTeams { get => allTeams; set => allTeams = value; }
+        internal static List<Game> AllGames { get => allGames; set => allGames = value; }
+
         public frmMainMenu()
         {
             InitializeComponent();
@@ -30,7 +33,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             {
                 x.MouseHover += (obj, arg) => ((ToolStripDropDownItem)obj).ShowDropDown();
             });
-            //temp data storage
+            //dummy Team data
 
             Team t1 = new Team("'95-96 Chicago Bulls", "Jerry Krause", "Phil Jackson", "Jim Cleamons", "United Centre, 1901 W Madison St, Chicago, IL 60612, United States");
 
@@ -53,6 +56,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             Team t10 = new Team("'98-99 San Antonio Spurs", "Gregg Popovich", "Gregg Popovich", "Mike Budenholzer", "Alamodome");
 
             AllTeams = new List<Team> { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 };
+
+            //temp Game data
+
+            Game g1 = new Game(t1, t2, new DateTime(2022, 1, 1, 20, 0 ,0), 1);
+            Game g2 = new Game(t2, t1, new DateTime(2022, 1, 2, 20, 0, 0), 2);
+            Game g3 = new Game(t1, t2, new DateTime(2022, 1, 3, 20, 0, 0), 3);
+            Game g4 = new Game(t2, t3, new DateTime(2022, 1, 4, 20, 0, 0), 1);
+            Game g5 = new Game(t3, t2, new DateTime(2022, 1, 5, 20, 0, 0), 2);
+            Game g6 = new Game(t2, t3, new DateTime(2022, 1, 6, 20, 0, 0), 3);
+
+            AllGames = new List<Game> { g1, g2, g3, g4, g5, g6 };
         }
 
         //modules
