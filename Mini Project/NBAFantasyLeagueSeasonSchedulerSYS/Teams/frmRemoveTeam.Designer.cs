@@ -113,7 +113,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.dtgTeamDetails.ReadOnly = true;
             this.dtgTeamDetails.Size = new System.Drawing.Size(644, 264);
             this.dtgTeamDetails.TabIndex = 2;
-            this.dtgTeamDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTeams_CellContentClick);
             // 
             // btnRemoveTeam
             // 

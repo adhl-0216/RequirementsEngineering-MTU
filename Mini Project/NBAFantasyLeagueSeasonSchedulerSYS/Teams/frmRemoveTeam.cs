@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,13 +14,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     public partial class frmRemoveTeam : Form
     {
         private static new Form Parent;
-        private String selectedTeam;
-        private string[] teamNames = frmManageTeams.TeamNames;
+        private Team selectedTeam;
+        private static List<Team> allTeams = frmManageTeams.AllTeams;
 
-        public frmRemoveTeam()
-        {
-            InitializeComponent();
-        }
         public frmRemoveTeam(Form parent)
         {
             InitializeComponent();
@@ -34,7 +31,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void frmRemoveTeam_Load(object sender, EventArgs e)
         {
-            cboSelectTeam.Items.AddRange(teamNames);
+            foreach (Team team in allTeams)
+            {
+                if (team.TeamName != null)
+                {
+                    cboSelectTeam.Items.Add(team.TeamName);
+                }
+            }
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
@@ -45,10 +48,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void btnRemoveTeam_Click(object sender, EventArgs e)
         {
             if (selectedTeam != null) { 
-                DialogResult dialogResult = MessageBox.Show("Remove " + selectedTeam + " from the system ?", "Remove Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Remove " + selectedTeam.TeamName + " from the system ?", "Remove Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if ( dialogResult == DialogResult.Yes){
                     MessageBox.Show(selectedTeam + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cboSelectTeam.Items.Remove(cboSelectTeam.SelectedItem);
+                    allTeams.Remove(selectedTeam);
                     cboSelectTeam.SelectedIndex = -1;
                     dtgTeamDetails.Rows.Clear();
                 }
@@ -60,17 +64,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void cboSelectTeam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string gm = "Jerry Krause";
-            string hCoach = "Phil Jackson";
-            string aCoach = "Jim Cleamons";
-            selectedTeam = cboSelectTeam.Text;
-            string[] teamDetails = { "CHI", selectedTeam, gm, hCoach, aCoach, "arena"};
-            dtgTeamDetails.Rows.Add(teamDetails);
+            if (cboSelectTeam.SelectedIndex != -1) {
+                selectedTeam = allTeams[cboSelectTeam.SelectedIndex];
+                string[] teamDetails = { selectedTeam.TeamID, selectedTeam.TeamName, selectedTeam.Gm, selectedTeam.HeadCoach, selectedTeam.AsstCoach, selectedTeam.HomeCourt};
+                dtgTeamDetails.Rows.Clear();
+                dtgTeamDetails.Rows.Add(teamDetails);
+            }
         }
 
-        private void dataTeams_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

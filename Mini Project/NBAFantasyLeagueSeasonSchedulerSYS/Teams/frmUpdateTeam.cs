@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +14,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     public partial class frmUpdateTeam : Form
     {
         private static new Form Parent;
-        private static String[] teamNames = frmManageTeams.TeamNames;
-
-        public frmUpdateTeam()
-        {
-            InitializeComponent();
-        }
+        private List<Team> allTeams = frmManageTeams.AllTeams;
+        private Team selectedTeam;
 
         public frmUpdateTeam(Form parent)
         {
@@ -34,22 +31,33 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void frmUpdateTeam_Load(object sender, EventArgs e)
         {
-            cboTeamName.Items.AddRange(teamNames);
+            foreach (Team team in allTeams)
+            {
+                if (team.TeamName != null)
+                {
+                    cboTeamName.Items.Add(team.TeamName);
+                }
+            }
         }
-
 
 
         private void cboTeamName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboTeamName.SelectedIndex != -1){
+                selectedTeam = allTeams[cboTeamName.SelectedIndex];
+
                 txtNewName.Enabled = true;
-                txtGM.Text = "someone";
+
+                txtGM.Text = selectedTeam.Gm;
                 txtGM.Enabled = true;
-                txtHeadCoach.Text = "someone";
+
+                txtHeadCoach.Text = selectedTeam.HeadCoach;
                 txtHeadCoach.Enabled = true;
-                txtAsstCoach.Text = "someone";
+
+                txtAsstCoach.Text = selectedTeam.AsstCoach;
                 txtAsstCoach.Enabled = true;
-                txtHomeCourt.Text = "some arena";
+
+                txtHomeCourt.Text = selectedTeam.HomeCourt;
                 txtHomeCourt.Enabled = true;
             }
         }
@@ -66,7 +74,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 */
 
             Boolean valid = false;
-            String successMsg = "Team Updated Successfully! \n\n";
             Label[] lbls = { lblNewName, lblGM, lblHeadCoach, lblAsstCoach, lblHomeCourt };
             TextBox[] txtBoxes = { txtNewName, txtGM, txtHeadCoach, txtAsstCoach, txtHomeCourt };
 
@@ -105,7 +112,14 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
             if (valid)
             {
+                String successMsg;
+                selectedTeam.TeamName = txtNewName.Text;
+                selectedTeam.Gm = txtGM.Text;
+                selectedTeam.HeadCoach = txtHeadCoach.Text;
+                selectedTeam.AsstCoach = txtAsstCoach.Text;
+                selectedTeam.HomeCourt = txtHomeCourt.Text;
 
+                successMsg = "Team Updated Successfully! \n\n";
                 for (int i = 0; i < txtBoxes.Length; i++)
                 {
                     if (txtBoxes[i].Text != "") {
@@ -113,13 +127,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                     }
                     else { 
                         successMsg += lbls[i].Text + ": " + cboTeamName.Text + "\n";
-                        
                     }
                     txtBoxes[i].Clear();
                     txtBoxes[i].Enabled = false;
                 }
-                cboTeamName.SelectedIndex = -1;
                 MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cboTeamName.SelectedIndex = -1;
             }
         }
     }

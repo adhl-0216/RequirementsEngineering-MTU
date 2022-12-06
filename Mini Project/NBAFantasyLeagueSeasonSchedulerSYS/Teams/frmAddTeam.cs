@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     public partial class frmAddTeam : Form
     {
         private static new Form Parent;
+        private static List<Team> allTeams = new List<Team>(10);  
         public frmAddTeam(Form parent)
         {
             InitializeComponent();
@@ -47,7 +49,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             */
 
             Boolean valid = false;
-            String successMsg = "Team Added Successfully! \n\n";
             Label[] lbls = {lblTeamName, lblGM, lblHeadCoach, lblAsstCoach, lblHomeCourt };
             TextBox[] txtBoxes = { txtTeamName, txtGM, txtHeadCoach, txtAsstCoach, txtHomeCourt };
 
@@ -81,39 +82,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             }
 
             if (valid) {
-                string teamID = "";
-                string[] teamNameArr = txtTeamName.Text.Split(' ');
-                if (teamNameArr.Length == 4)
-                {
-                    for (int i = 1; i < teamNameArr.Length; i++)
-                    {
-                        teamID += teamNameArr[i].Substring(0, 1);
-                    }
-                }else if (teamNameArr.Length == 3)
-                {
-                    teamID = teamNameArr[1].Substring(0, 3).ToUpper();
-                }else
-                {
-                    teamID = txtTeamName.Text.Substring(0,3).ToUpper();
-                }
-                successMsg += "TEAM_ID: " + teamID + "\n";
+                String successMsg;
+                Team temp = new Team(txtTeamName.Text, txtGM.Text, txtHeadCoach.Text, txtAsstCoach.Text, txtHomeCourt.Text);
+                allTeams.Add(temp);
+                successMsg = "Team Added Successfully! \n\n";
                 for (int i = 0; i < txtBoxes.Length; i++)
                 {
-                    successMsg += lbls[i].Text + ": "+ txtBoxes[i].Text + "\n";
+                    successMsg += lbls[i].Text + ": " + txtBoxes[i].Text + "\n";
+            
                     txtBoxes[i].Clear();
+                    txtBoxes[i].Enabled = false;
                 }
-                MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK,MessageBoxIcon.Information); 
+                MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void txtTeamName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblHomeCourt_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -49,10 +49,12 @@ C:\Users\ADHL\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBA
 C:\Users\ADHL\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.CoreCompileInputs.cache
 C:\Users\ADHL\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.exe
 C:\Users\ADHL\source\repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.pdb
-C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.SuggestedBindingRedirects.cache
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Admin.frmGenerateTeamProfile.resources
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Admin.frmViewSchedule.resources
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmSchedule.resources
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmCancelGames.resources
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmLogGameResults.resources
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmReschedule.resources
+C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\Newtonsoft.Json.dll
+C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\Newtonsoft.Json.xml
+C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.CopyComplete

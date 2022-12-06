@@ -91,7 +91,6 @@
             this.txtTeamName.Name = "txtTeamName";
             this.txtTeamName.Size = new System.Drawing.Size(159, 20);
             this.txtTeamName.TabIndex = 0;
-            this.txtTeamName.TextChanged += new System.EventHandler(this.txtTeamName_TextChanged);
             // 
             // pnlHeadCoach
             // 
@@ -185,7 +184,6 @@
             this.lblHomeCourt.TabIndex = 1;
             this.lblHomeCourt.Text = "Home Court";
             this.lblHomeCourt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblHomeCourt.Click += new System.EventHandler(this.lblHomeCourt_Click);
             // 
             // txtHomeCourt
             // 
