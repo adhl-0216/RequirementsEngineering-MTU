@@ -37,10 +37,10 @@
             // 
             // btnScheduleGames
             // 
-            this.btnScheduleGames.Location = new System.Drawing.Point(13, 14);
+            this.btnScheduleGames.Location = new System.Drawing.Point(26, 15);
             this.btnScheduleGames.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnScheduleGames.Name = "btnScheduleGames";
-            this.btnScheduleGames.Size = new System.Drawing.Size(300, 118);
+            this.btnScheduleGames.Size = new System.Drawing.Size(358, 118);
             this.btnScheduleGames.TabIndex = 0;
             this.btnScheduleGames.Text = "Schedule Games";
             this.btnScheduleGames.UseVisualStyleBackColor = true;
@@ -49,10 +49,10 @@
             // btnLogGameRes
             // 
             this.btnLogGameRes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogGameRes.Location = new System.Drawing.Point(447, 238);
+            this.btnLogGameRes.Location = new System.Drawing.Point(392, 143);
             this.btnLogGameRes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLogGameRes.Name = "btnLogGameRes";
-            this.btnLogGameRes.Size = new System.Drawing.Size(300, 118);
+            this.btnLogGameRes.Size = new System.Drawing.Size(358, 118);
             this.btnLogGameRes.TabIndex = 1;
             this.btnLogGameRes.Text = "Log Game Result";
             this.btnLogGameRes.UseVisualStyleBackColor = true;
@@ -61,10 +61,10 @@
             // btnRescheduleGame
             // 
             this.btnRescheduleGame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRescheduleGame.Location = new System.Drawing.Point(447, 14);
+            this.btnRescheduleGame.Location = new System.Drawing.Point(392, 15);
             this.btnRescheduleGame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRescheduleGame.Name = "btnRescheduleGame";
-            this.btnRescheduleGame.Size = new System.Drawing.Size(300, 118);
+            this.btnRescheduleGame.Size = new System.Drawing.Size(358, 118);
             this.btnRescheduleGame.TabIndex = 2;
             this.btnRescheduleGame.Text = "Reschedule Game";
             this.btnRescheduleGame.UseVisualStyleBackColor = true;
@@ -73,10 +73,10 @@
             // btnCancelGame
             // 
             this.btnCancelGame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancelGame.Location = new System.Drawing.Point(13, 238);
+            this.btnCancelGame.Location = new System.Drawing.Point(26, 143);
             this.btnCancelGame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelGame.Name = "btnCancelGame";
-            this.btnCancelGame.Size = new System.Drawing.Size(300, 118);
+            this.btnCancelGame.Size = new System.Drawing.Size(358, 118);
             this.btnCancelGame.TabIndex = 3;
             this.btnCancelGame.Text = "Cancel Game";
             this.btnCancelGame.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 370);
+            this.ClientSize = new System.Drawing.Size(776, 277);
             this.Controls.Add(this.btnCancelGame);
             this.Controls.Add(this.btnRescheduleGame);
             this.Controls.Add(this.btnLogGameRes);

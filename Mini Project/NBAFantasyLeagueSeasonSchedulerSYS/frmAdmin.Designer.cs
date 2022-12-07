@@ -35,9 +35,8 @@
             // 
             // btnViewSchedule
             // 
-            this.btnViewSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.btnViewSchedule.Location = new System.Drawing.Point(12, 12);
             this.btnViewSchedule.Name = "btnViewSchedule";
             this.btnViewSchedule.Size = new System.Drawing.Size(330, 201);
@@ -48,10 +47,9 @@
             // 
             // btnTeamProfs
             // 
-            this.btnTeamProfs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnTeamProfs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTeamProfs.Location = new System.Drawing.Point(392, 12);
+            this.btnTeamProfs.Location = new System.Drawing.Point(352, 12);
             this.btnTeamProfs.Name = "btnTeamProfs";
             this.btnTeamProfs.Size = new System.Drawing.Size(330, 201);
             this.btnTeamProfs.TabIndex = 1;
@@ -63,7 +61,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 229);
+            this.ClientSize = new System.Drawing.Size(694, 229);
             this.Controls.Add(this.btnTeamProfs);
             this.Controls.Add(this.btnViewSchedule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
