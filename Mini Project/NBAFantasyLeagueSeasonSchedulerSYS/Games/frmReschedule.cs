@@ -41,14 +41,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             dtpTime.Value = DateTime.Parse(selectedGame.Cells["time"].Value.ToString());
             txtVenue.Text = selectedGame.Cells["venue"].Value.ToString();
         }
-        private void dtgGames_DoubleClick(object sender, EventArgs e)
-        {
-            selectedGame = dtgGames.SelectedRows[0];
-            lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
-            dtpDate.Value = DateTime.Parse(selectedGame.Cells["date"].Value.ToString());
-            dtpTime.Value = DateTime.Parse(selectedGame.Cells["time"].Value.ToString());
-            txtVenue.Text = selectedGame.Cells["venue"].Value.ToString();
-        }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
@@ -67,6 +59,32 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 dtpTime.Enabled = false;
                 txtVenue.Enabled = false;
                 selectStatus = true;
+            }
+        }
+
+        private void dtgGames_SelectionChanged(object sender, EventArgs e)
+        {
+            selectedGame = dtgGames.SelectedRows[0];
+            lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
+            dtpDate.Value = DateTime.ParseExact(selectedGame.Cells["date"].Value.ToString(), "dd/MM/yyyy", null);
+            dtpTime.Value = DateTime.Parse(selectedGame.Cells["time"].Value.ToString());
+            txtVenue.Text = selectedGame.Cells["venue"].Value.ToString();
+        }
+
+        private void btnReschedule_Click(object sender, EventArgs e)
+        {
+            string format;
+            string msg;
+            DialogResult rs;
+            format = "Reschedule Game: {0} \n-Date: {1}\n-Time: {2}\n-Venue: {3}";
+            object[] args = { lblGameID.Text, dtpDate.Value.ToString("dd/MM/yyyy"), dtpTime.Value.ToString("HH:mm"), txtVenue.Text};
+            msg = String.Format(format, args);
+            rs = MessageBox.Show(msg,"Reschedule Game",MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (rs == DialogResult.OK)
+            {
+                selectedGame.Cells["date"].Value = dtpDate.Value.ToString("dd/MM/yyyy");
+                selectedGame.Cells["time"].Value = dtpTime.Value.ToString("HH:mm");
+                selectedGame.Cells["venue"].Value = txtVenue.Text;
             }
         }
     }

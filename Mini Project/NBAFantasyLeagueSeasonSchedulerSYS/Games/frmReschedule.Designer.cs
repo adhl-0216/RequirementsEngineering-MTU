@@ -78,7 +78,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.dtgGames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgGames.Size = new System.Drawing.Size(1174, 376);
             this.dtgGames.TabIndex = 1;
-            this.dtgGames.DoubleClick += new System.EventHandler(this.dtgGames_DoubleClick);
+            this.dtgGames.SelectionChanged += new System.EventHandler(this.dtgGames_SelectionChanged);
             // 
             // gameID
             // 
@@ -204,6 +204,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.btnReschedule.TabIndex = 9;
             this.btnReschedule.Text = "RESCHEDULE";
             this.btnReschedule.UseVisualStyleBackColor = true;
+            this.btnReschedule.Click += new System.EventHandler(this.btnReschedule_Click);
             // 
             // dtpTime
             // 

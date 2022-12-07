@@ -69,7 +69,7 @@
             this.pnlTeamName.Location = new System.Drawing.Point(10, 11);
             this.pnlTeamName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlTeamName.Name = "pnlTeamName";
-            this.pnlTeamName.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlTeamName.Padding = new System.Windows.Forms.Padding(6);
             this.pnlTeamName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlTeamName.Size = new System.Drawing.Size(417, 42);
             this.pnlTeamName.TabIndex = 0;
@@ -105,7 +105,7 @@
             this.pnlHeadCoach.Location = new System.Drawing.Point(10, 115);
             this.pnlHeadCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlHeadCoach.Name = "pnlHeadCoach";
-            this.pnlHeadCoach.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlHeadCoach.Padding = new System.Windows.Forms.Padding(6);
             this.pnlHeadCoach.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlHeadCoach.Size = new System.Drawing.Size(417, 42);
             this.pnlHeadCoach.TabIndex = 2;
@@ -141,7 +141,7 @@
             this.pnlAsstCoach.Location = new System.Drawing.Point(10, 168);
             this.pnlAsstCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlAsstCoach.Name = "pnlAsstCoach";
-            this.pnlAsstCoach.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlAsstCoach.Padding = new System.Windows.Forms.Padding(6);
             this.pnlAsstCoach.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlAsstCoach.Size = new System.Drawing.Size(417, 42);
             this.pnlAsstCoach.TabIndex = 3;
@@ -177,7 +177,7 @@
             this.pnlHomeCourt.Location = new System.Drawing.Point(10, 220);
             this.pnlHomeCourt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlHomeCourt.Name = "pnlHomeCourt";
-            this.pnlHomeCourt.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlHomeCourt.Padding = new System.Windows.Forms.Padding(6);
             this.pnlHomeCourt.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlHomeCourt.Size = new System.Drawing.Size(417, 212);
             this.pnlHomeCourt.TabIndex = 4;
@@ -187,9 +187,9 @@
             this.lblHomeCourt.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblHomeCourt.AutoSize = true;
             this.lblHomeCourt.Location = new System.Drawing.Point(6, 6);
-            this.lblHomeCourt.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lblHomeCourt.Margin = new System.Windows.Forms.Padding(6);
             this.lblHomeCourt.Name = "lblHomeCourt";
-            this.lblHomeCourt.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lblHomeCourt.Padding = new System.Windows.Forms.Padding(6);
             this.lblHomeCourt.Size = new System.Drawing.Size(107, 32);
             this.lblHomeCourt.TabIndex = 1;
             this.lblHomeCourt.Text = "Home Court";
@@ -215,7 +215,7 @@
             this.pnlGM.Location = new System.Drawing.Point(10, 63);
             this.pnlGM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlGM.Name = "pnlGM";
-            this.pnlGM.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlGM.Padding = new System.Windows.Forms.Padding(6);
             this.pnlGM.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlGM.Size = new System.Drawing.Size(417, 42);
             this.pnlGM.TabIndex = 1;
@@ -262,7 +262,7 @@
             this.pnlInputs.Location = new System.Drawing.Point(18, 78);
             this.pnlInputs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlInputs.Name = "pnlInputs";
-            this.pnlInputs.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlInputs.Padding = new System.Windows.Forms.Padding(6);
             this.pnlInputs.Size = new System.Drawing.Size(438, 443);
             this.pnlInputs.TabIndex = 0;
             // 
@@ -283,9 +283,9 @@
             this.lblInstructions.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblInstructions.AutoSize = true;
             this.lblInstructions.Location = new System.Drawing.Point(472, 211);
-            this.lblInstructions.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.lblInstructions.Margin = new System.Windows.Forms.Padding(12);
             this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.lblInstructions.Padding = new System.Windows.Forms.Padding(12);
             this.lblInstructions.Size = new System.Drawing.Size(374, 144);
             this.lblInstructions.TabIndex = 15;
             this.lblInstructions.Text = resources.GetString("lblInstructions.Text");
