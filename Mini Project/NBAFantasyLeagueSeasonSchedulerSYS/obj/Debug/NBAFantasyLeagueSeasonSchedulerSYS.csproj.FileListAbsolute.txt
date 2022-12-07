@@ -58,3 +58,10 @@ C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Projec
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\Newtonsoft.Json.dll
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\Newtonsoft.Json.xml
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.CopyComplete
+C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmCancelGames.resources
+C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmLogGameResults.resources
+C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmReschedule.resources
+C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmSchedule.resources
+C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.CopyComplete

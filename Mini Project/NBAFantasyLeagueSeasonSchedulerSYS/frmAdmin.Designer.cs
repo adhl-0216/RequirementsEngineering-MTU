@@ -35,10 +35,12 @@
             // 
             // btnViewSchedule
             // 
-            this.btnViewSchedule.Location = new System.Drawing.Point(165, 144);
-            this.btnViewSchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnViewSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewSchedule.Location = new System.Drawing.Point(12, 12);
             this.btnViewSchedule.Name = "btnViewSchedule";
-            this.btnViewSchedule.Size = new System.Drawing.Size(131, 37);
+            this.btnViewSchedule.Size = new System.Drawing.Size(330, 201);
             this.btnViewSchedule.TabIndex = 0;
             this.btnViewSchedule.Text = "View Schedule";
             this.btnViewSchedule.UseVisualStyleBackColor = true;
@@ -46,10 +48,12 @@
             // 
             // btnTeamProfs
             // 
-            this.btnTeamProfs.Location = new System.Drawing.Point(358, 144);
-            this.btnTeamProfs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTeamProfs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTeamProfs.Location = new System.Drawing.Point(392, 12);
             this.btnTeamProfs.Name = "btnTeamProfs";
-            this.btnTeamProfs.Size = new System.Drawing.Size(131, 37);
+            this.btnTeamProfs.Size = new System.Drawing.Size(330, 201);
             this.btnTeamProfs.TabIndex = 1;
             this.btnTeamProfs.Text = "Team Profiles";
             this.btnTeamProfs.UseVisualStyleBackColor = true;
@@ -57,13 +61,15 @@
             // 
             // frmAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(734, 229);
             this.Controls.Add(this.btnTeamProfs);
             this.Controls.Add(this.btnViewSchedule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Admin]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);
             this.Load += new System.EventHandler(this.frmAdmin_Load);

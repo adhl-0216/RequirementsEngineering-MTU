@@ -57,54 +57,70 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.date,
             this.time,
             this.venue});
-            this.dtgGames.Location = new System.Drawing.Point(12, 12);
+            this.dtgGames.Location = new System.Drawing.Point(18, 18);
+            this.dtgGames.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtgGames.Name = "dtgGames";
             this.dtgGames.ReadOnly = true;
-            this.dtgGames.Size = new System.Drawing.Size(738, 229);
+            this.dtgGames.RowHeadersWidth = 62;
+            this.dtgGames.Size = new System.Drawing.Size(1107, 352);
             this.dtgGames.TabIndex = 0;
+            this.dtgGames.SelectionChanged += new System.EventHandler(this.dtgGames_SelectionChanged);
             // 
             // gameID
             // 
             this.gameID.HeaderText = "ID";
+            this.gameID.MinimumWidth = 8;
             this.gameID.Name = "gameID";
             this.gameID.ReadOnly = true;
+            this.gameID.Width = 150;
             // 
             // home
             // 
             this.home.HeaderText = "HOME TEAM";
+            this.home.MinimumWidth = 8;
             this.home.Name = "home";
             this.home.ReadOnly = true;
+            this.home.Width = 150;
             // 
             // away
             // 
             this.away.HeaderText = "AWAY TEAM";
+            this.away.MinimumWidth = 8;
             this.away.Name = "away";
             this.away.ReadOnly = true;
+            this.away.Width = 150;
             // 
             // date
             // 
             this.date.HeaderText = "DATE";
+            this.date.MinimumWidth = 8;
             this.date.Name = "date";
             this.date.ReadOnly = true;
+            this.date.Width = 150;
             // 
             // time
             // 
             this.time.HeaderText = "TIME";
+            this.time.MinimumWidth = 8;
             this.time.Name = "time";
             this.time.ReadOnly = true;
+            this.time.Width = 150;
             // 
             // venue
             // 
             this.venue.HeaderText = "VENUE";
+            this.venue.MinimumWidth = 8;
             this.venue.Name = "venue";
             this.venue.ReadOnly = true;
+            this.venue.Width = 150;
             // 
             // btnCancelGame
             // 
             this.btnCancelGame.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancelGame.Location = new System.Drawing.Point(317, 383);
+            this.btnCancelGame.Location = new System.Drawing.Point(476, 589);
+            this.btnCancelGame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelGame.Name = "btnCancelGame";
-            this.btnCancelGame.Size = new System.Drawing.Size(128, 30);
+            this.btnCancelGame.Size = new System.Drawing.Size(192, 46);
             this.btnCancelGame.TabIndex = 1;
             this.btnCancelGame.Text = "CANCEL GAME";
             this.btnCancelGame.UseVisualStyleBackColor = true;
@@ -114,10 +130,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.txtReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReason.Location = new System.Drawing.Point(12, 272);
+            this.txtReason.Location = new System.Drawing.Point(18, 418);
+            this.txtReason.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtReason.Multiline = true;
             this.txtReason.Name = "txtReason";
-            this.txtReason.Size = new System.Drawing.Size(738, 105);
+            this.txtReason.Size = new System.Drawing.Size(1105, 159);
             this.txtReason.TabIndex = 2;
             // 
             // lblReason
@@ -125,23 +142,26 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.lblReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblReason.AutoSize = true;
-            this.lblReason.Location = new System.Drawing.Point(12, 256);
+            this.lblReason.Location = new System.Drawing.Point(18, 394);
+            this.lblReason.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReason.Name = "lblReason";
-            this.lblReason.Size = new System.Drawing.Size(154, 13);
+            this.lblReason.Size = new System.Drawing.Size(231, 20);
             this.lblReason.TabIndex = 3;
             this.lblReason.Text = "Reason for Game Cancellation:";
             // 
             // frmCancelGames
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 425);
+            this.ClientSize = new System.Drawing.Size(1143, 654);
             this.Controls.Add(this.lblReason);
             this.Controls.Add(this.txtReason);
             this.Controls.Add(this.btnCancelGame);
             this.Controls.Add(this.dtgGames);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmCancelGames";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Games] -[Cancel Game]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCancelGames_FormClosing);
             this.Load += new System.EventHandler(this.frmCancelGames_Load);
