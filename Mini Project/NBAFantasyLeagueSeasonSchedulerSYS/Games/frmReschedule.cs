@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     public partial class frmReschedule : Form
     {
         private static new Form Parent;
+        private static List<Game> allGames;
+        private static DataGridViewRow selectedGame;
+        private static bool selectStatus = true;
         public frmReschedule(Form parent)
         {
             InitializeComponent();
@@ -22,6 +26,48 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void frmReschedule_FormClosing(object sender, FormClosingEventArgs e)
         {
             Parent.Show();
+        }
+
+        private void frmReschedule_Load(object sender, EventArgs e)
+        {
+            allGames = frmMainMenu.AllGames;
+            foreach (Game game in allGames)
+            {
+                dtgGames.Rows.Add(game.GameID, game.Home, game.Away, game.Date.ToString("dd/MM/yyyy"), game.Time, game.Venue);
+            }
+            selectedGame = dtgGames.SelectedRows[0];
+            lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
+            dtpDate.Value = DateTime.Parse(selectedGame.Cells["date"].Value.ToString());
+            dtpTime.Value = DateTime.Parse(selectedGame.Cells["time"].Value.ToString());
+            txtVenue.Text = selectedGame.Cells["venue"].Value.ToString();
+        }
+        private void dtgGames_DoubleClick(object sender, EventArgs e)
+        {
+            selectedGame = dtgGames.SelectedRows[0];
+            lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
+            dtpDate.Value = DateTime.Parse(selectedGame.Cells["date"].Value.ToString());
+            dtpTime.Value = DateTime.Parse(selectedGame.Cells["time"].Value.ToString());
+            txtVenue.Text = selectedGame.Cells["venue"].Value.ToString();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if (selectStatus){ 
+                dtgGames.Enabled = false;
+                btnSelect.Text = "CANCEL";
+                dtpDate.Enabled = true;
+                dtpTime.Enabled = true;
+                txtVenue.Enabled = true;
+                selectStatus = false;
+            }else
+            {
+                dtgGames.Enabled = true;
+                btnSelect.Text = "SELECT";
+                dtpDate.Enabled = false;
+                dtpTime.Enabled = false;
+                txtVenue.Enabled = false;
+                selectStatus = true;
+            }
         }
     }
 }

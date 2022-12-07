@@ -44,7 +44,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             // btnSchedule
             // 
-            this.btnSchedule.Location = new System.Drawing.Point(465, 601);
+            this.btnSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSchedule.Location = new System.Drawing.Point(466, 463);
             this.btnSchedule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(270, 77);
@@ -57,8 +59,14 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.dtgTeamDetails.AllowUserToAddRows = false;
             this.dtgTeamDetails.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dtgTeamDetails.AllowUserToResizeColumns = false;
+            this.dtgTeamDetails.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.dtgTeamDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgTeamDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgTeamDetails.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgTeamDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dtgTeamDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgTeamDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -68,13 +76,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.headCoach,
             this.asstCoach,
             this.homeCourt});
+            this.dtgTeamDetails.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtgTeamDetails.Location = new System.Drawing.Point(13, 14);
             this.dtgTeamDetails.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtgTeamDetails.Name = "dtgTeamDetails";
             this.dtgTeamDetails.ReadOnly = true;
+            this.dtgTeamDetails.RowHeadersVisible = false;
             this.dtgTeamDetails.RowHeadersWidth = 62;
             this.dtgTeamDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTeamDetails.Size = new System.Drawing.Size(1174, 577);
+            this.dtgTeamDetails.Size = new System.Drawing.Size(1174, 439);
             this.dtgTeamDetails.TabIndex = 3;
             // 
             // teamID
@@ -111,7 +121,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.headCoach.MinimumWidth = 8;
             this.headCoach.Name = "headCoach";
             this.headCoach.ReadOnly = true;
-            this.headCoach.Width = 152;
+            this.headCoach.Width = 140;
             // 
             // asstCoach
             // 
@@ -135,13 +145,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(1200, 554);
             this.Controls.Add(this.dtgTeamDetails);
             this.Controls.Add(this.btnSchedule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmSchedule";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Games] - [Schedule Game]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSchedule_FormClosing);
             this.Load += new System.EventHandler(this.frmSchedule_Load);

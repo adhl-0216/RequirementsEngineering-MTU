@@ -31,7 +31,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             allGames = frmMainMenu.AllGames;
             foreach (Game game in allGames)
             {
-                dtgGames.Rows.Add(game.GameID, game.Home, game.Away, game.Date.ToShortDateString(), game.Time, game.Venue);
+                dtgGames.Rows.Add(game.GameID, game.Home, game.Away, game.Date.ToString("dd/MM/yyyy"), game.Time, game.Venue);
             }
         }
 

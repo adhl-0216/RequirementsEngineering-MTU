@@ -31,15 +31,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCancelGames));
             this.dtgGames = new System.Windows.Forms.DataGridView();
+            this.btnCancelGame = new System.Windows.Forms.Button();
+            this.txtReason = new System.Windows.Forms.TextBox();
+            this.lblReason = new System.Windows.Forms.Label();
             this.gameID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.home = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.away = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.venue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCancelGame = new System.Windows.Forms.Button();
-            this.txtReason = new System.Windows.Forms.TextBox();
-            this.lblReason = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgGames)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,8 +47,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.dtgGames.AllowUserToAddRows = false;
             this.dtgGames.AllowUserToDeleteRows = false;
+            this.dtgGames.AllowUserToResizeColumns = false;
+            this.dtgGames.AllowUserToResizeRows = false;
             this.dtgGames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgGames.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtgGames.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dtgGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgGames.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.gameID,
@@ -57,62 +61,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.date,
             this.time,
             this.venue});
+            this.dtgGames.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtgGames.Location = new System.Drawing.Point(18, 18);
             this.dtgGames.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtgGames.Name = "dtgGames";
             this.dtgGames.ReadOnly = true;
+            this.dtgGames.RowHeadersVisible = false;
             this.dtgGames.RowHeadersWidth = 62;
+            this.dtgGames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgGames.Size = new System.Drawing.Size(1107, 352);
             this.dtgGames.TabIndex = 0;
             this.dtgGames.SelectionChanged += new System.EventHandler(this.dtgGames_SelectionChanged);
-            // 
-            // gameID
-            // 
-            this.gameID.HeaderText = "ID";
-            this.gameID.MinimumWidth = 8;
-            this.gameID.Name = "gameID";
-            this.gameID.ReadOnly = true;
-            this.gameID.Width = 150;
-            // 
-            // home
-            // 
-            this.home.HeaderText = "HOME TEAM";
-            this.home.MinimumWidth = 8;
-            this.home.Name = "home";
-            this.home.ReadOnly = true;
-            this.home.Width = 150;
-            // 
-            // away
-            // 
-            this.away.HeaderText = "AWAY TEAM";
-            this.away.MinimumWidth = 8;
-            this.away.Name = "away";
-            this.away.ReadOnly = true;
-            this.away.Width = 150;
-            // 
-            // date
-            // 
-            this.date.HeaderText = "DATE";
-            this.date.MinimumWidth = 8;
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            this.date.Width = 150;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "TIME";
-            this.time.MinimumWidth = 8;
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            this.time.Width = 150;
-            // 
-            // venue
-            // 
-            this.venue.HeaderText = "VENUE";
-            this.venue.MinimumWidth = 8;
-            this.venue.Name = "venue";
-            this.venue.ReadOnly = true;
-            this.venue.Width = 150;
             // 
             // btnCancelGame
             // 
@@ -149,6 +108,60 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.lblReason.TabIndex = 3;
             this.lblReason.Text = "Reason for Game Cancellation:";
             // 
+            // gameID
+            // 
+            this.gameID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gameID.HeaderText = "ID";
+            this.gameID.MinimumWidth = 8;
+            this.gameID.Name = "gameID";
+            this.gameID.ReadOnly = true;
+            this.gameID.Width = 62;
+            // 
+            // home
+            // 
+            this.home.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.home.HeaderText = "HOME TEAM";
+            this.home.MinimumWidth = 8;
+            this.home.Name = "home";
+            this.home.ReadOnly = true;
+            this.home.Width = 141;
+            // 
+            // away
+            // 
+            this.away.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.away.HeaderText = "AWAY TEAM";
+            this.away.MinimumWidth = 8;
+            this.away.Name = "away";
+            this.away.ReadOnly = true;
+            this.away.Width = 141;
+            // 
+            // date
+            // 
+            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.date.HeaderText = "DATE";
+            this.date.MinimumWidth = 8;
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            this.date.Width = 88;
+            // 
+            // time
+            // 
+            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.time.HeaderText = "TIME";
+            this.time.MinimumWidth = 8;
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            this.time.Width = 83;
+            // 
+            // venue
+            // 
+            this.venue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.venue.HeaderText = "VENUE";
+            this.venue.MinimumWidth = 8;
+            this.venue.Name = "venue";
+            this.venue.ReadOnly = true;
+            this.venue.Width = 101;
+            // 
             // frmCancelGames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -161,7 +174,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmCancelGames";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Games] -[Cancel Game]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCancelGames_FormClosing);
             this.Load += new System.EventHandler(this.frmCancelGames_Load);
@@ -175,13 +188,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private System.Windows.Forms.DataGridView dtgGames;
         private System.Windows.Forms.Button btnCancelGame;
+        private System.Windows.Forms.TextBox txtReason;
+        private System.Windows.Forms.Label lblReason;
         private System.Windows.Forms.DataGridViewTextBoxColumn gameID;
         private System.Windows.Forms.DataGridViewTextBoxColumn home;
         private System.Windows.Forms.DataGridViewTextBoxColumn away;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn venue;
-        private System.Windows.Forms.TextBox txtReason;
-        private System.Windows.Forms.Label lblReason;
     }
 }
