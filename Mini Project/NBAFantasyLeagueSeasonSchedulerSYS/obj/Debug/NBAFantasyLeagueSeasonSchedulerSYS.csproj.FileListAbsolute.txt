@@ -65,3 +65,4 @@ C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBA
 C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmReschedule.resources
 C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.Games.frmSchedule.resources
 C:\Users\ADHL\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.CopyComplete
+C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.SuggestedBindingRedirects.cache

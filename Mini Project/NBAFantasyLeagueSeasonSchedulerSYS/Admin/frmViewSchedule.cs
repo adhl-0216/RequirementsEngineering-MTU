@@ -30,6 +30,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
 
         private void frmViewSchedule_Load(object sender, EventArgs e)
         {
+            //retrive data
             allGames = frmMainMenu.AllGames;
             allCancelledGames = frmMainMenu.AllCancelledGames;
             allTeams = frmMainMenu.AllTeams;

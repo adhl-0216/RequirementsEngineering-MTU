@@ -14,7 +14,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     public partial class frmUpdateTeam : Form
     {
         private static new Form Parent;
-        private List<Team> allTeams = frmMainMenu.AllTeams;
+        private List<Team> allTeams;
         private Team selectedTeam;
 
         public frmUpdateTeam(Form parent)
@@ -31,6 +31,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void frmUpdateTeam_Load(object sender, EventArgs e)
         {
+            allTeams = frmMainMenu.AllTeams;
             foreach (Team team in allTeams)
             {
                 if (team.TeamName != null)
@@ -113,7 +114,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             if (valid)
             {
                 String successMsg;
-                selectedTeam.TeamName = txtNewName.Text;
+                selectedTeam.TeamName = (txtNewName.Text.Equals(""))?cboTeamName.Text:txtNewName.Text;
                 selectedTeam.Gm = txtGM.Text;
                 selectedTeam.HeadCoach = txtHeadCoach.Text;
                 selectedTeam.AsstCoach = txtAsstCoach.Text;

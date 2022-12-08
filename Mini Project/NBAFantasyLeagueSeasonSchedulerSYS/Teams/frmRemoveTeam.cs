@@ -40,11 +40,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             }
         }
 
-        private void lblTitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRemoveTeam_Click(object sender, EventArgs e)
         {
             if (selectedTeam != null) { 

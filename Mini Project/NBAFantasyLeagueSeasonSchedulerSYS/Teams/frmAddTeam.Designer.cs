@@ -66,22 +66,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTeamName.Controls.Add(this.lblTeamName);
             this.pnlTeamName.Controls.Add(this.txtTeamName);
-            this.pnlTeamName.Location = new System.Drawing.Point(10, 11);
-            this.pnlTeamName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlTeamName.Location = new System.Drawing.Point(7, 7);
             this.pnlTeamName.Name = "pnlTeamName";
-            this.pnlTeamName.Padding = new System.Windows.Forms.Padding(6);
+            this.pnlTeamName.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlTeamName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlTeamName.Size = new System.Drawing.Size(417, 42);
+            this.pnlTeamName.Size = new System.Drawing.Size(278, 27);
             this.pnlTeamName.TabIndex = 0;
             // 
             // lblTeamName
             // 
             this.lblTeamName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblTeamName.AutoSize = true;
-            this.lblTeamName.Location = new System.Drawing.Point(6, 6);
-            this.lblTeamName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTeamName.Location = new System.Drawing.Point(4, 4);
             this.lblTeamName.Name = "lblTeamName";
-            this.lblTeamName.Size = new System.Drawing.Size(95, 20);
+            this.lblTeamName.Size = new System.Drawing.Size(65, 13);
             this.lblTeamName.TabIndex = 1;
             this.lblTeamName.Text = "Team Name";
             this.lblTeamName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -89,10 +87,9 @@
             // txtTeamName
             // 
             this.txtTeamName.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtTeamName.Location = new System.Drawing.Point(175, 6);
-            this.txtTeamName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTeamName.Location = new System.Drawing.Point(115, 4);
             this.txtTeamName.Name = "txtTeamName";
-            this.txtTeamName.Size = new System.Drawing.Size(236, 26);
+            this.txtTeamName.Size = new System.Drawing.Size(159, 20);
             this.txtTeamName.TabIndex = 0;
             // 
             // pnlHeadCoach
@@ -102,22 +99,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeadCoach.Controls.Add(this.lblHeadCoach);
             this.pnlHeadCoach.Controls.Add(this.txtHeadCoach);
-            this.pnlHeadCoach.Location = new System.Drawing.Point(10, 115);
-            this.pnlHeadCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlHeadCoach.Location = new System.Drawing.Point(7, 75);
             this.pnlHeadCoach.Name = "pnlHeadCoach";
-            this.pnlHeadCoach.Padding = new System.Windows.Forms.Padding(6);
+            this.pnlHeadCoach.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlHeadCoach.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlHeadCoach.Size = new System.Drawing.Size(417, 42);
+            this.pnlHeadCoach.Size = new System.Drawing.Size(278, 27);
             this.pnlHeadCoach.TabIndex = 2;
             // 
             // lblHeadCoach
             // 
             this.lblHeadCoach.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblHeadCoach.AutoSize = true;
-            this.lblHeadCoach.Location = new System.Drawing.Point(6, 6);
-            this.lblHeadCoach.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHeadCoach.Location = new System.Drawing.Point(4, 4);
             this.lblHeadCoach.Name = "lblHeadCoach";
-            this.lblHeadCoach.Size = new System.Drawing.Size(98, 20);
+            this.lblHeadCoach.Size = new System.Drawing.Size(67, 13);
             this.lblHeadCoach.TabIndex = 1;
             this.lblHeadCoach.Text = "Head Coach";
             this.lblHeadCoach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -125,10 +120,9 @@
             // txtHeadCoach
             // 
             this.txtHeadCoach.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtHeadCoach.Location = new System.Drawing.Point(175, 6);
-            this.txtHeadCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtHeadCoach.Location = new System.Drawing.Point(115, 4);
             this.txtHeadCoach.Name = "txtHeadCoach";
-            this.txtHeadCoach.Size = new System.Drawing.Size(236, 26);
+            this.txtHeadCoach.Size = new System.Drawing.Size(159, 20);
             this.txtHeadCoach.TabIndex = 0;
             // 
             // pnlAsstCoach
@@ -138,22 +132,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlAsstCoach.Controls.Add(this.lblAsstCoach);
             this.pnlAsstCoach.Controls.Add(this.txtAsstCoach);
-            this.pnlAsstCoach.Location = new System.Drawing.Point(10, 168);
-            this.pnlAsstCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlAsstCoach.Location = new System.Drawing.Point(7, 109);
             this.pnlAsstCoach.Name = "pnlAsstCoach";
-            this.pnlAsstCoach.Padding = new System.Windows.Forms.Padding(6);
+            this.pnlAsstCoach.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlAsstCoach.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlAsstCoach.Size = new System.Drawing.Size(417, 42);
+            this.pnlAsstCoach.Size = new System.Drawing.Size(278, 27);
             this.pnlAsstCoach.TabIndex = 3;
             // 
             // lblAsstCoach
             // 
             this.lblAsstCoach.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblAsstCoach.AutoSize = true;
-            this.lblAsstCoach.Location = new System.Drawing.Point(6, 6);
-            this.lblAsstCoach.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAsstCoach.Location = new System.Drawing.Point(4, 4);
             this.lblAsstCoach.Name = "lblAsstCoach";
-            this.lblAsstCoach.Size = new System.Drawing.Size(125, 20);
+            this.lblAsstCoach.Size = new System.Drawing.Size(83, 13);
             this.lblAsstCoach.TabIndex = 1;
             this.lblAsstCoach.Text = "Assistant Coach";
             this.lblAsstCoach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -161,10 +153,9 @@
             // txtAsstCoach
             // 
             this.txtAsstCoach.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtAsstCoach.Location = new System.Drawing.Point(175, 6);
-            this.txtAsstCoach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAsstCoach.Location = new System.Drawing.Point(115, 4);
             this.txtAsstCoach.Name = "txtAsstCoach";
-            this.txtAsstCoach.Size = new System.Drawing.Size(236, 26);
+            this.txtAsstCoach.Size = new System.Drawing.Size(159, 20);
             this.txtAsstCoach.TabIndex = 0;
             // 
             // pnlHomeCourt
@@ -174,23 +165,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHomeCourt.Controls.Add(this.lblHomeCourt);
             this.pnlHomeCourt.Controls.Add(this.txtHomeCourt);
-            this.pnlHomeCourt.Location = new System.Drawing.Point(10, 220);
-            this.pnlHomeCourt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlHomeCourt.Location = new System.Drawing.Point(7, 143);
             this.pnlHomeCourt.Name = "pnlHomeCourt";
-            this.pnlHomeCourt.Padding = new System.Windows.Forms.Padding(6);
+            this.pnlHomeCourt.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlHomeCourt.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlHomeCourt.Size = new System.Drawing.Size(417, 212);
+            this.pnlHomeCourt.Size = new System.Drawing.Size(278, 138);
             this.pnlHomeCourt.TabIndex = 4;
             // 
             // lblHomeCourt
             // 
             this.lblHomeCourt.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblHomeCourt.AutoSize = true;
-            this.lblHomeCourt.Location = new System.Drawing.Point(6, 6);
-            this.lblHomeCourt.Margin = new System.Windows.Forms.Padding(6);
+            this.lblHomeCourt.Location = new System.Drawing.Point(4, 4);
+            this.lblHomeCourt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblHomeCourt.Name = "lblHomeCourt";
-            this.lblHomeCourt.Padding = new System.Windows.Forms.Padding(6);
-            this.lblHomeCourt.Size = new System.Drawing.Size(107, 32);
+            this.lblHomeCourt.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblHomeCourt.Size = new System.Drawing.Size(71, 21);
             this.lblHomeCourt.TabIndex = 1;
             this.lblHomeCourt.Text = "Home Court";
             this.lblHomeCourt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -198,11 +188,10 @@
             // txtHomeCourt
             // 
             this.txtHomeCourt.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtHomeCourt.Location = new System.Drawing.Point(175, 6);
-            this.txtHomeCourt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtHomeCourt.Location = new System.Drawing.Point(115, 4);
             this.txtHomeCourt.Multiline = true;
             this.txtHomeCourt.Name = "txtHomeCourt";
-            this.txtHomeCourt.Size = new System.Drawing.Size(236, 200);
+            this.txtHomeCourt.Size = new System.Drawing.Size(159, 130);
             this.txtHomeCourt.TabIndex = 0;
             // 
             // pnlGM
@@ -212,22 +201,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlGM.Controls.Add(this.lblGM);
             this.pnlGM.Controls.Add(this.txtGM);
-            this.pnlGM.Location = new System.Drawing.Point(10, 63);
-            this.pnlGM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlGM.Location = new System.Drawing.Point(7, 41);
             this.pnlGM.Name = "pnlGM";
-            this.pnlGM.Padding = new System.Windows.Forms.Padding(6);
+            this.pnlGM.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlGM.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlGM.Size = new System.Drawing.Size(417, 42);
+            this.pnlGM.Size = new System.Drawing.Size(278, 27);
             this.pnlGM.TabIndex = 1;
             // 
             // lblGM
             // 
             this.lblGM.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblGM.AutoSize = true;
-            this.lblGM.Location = new System.Drawing.Point(6, 6);
-            this.lblGM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGM.Location = new System.Drawing.Point(4, 4);
             this.lblGM.Name = "lblGM";
-            this.lblGM.Size = new System.Drawing.Size(133, 20);
+            this.lblGM.Size = new System.Drawing.Size(89, 13);
             this.lblGM.TabIndex = 1;
             this.lblGM.Text = "General Manager";
             this.lblGM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -235,20 +222,18 @@
             // txtGM
             // 
             this.txtGM.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtGM.Location = new System.Drawing.Point(175, 6);
-            this.txtGM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtGM.Location = new System.Drawing.Point(115, 4);
             this.txtGM.Name = "txtGM";
-            this.txtGM.Size = new System.Drawing.Size(236, 26);
+            this.txtGM.Size = new System.Drawing.Size(159, 20);
             this.txtGM.TabIndex = 0;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Perpetua Titling MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(18, 14);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Location = new System.Drawing.Point(12, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(265, 38);
+            this.lblTitle.Size = new System.Drawing.Size(176, 26);
             this.lblTitle.TabIndex = 11;
             this.lblTitle.Text = "Team Details";
             // 
@@ -259,20 +244,18 @@
             this.pnlInputs.Controls.Add(this.pnlAsstCoach);
             this.pnlInputs.Controls.Add(this.pnlGM);
             this.pnlInputs.Controls.Add(this.pnlHomeCourt);
-            this.pnlInputs.Location = new System.Drawing.Point(18, 78);
-            this.pnlInputs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlInputs.Location = new System.Drawing.Point(12, 51);
             this.pnlInputs.Name = "pnlInputs";
-            this.pnlInputs.Padding = new System.Windows.Forms.Padding(6);
-            this.pnlInputs.Size = new System.Drawing.Size(438, 443);
+            this.pnlInputs.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlInputs.Size = new System.Drawing.Size(292, 288);
             this.pnlInputs.TabIndex = 0;
             // 
             // btnAddTeam
             // 
             this.btnAddTeam.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAddTeam.Location = new System.Drawing.Point(340, 557);
-            this.btnAddTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddTeam.Location = new System.Drawing.Point(227, 362);
             this.btnAddTeam.Name = "btnAddTeam";
-            this.btnAddTeam.Size = new System.Drawing.Size(196, 58);
+            this.btnAddTeam.Size = new System.Drawing.Size(131, 38);
             this.btnAddTeam.TabIndex = 1;
             this.btnAddTeam.Text = "Add Team";
             this.btnAddTeam.UseVisualStyleBackColor = true;
@@ -282,27 +265,26 @@
             // 
             this.lblInstructions.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblInstructions.AutoSize = true;
-            this.lblInstructions.Location = new System.Drawing.Point(472, 211);
-            this.lblInstructions.Margin = new System.Windows.Forms.Padding(12);
+            this.lblInstructions.Location = new System.Drawing.Point(315, 137);
+            this.lblInstructions.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Padding = new System.Windows.Forms.Padding(12);
-            this.lblInstructions.Size = new System.Drawing.Size(374, 144);
+            this.lblInstructions.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.lblInstructions.Size = new System.Drawing.Size(252, 94);
             this.lblInstructions.TabIndex = 15;
             this.lblInstructions.Text = resources.GetString("lblInstructions.Text");
             // 
             // frmAddTeam
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 634);
+            this.ClientSize = new System.Drawing.Size(584, 412);
             this.Controls.Add(this.lblInstructions);
             this.Controls.Add(this.btnAddTeam);
             this.Controls.Add(this.pnlInputs);
             this.Controls.Add(this.lblTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmAddTeam";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Teams] - [Add Team]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddTeam_FormClosing);
             this.Load += new System.EventHandler(this.frmAddTeam_Load);
