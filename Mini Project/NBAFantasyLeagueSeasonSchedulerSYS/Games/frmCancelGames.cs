@@ -31,7 +31,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             allGames = frmMainMenu.AllGames;
             foreach (Game game in allGames)
             {
-                dtgGames.Rows.Add(game.GameID, game.Home, game.Away, game.Date.ToString("dd/MM/yyyy"), game.Time, game.Venue);
+                dtgGames.Rows.Add(game.GameID, game.HomeID, game.AwayID, game.Date.ToString("dd/MM/yyyy"), game.Time, game.Venue);
             }
         }
 
@@ -51,18 +51,21 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                         str.Append('-');
                         str.AppendLine(row.Cells["gameID"].Value.ToString());
                     }
-                    DialogResult cfm = MessageBox.Show("Proceed to cancel selected Game(s)?\n\n" + str, "Confirm Game Cancellation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    DialogResult cfm = MessageBox.Show("Proceed to cancel selected Game(s)?\n\n" + str + "\nReason\n\n" + reason, "Confirm Game Cancellation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (cfm == DialogResult.OK)
                     {
-                        DialogResult rs = MessageBox.Show("Confirm Reason:\n" + reason, "Reason for Cancellation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                        if (rs == DialogResult.OK)
+                        MessageBox.Show("Selected Game(s) have been cancelled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        foreach (DataGridViewRow row in selectedRows)
                         {
-                            MessageBox.Show("Selected Game(s) have been cancelled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            foreach (DataGridViewRow row in selectedRows)
-                            {
-                                dtgGames.Rows.Remove(row);
-                            }
+                            Game g = allGames.Find(x => x.GameID.Equals(row.Cells["gameID"].Value.ToString()));
+                            CancelledGame cg = new CancelledGame(g, reason);
+                            //update database 
+                            frmMainMenu.AllCancelledGames.Add(cg);
+                            frmMainMenu.AllGames.Remove(g);
+                            //
+                            dtgGames.Rows.Remove(row);
                         }
+                        txtReason.Text = "";
                     }
                 }
                 else
@@ -74,17 +77,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             {
                 MessageBox.Show("Please select the Game(s) to be cancelled", "No Games Selected", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-        }
-
-        private void dtgGames_SelectionChanged(object sender, EventArgs e)
-        {
-/*            DataGridViewSelectedRowCollection selectedRows = dtgGames.SelectedRows;
-            StringBuilder str = new StringBuilder();
-            foreach (DataGridViewRow row in selectedRows)
-            {
-                str.AppendLine(row.Cells["gameID"].Value.ToString());
-            }
-            Debug.WriteLine(str.ToString());*/
         }
     }
 }

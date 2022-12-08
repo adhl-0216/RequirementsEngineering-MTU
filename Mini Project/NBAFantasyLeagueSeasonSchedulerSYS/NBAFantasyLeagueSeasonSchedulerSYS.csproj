@@ -61,6 +61,7 @@
     <Compile Include="Admin\frmViewSchedule.Designer.cs">
       <DependentUpon>frmViewSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Games\CancelledGame.cs" />
     <Compile Include="Games\Game.cs" />
     <Compile Include="Teams\frmRemoveTeam.cs">
       <SubType>Form</SubType>

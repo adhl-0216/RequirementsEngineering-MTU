@@ -31,15 +31,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCancelGames));
             this.dtgGames = new System.Windows.Forms.DataGridView();
-            this.btnCancelGame = new System.Windows.Forms.Button();
-            this.txtReason = new System.Windows.Forms.TextBox();
-            this.lblReason = new System.Windows.Forms.Label();
             this.gameID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.home = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.away = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.venue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancelGame = new System.Windows.Forms.Button();
+            this.txtReason = new System.Windows.Forms.TextBox();
+            this.lblReason = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgGames)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +49,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.dtgGames.AllowUserToDeleteRows = false;
             this.dtgGames.AllowUserToResizeColumns = false;
             this.dtgGames.AllowUserToResizeRows = false;
-            this.dtgGames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dtgGames.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgGames.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgGames.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
@@ -71,42 +72,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.dtgGames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgGames.Size = new System.Drawing.Size(1107, 352);
             this.dtgGames.TabIndex = 0;
-            this.dtgGames.SelectionChanged += new System.EventHandler(this.dtgGames_SelectionChanged);
-            // 
-            // btnCancelGame
-            // 
-            this.btnCancelGame.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancelGame.Location = new System.Drawing.Point(476, 589);
-            this.btnCancelGame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCancelGame.Name = "btnCancelGame";
-            this.btnCancelGame.Size = new System.Drawing.Size(192, 46);
-            this.btnCancelGame.TabIndex = 1;
-            this.btnCancelGame.Text = "CANCEL GAME";
-            this.btnCancelGame.UseVisualStyleBackColor = true;
-            this.btnCancelGame.Click += new System.EventHandler(this.btnCancelGame_Click);
-            // 
-            // txtReason
-            // 
-            this.txtReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReason.Location = new System.Drawing.Point(18, 418);
-            this.txtReason.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtReason.Multiline = true;
-            this.txtReason.Name = "txtReason";
-            this.txtReason.Size = new System.Drawing.Size(1105, 159);
-            this.txtReason.TabIndex = 2;
-            // 
-            // lblReason
-            // 
-            this.lblReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblReason.AutoSize = true;
-            this.lblReason.Location = new System.Drawing.Point(18, 394);
-            this.lblReason.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblReason.Name = "lblReason";
-            this.lblReason.Size = new System.Drawing.Size(231, 20);
-            this.lblReason.TabIndex = 3;
-            this.lblReason.Text = "Reason for Game Cancellation:";
             // 
             // gameID
             // 
@@ -155,18 +120,52 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             // venue
             // 
-            this.venue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.venue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.venue.HeaderText = "VENUE";
             this.venue.MinimumWidth = 8;
             this.venue.Name = "venue";
             this.venue.ReadOnly = true;
-            this.venue.Width = 101;
+            // 
+            // btnCancelGame
+            // 
+            this.btnCancelGame.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancelGame.Location = new System.Drawing.Point(476, 587);
+            this.btnCancelGame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancelGame.Name = "btnCancelGame";
+            this.btnCancelGame.Size = new System.Drawing.Size(192, 68);
+            this.btnCancelGame.TabIndex = 1;
+            this.btnCancelGame.Text = "CANCEL GAME";
+            this.btnCancelGame.UseVisualStyleBackColor = true;
+            this.btnCancelGame.Click += new System.EventHandler(this.btnCancelGame_Click);
+            // 
+            // txtReason
+            // 
+            this.txtReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtReason.Location = new System.Drawing.Point(18, 418);
+            this.txtReason.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtReason.Multiline = true;
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(1105, 159);
+            this.txtReason.TabIndex = 2;
+            // 
+            // lblReason
+            // 
+            this.lblReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblReason.AutoSize = true;
+            this.lblReason.Location = new System.Drawing.Point(18, 394);
+            this.lblReason.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblReason.Name = "lblReason";
+            this.lblReason.Size = new System.Drawing.Size(231, 20);
+            this.lblReason.TabIndex = 3;
+            this.lblReason.Text = "Reason for Game Cancellation:";
             // 
             // frmCancelGames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 654);
+            this.ClientSize = new System.Drawing.Size(1143, 674);
             this.Controls.Add(this.lblReason);
             this.Controls.Add(this.txtReason);
             this.Controls.Add(this.btnCancelGame);

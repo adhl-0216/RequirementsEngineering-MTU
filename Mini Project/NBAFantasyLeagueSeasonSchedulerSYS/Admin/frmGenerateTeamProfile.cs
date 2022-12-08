@@ -1,9 +1,13 @@
-﻿using System;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Games;
+using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +17,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
     public partial class frmGenerateTeamProfile : Form
     {
         private static new Form Parent;
+        private static List<Team> allTeams;
+        private static List<Game> allGames;
         public frmGenerateTeamProfile()
         {
             InitializeComponent();
@@ -25,18 +31,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
 
         private void frmGenerateTeamProfile_Load(object sender, EventArgs e)
         {
-            String[] teamNames = {
-                "'95-96 Chicago Bulls",
-                "'16-17 Golden State Warriors",
-                "'70-71 Milwaukee Bucks",
-                "'07-08 Boston Celtics",
-                "'08-09 Cleveland Cavaliers",
-                "'12-13 Oklahoma City Thunder",
-                "'88-89 Detroit Pistons",
-                "'86-87 Los Angeles Lakers",
-                "'82-83 Philadelphia 76ers",
-                "'98-99 San Antonio Spurs"
-            };
+            allTeams = frmMainMenu.AllTeams;
+            allGames = frmMainMenu.AllGames;
+            foreach (Team team in allTeams)
+            {
+                cboTeams.Items.Add(team.TeamName);
+            }
         }
 
         private void frmGenerateTeamProfile_FormClosing(object sender, FormClosingEventArgs e)
@@ -45,6 +45,54 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             {
                 Parent.Show();
             }
+        }
+
+        private void cboTeams_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //display Team details
+            Team selectedTeam = allTeams[cboTeams.SelectedIndex];
+            txtTeamID.Text = selectedTeam.TeamID;
+            txtTeamName.Text = selectedTeam.TeamName;
+            txtGM.Text = selectedTeam.Gm;
+            txtHeadCoach.Text = selectedTeam.HeadCoach;
+            txtAsstCoach.Text = selectedTeam.AsstCoach;
+            txtHomeCourt.Text = selectedTeam.HomeCourt;
+            selectedTeam.TeamWins = new int[]{ ((int)new Random().Next(0,27)), 27 };
+
+            //display Game Details
+            dtgGames.Rows.Clear();
+            foreach (Game game in allGames)
+            {
+                if (game.HomeID == selectedTeam.TeamID || game.AwayID == selectedTeam.TeamID)
+                {
+                    var idx = dtgGames.Rows.Add();
+                    dtgGames.Rows[idx].Cells["gameID"].Value = game.GameID;
+                    string opponent = "";
+                    if (game.HomeID == selectedTeam.TeamID)
+                    {
+                        opponent = allTeams.Find(x => x.TeamID == game.AwayID).TeamName;
+                    }
+                    else if (game.AwayID == selectedTeam.TeamID)
+                    {
+                        opponent = allTeams.Find(x => x.TeamID == game.HomeID).TeamName;
+                    }
+                    dtgGames.Rows[idx].Cells["opponent"].Value = opponent;
+                    dtgGames.Rows[idx].Cells["date"].Value = game.Date.ToString("dd/MM/yyyy");
+                    dtgGames.Rows[idx].Cells["time"].Value = game.Time.ToString("h':'mm");
+                    dtgGames.Rows[idx].Cells["venue"].Value = game.Venue;
+                    dtgGames.Rows[idx].Cells["result"].Value = (new Random().Next(0,2)==1)?"W":"L";
+                }
+            }
+            int wins = 0, total;
+            foreach (DataGridViewRow row in dtgGames.Rows)
+            {
+                if (row.Cells["result"].Value.ToString().Equals("W"))
+                {
+                    wins++;
+                }
+            }
+            total = dtgGames.RowCount;
+            lblTeamWins.Text = string.Format("({0}-{1})", wins, total);
         }
     }
 }
