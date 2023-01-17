@@ -51,7 +51,6 @@ namespace HotelSYS
             this.grpRoom.TabIndex = 0;
             this.grpRoom.TabStop = false;
             this.grpRoom.Text = "Enter Room Details";
-            this.grpRoom.Enter += new System.EventHandler(this.grpRoom_Enter);
             // 
             // lblRoomNo
             // 
@@ -69,7 +68,6 @@ namespace HotelSYS
             this.txtRoomNo.Name = "txtRoomNo";
             this.txtRoomNo.Size = new System.Drawing.Size(34, 20);
             this.txtRoomNo.TabIndex = 1;
-            this.txtRoomNo.TextChanged += new System.EventHandler(this.txtRoomNo_TextChanged);
             // 
             // lblRoomType
             // 

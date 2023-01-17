@@ -28,16 +28,6 @@ namespace HotelSYS
       
         }
 
-        private void grpRoom_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtRoomNo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //validate data

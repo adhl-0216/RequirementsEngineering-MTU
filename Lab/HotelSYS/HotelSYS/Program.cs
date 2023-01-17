@@ -20,9 +20,9 @@ namespace HotelSYS
             Application.Run(new frmSetRoomType());
             Application.Run(new frmMainMenu());
             Application.Run(new frmUpdateRoomType());
-*/
             Application.Run(new frmAddRoom());
-         
+*/
+            Application.Run(new frmConnect());
         }
     }
 }
