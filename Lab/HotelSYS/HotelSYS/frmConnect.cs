@@ -20,7 +20,7 @@ namespace HotelSYS
         {
             if (conn == null)
             {
-                string connStr = File.ReadAllLines(@"C:\Users\T00229173\Desktop\connStr.txt")[0];
+                string connStr = File.ReadAllLines(@"C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\.gitignore")[364];
                 conn = new OracleConnection(connStr);
             }
             if (conn.State == ConnectionState.Open) return;
