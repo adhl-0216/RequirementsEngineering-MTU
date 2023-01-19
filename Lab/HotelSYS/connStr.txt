@@ -1,0 +1,1 @@
+Data Source = oracle/orcl; User Id = T00229173; Password = 4fucuwhvM?v6
