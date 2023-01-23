@@ -20,7 +20,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         {
             OracleConnection conn = new OracleConnection(File.ReadAllLines(@"C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\.gitignore")[364]);
             conn.Open();
-            MessageBox.Show(conn.State.ToString(), "Connection State");
+            MessageBox.Show("Connection to database is " + conn.State.ToString().ToUpper(), "Connection State", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMainMenu());
