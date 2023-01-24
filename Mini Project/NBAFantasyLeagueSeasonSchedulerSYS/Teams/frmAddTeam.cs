@@ -49,8 +49,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             */
 
             Boolean valid = false;
-            Label[] lbls = {lblTeamName, lblGM, lblHeadCoach, lblAsstCoach, lblHomeCourt };
-            TextBox[] txtBoxes = { txtTeamName, txtGM, txtHeadCoach, txtAsstCoach, txtHomeCourt };
+            Label[] lbls = {lblTeamName, lblGM, lblHeadCoach, lblAsstCoach, lblHomeCourt};
+            TextBox[] txtBoxes = {txtTeamName, txtGM, txtHeadCoach, txtAsstCoach, txtHomeCourt};
 
             void errorMsg(String msg)
             {
@@ -83,15 +83,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
             if (valid) {
                 String successMsg;
-                Team temp = new Team(txtTeamName.Text, txtGM.Text, txtHeadCoach.Text, txtAsstCoach.Text, txtHomeCourt.Text);
-                allTeams.Add(temp);
+                Team newTeam = new Team(txtTeamName.Text, txtGM.Text, txtHeadCoach.Text, txtAsstCoach.Text, txtHomeCourt.Text);
+                newTeam.addTeam();
+                Console.WriteLine(newTeam.ToString());
+                //allTeams.Add(newTeam);
                 successMsg = "Team Added Successfully! \n\n";
                 for (int i = 0; i < txtBoxes.Length; i++)
                 {
                     successMsg += lbls[i].Text + ": " + txtBoxes[i].Text + "\n";
             
                     txtBoxes[i].Clear();
-                    txtBoxes[i].Enabled = false;
                 }
                 MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

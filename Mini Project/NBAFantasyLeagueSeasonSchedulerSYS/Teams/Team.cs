@@ -67,17 +67,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public void addTeam()
         {
             Conn = Program.getOracleConnection();
-            String sqlInsert = $"INSERT INTO TABLE TEAMS VALUES({TeamID},{TeamName},{Gm},{HeadCoach},{AsstCoach},{HomeCourt},{TeamWins[0]})";
-            OracleCommand cmd = Conn.CreateCommand();
-            cmd.CommandText = sqlInsert;
+            String sqlInsert = $"INSERT INTO TEAMS VALUES('{TeamID}','{TeamName.Replace("'","''")}','{Gm}','{HeadCoach}','{AsstCoach}','{HomeCourt}',{TeamWins[0]})";
+            OracleCommand cmd = new OracleCommand(sqlInsert, Conn);
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
-                Console.WriteLine(affectedRows + " are affected.");
+                Console.WriteLine(affectedRows + " row(s) are affected.");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.Message);
             }
         }
     }
