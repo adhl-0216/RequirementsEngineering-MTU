@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         private String _asstCoach;
         private String _homeCourt;
         private int[] _teamWins;
+        private OracleConnection _conn;
         public string TeamID { 
             get => _teamID; 
             set
@@ -44,6 +46,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public string AsstCoach { get => _asstCoach; set => _asstCoach = value; }
         public string HomeCourt { get => _homeCourt; set => _homeCourt = value; }
         public int[] TeamWins { get => _teamWins; set => _teamWins = value; }
+        public OracleConnection Conn { get => _conn; set => _conn = value; }
 
         public Team(string teamName, string gm, string headCoach, string asstCoach, string homeCourt)
         {
@@ -59,6 +62,23 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);
+        }
+
+        public void addTeam()
+        {
+            Conn = Program.getOracleConnection();
+            String sqlInsert = $"INSERT INTO TABLE TEAMS VALUES({TeamID},{TeamName},{Gm},{HeadCoach},{AsstCoach},{HomeCourt},{TeamWins[0]})";
+            OracleCommand cmd = Conn.CreateCommand();
+            cmd.CommandText = sqlInsert;
+            try
+            {
+                int affectedRows = cmd.ExecuteNonQuery();
+                Console.WriteLine(affectedRows + " are affected.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
         }
     }
 }

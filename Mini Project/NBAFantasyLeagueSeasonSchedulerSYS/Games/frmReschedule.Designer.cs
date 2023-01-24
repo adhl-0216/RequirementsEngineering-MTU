@@ -71,15 +71,14 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.time,
             this.venue});
             this.dtgGames.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dtgGames.Location = new System.Drawing.Point(13, 14);
-            this.dtgGames.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtgGames.Location = new System.Drawing.Point(9, 9);
             this.dtgGames.MultiSelect = false;
             this.dtgGames.Name = "dtgGames";
             this.dtgGames.ReadOnly = true;
             this.dtgGames.RowHeadersVisible = false;
             this.dtgGames.RowHeadersWidth = 62;
             this.dtgGames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgGames.Size = new System.Drawing.Size(1174, 376);
+            this.dtgGames.Size = new System.Drawing.Size(783, 244);
             this.dtgGames.TabIndex = 1;
             this.dtgGames.SelectionChanged += new System.EventHandler(this.dtgGames_SelectionChanged);
             // 
@@ -90,7 +89,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.gameID.MinimumWidth = 8;
             this.gameID.Name = "gameID";
             this.gameID.ReadOnly = true;
-            this.gameID.Width = 62;
+            this.gameID.Width = 43;
             // 
             // home
             // 
@@ -99,7 +98,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.home.MinimumWidth = 8;
             this.home.Name = "home";
             this.home.ReadOnly = true;
-            this.home.Width = 141;
+            this.home.Width = 97;
             // 
             // away
             // 
@@ -108,7 +107,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.away.MinimumWidth = 8;
             this.away.Name = "away";
             this.away.ReadOnly = true;
-            this.away.Width = 141;
+            this.away.Width = 97;
             // 
             // date
             // 
@@ -117,7 +116,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.date.MinimumWidth = 8;
             this.date.Name = "date";
             this.date.ReadOnly = true;
-            this.date.Width = 88;
+            this.date.Width = 61;
             // 
             // time
             // 
@@ -126,7 +125,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.time.MinimumWidth = 8;
             this.time.Name = "time";
             this.time.ReadOnly = true;
-            this.time.Width = 83;
+            this.time.Width = 58;
             // 
             // venue
             // 
@@ -149,21 +148,25 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.grpGameDetails.Controls.Add(this.lblTime);
             this.grpGameDetails.Controls.Add(this.dtpDate);
             this.grpGameDetails.Controls.Add(this.lblDate);
-            this.grpGameDetails.Location = new System.Drawing.Point(13, 398);
+            this.grpGameDetails.Location = new System.Drawing.Point(9, 259);
+            this.grpGameDetails.Margin = new System.Windows.Forms.Padding(2);
             this.grpGameDetails.Name = "grpGameDetails";
-            this.grpGameDetails.Size = new System.Drawing.Size(1175, 301);
+            this.grpGameDetails.Padding = new System.Windows.Forms.Padding(2);
+            this.grpGameDetails.Size = new System.Drawing.Size(783, 196);
             this.grpGameDetails.TabIndex = 12;
             this.grpGameDetails.TabStop = false;
             // 
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnSelect.Location = new System.Drawing.Point(620, 10);
+            this.btnSelect.Location = new System.Drawing.Point(413, 10);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(121, 33);
+            this.btnSelect.Size = new System.Drawing.Size(73, 23);
             this.btnSelect.TabIndex = 20;
             this.btnSelect.Text = "SELECT";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // dtpTime
             // 
@@ -171,22 +174,25 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.dtpTime.CustomFormat = "HH:mm";
             this.dtpTime.Enabled = false;
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTime.Location = new System.Drawing.Point(541, 96);
+            this.dtpTime.Location = new System.Drawing.Point(361, 62);
+            this.dtpTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
-            this.dtpTime.Size = new System.Drawing.Size(200, 26);
+            this.dtpTime.Size = new System.Drawing.Size(135, 20);
             this.dtpTime.TabIndex = 19;
             this.dtpTime.Value = new System.DateTime(2022, 12, 7, 13, 52, 54, 0);
             // 
             // btnReschedule
             // 
             this.btnReschedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnReschedule.Location = new System.Drawing.Point(439, 215);
+            this.btnReschedule.Location = new System.Drawing.Point(293, 140);
+            this.btnReschedule.Margin = new System.Windows.Forms.Padding(2);
             this.btnReschedule.Name = "btnReschedule";
-            this.btnReschedule.Size = new System.Drawing.Size(302, 75);
+            this.btnReschedule.Size = new System.Drawing.Size(201, 49);
             this.btnReschedule.TabIndex = 18;
             this.btnReschedule.Text = "RESCHEDULE";
             this.btnReschedule.UseVisualStyleBackColor = true;
+            this.btnReschedule.Click += new System.EventHandler(this.btnReschedule_Click);
             // 
             // lblGameID
             // 
@@ -194,9 +200,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.lblGameID.AutoSize = true;
             this.lblGameID.Font = new System.Drawing.Font("Arial Narrow", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGameID.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblGameID.Location = new System.Drawing.Point(433, 10);
+            this.lblGameID.Location = new System.Drawing.Point(289, 10);
+            this.lblGameID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGameID.Name = "lblGameID";
-            this.lblGameID.Size = new System.Drawing.Size(108, 33);
+            this.lblGameID.Size = new System.Drawing.Size(73, 23);
             this.lblGameID.TabIndex = 17;
             this.lblGameID.Text = "Game ID";
             this.lblGameID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -205,19 +212,21 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.txtVenue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtVenue.Enabled = false;
-            this.txtVenue.Location = new System.Drawing.Point(541, 130);
+            this.txtVenue.Location = new System.Drawing.Point(361, 84);
+            this.txtVenue.Margin = new System.Windows.Forms.Padding(2);
             this.txtVenue.Multiline = true;
             this.txtVenue.Name = "txtVenue";
-            this.txtVenue.Size = new System.Drawing.Size(200, 79);
+            this.txtVenue.Size = new System.Drawing.Size(135, 53);
             this.txtVenue.TabIndex = 16;
             // 
             // lblVenue
             // 
             this.lblVenue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblVenue.AutoSize = true;
-            this.lblVenue.Location = new System.Drawing.Point(435, 130);
+            this.lblVenue.Location = new System.Drawing.Point(290, 84);
+            this.lblVenue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVenue.Name = "lblVenue";
-            this.lblVenue.Size = new System.Drawing.Size(56, 20);
+            this.lblVenue.Size = new System.Drawing.Size(38, 13);
             this.lblVenue.TabIndex = 15;
             this.lblVenue.Text = "Venue";
             this.lblVenue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -226,9 +235,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(435, 96);
+            this.lblTime.Location = new System.Drawing.Point(290, 62);
+            this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(43, 20);
+            this.lblTime.Size = new System.Drawing.Size(30, 13);
             this.lblTime.TabIndex = 14;
             this.lblTime.Text = "Time";
             this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -239,9 +249,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.dtpDate.CustomFormat = "dd/MM/yyyy";
             this.dtpDate.Enabled = false;
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDate.Location = new System.Drawing.Point(541, 64);
+            this.dtpDate.Location = new System.Drawing.Point(361, 42);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpDate.Size = new System.Drawing.Size(135, 20);
             this.dtpDate.TabIndex = 13;
             this.dtpDate.Value = new System.DateTime(2022, 12, 7, 13, 52, 54, 0);
             // 
@@ -249,22 +260,22 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(435, 64);
+            this.lblDate.Location = new System.Drawing.Point(290, 42);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(44, 20);
+            this.lblDate.Size = new System.Drawing.Size(30, 13);
             this.lblDate.TabIndex = 12;
             this.lblDate.Text = "Date";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmReschedule
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 696);
+            this.ClientSize = new System.Drawing.Size(800, 452);
             this.Controls.Add(this.dtgGames);
             this.Controls.Add(this.grpGameDetails);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmReschedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Games] - [Reschedule Game]";
