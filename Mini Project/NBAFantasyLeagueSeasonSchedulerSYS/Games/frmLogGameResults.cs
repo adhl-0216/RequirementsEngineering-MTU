@@ -85,16 +85,24 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 }
             }
 
-            object[] args = { 
-                selectedGame.Cells["home"].Value, txtHomePTS.Text, txtHomeTRB.Text, txtHomeAST.Text,
-                selectedGame.Cells["away"].Value, txtAwayPTS.Text, txtAwayTRB.Text, txtAwayAST.Text,
-                winnerName
-            };
-            msg = string.Format("{0}: {1} PTS / {2} TRB / {3} AST\n" +
-                "{4}: {5} PTS / {6} TRB / {7} AST\n" +
-                "WINNER: {8}", args);
-            
-            rs = MessageBox.Show(msg,"Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //object[] args = { 
+            //    selectedGame.Cells["home"].Value, txtHomePTS.Text, txtHomeTRB.Text, txtHomeAST.Text,
+            //    selectedGame.Cells["away"].Value, txtAwayPTS.Text, txtAwayTRB.Text, txtAwayAST.Text,
+            //    winnerName
+            //};
+
+            //msg = string.Format("{0}: {1} PTS / {2} TRB / {3} AST\n" +
+            //    "{4}: {5} PTS / {6} TRB / {7} AST\n" +
+            //    "WINNER: {8}", args);
+
+            GameResult newGameResult = new GameResult(
+                winnerName,
+                Int32.Parse(txtHomePTS.Text), Int32.Parse(txtHomeTRB.Text), Int32.Parse(txtHomeAST.Text),
+                Int32.Parse(txtAwayPTS.Text), Int32.Parse(txtAwayTRB.Text), Int32.Parse(txtAwayAST.Text),
+                selectedGame.Cells["gameID"].Value.ToString()
+            );
+
+            rs = MessageBox.Show("text","Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (rs == DialogResult.OK)
             {
                 MessageBox.Show("Game Results for [" + selectedGame.Cells["gameID"].Value + "] has succesfully been saved to Game Results File.", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

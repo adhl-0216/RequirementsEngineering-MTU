@@ -17,7 +17,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         private String _asstCoach;
         private String _homeCourt;
         private int[] _teamWins;
-        private OracleConnection _conn;
+
         public string TeamID { 
             get => _teamID; 
             set
@@ -46,7 +46,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public string AsstCoach { get => _asstCoach; set => _asstCoach = value; }
         public string HomeCourt { get => _homeCourt; set => _homeCourt = value; }
         public int[] TeamWins { get => _teamWins; set => _teamWins = value; }
-        public OracleConnection Conn { get => _conn; set => _conn = value; }
 
         public Team(string teamName, string gm, string headCoach, string asstCoach, string homeCourt)
         {
@@ -66,9 +65,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
 
         public void addTeam()
         {
-            Conn = Program.getOracleConnection();
+            OracleConnection conn = Program.getOracleConnection();
             String sqlInsert = $"INSERT INTO TEAMS VALUES('{TeamID}','{TeamName.Replace("'","''")}','{Gm}','{HeadCoach}','{AsstCoach}','{HomeCourt}',{TeamWins[0]})";
-            OracleCommand cmd = new OracleCommand(sqlInsert, Conn);
+            OracleCommand cmd = new OracleCommand(sqlInsert, conn);
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
