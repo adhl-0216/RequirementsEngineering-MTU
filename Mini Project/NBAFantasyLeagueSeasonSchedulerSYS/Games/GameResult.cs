@@ -39,7 +39,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.gameID = gameID;
         }
 
-        public void addGameResult()
+        public void saveGameResult()
         {
             OracleConnection conn = Program.getOracleConnection();
             String sqlInsert = $"INSERT INTO {"GAME_RESULTS"} VALUES('{winner}',{homeScore},{awayScore},{homeRebounds},{awayRebounds},{homeAssists},{awayAssists}, '{gameID}')";

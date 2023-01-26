@@ -16,6 +16,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private static List<Game> allGames;
         private static DataGridViewRow selectedGame;
         private static bool selectStatus = true;
+        private string winner;
         public frmLogGameResults(Form parent)
         {
             InitializeComponent();
@@ -40,8 +41,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            string winnerName = null;
-            DialogResult rs;
             TextBox[] textBoxes = { txtHomePTS, txtHomeTRB, txtHomeAST, txtAwayPTS, txtAwayTRB, txtAwayAST };
             //input validation
             foreach (TextBox textBox in textBoxes)
@@ -62,7 +61,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
 
             GameResult newGameResult = new GameResult(
-                winnerName,
+                winner,
                 Int32.Parse(txtHomePTS.Text), Int32.Parse(txtHomeTRB.Text), Int32.Parse(txtHomeAST.Text),
                 Int32.Parse(txtAwayPTS.Text), Int32.Parse(txtAwayTRB.Text), Int32.Parse(txtAwayAST.Text),
                 selectedGame.Cells["gameID"].Value.ToString()
@@ -71,18 +70,24 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             string msg = $"[{newGameResult.gameID}]" +
                 $"\n{selectedGame.Cells["home"].Value}: {newGameResult.homeScore} PTS/ {newGameResult.homeRebounds} TRB/ {newGameResult.homeAssists} AST" +
                 $"\n{selectedGame.Cells["away"].Value}: {newGameResult.awayScore} PTS/ {newGameResult.awayRebounds} TRB/ {newGameResult.awayAssists} AST" +
-                $"WINNER: {newGameResult.winner}";
+                $"\n\nWINNER: {newGameResult.winner}";
 
-            rs = MessageBox.Show(msg,"Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (rs == DialogResult.OK)
+            DialogResult response = MessageBox.Show(msg,"Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (response == DialogResult.OK)
             {
+                newGameResult.saveGameResult();
+            }
+            
+            { 
                 MessageBox.Show($"Game Results for [{newGameResult.gameID}] has succesfully been saved to Game Results File.", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 dtgGames.Enabled = true;
                 btnSelect.Text = "SELECT";
                 lblHome.Text = "HOME";
-                lblHome.ForeColor = Color.Black;
+                lblHome.Font = default;
+                lblHome.ForeColor = default;
                 lblAway.Text = "AWAY";
-                lblAway.ForeColor = Color.Black;
+                lblAway.ForeColor = default;
+                lblAway.Font = default;
                 foreach (TextBox textBox in textBoxes)
                 {
                     textBox.Enabled = false;
@@ -90,6 +95,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 }
                 btnConfirm.Enabled = false;
                 selectStatus = true;
+                dtgGames.Rows.Remove(dtgGames.SelectedRows[0]);
             }
         }
 
@@ -133,51 +139,24 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
         }
 
-        //private void txtHomePTS_Leave(object sender, EventArgs e)
-        //{
-        //    if (!txtHomePTS.Text.Equals("") && txtHomePTS.Text.Any(char.IsDigit) &&
-        //        !txtAwayPTS.Text.Equals("") && txtAwayPTS.Text.Any(char.IsDigit))
-        //    {
-        //        if (int.Parse(txtHomePTS.Text) > int.Parse(txtAwayPTS.Text))
-        //        {
-        //            lblHome.ForeColor = Color.Red;
-        //        }
-        //        else
-        //        {
-        //            lblAway.ForeColor = Color.Red;
-        //        }
-        //    }
-        //}
-
-        //private void txtAwayPTS_Leave(object sender, EventArgs e)
-        //{
-        //    if (!txtHomePTS.Text.Equals("") && txtHomePTS.Text.Any(char.IsDigit) && 
-        //        !txtAwayPTS.Text.Equals("") && txtAwayPTS.Text.Any(char.IsDigit))
-        //    {
-        //        if (int.Parse(txtHomePTS.Text) > int.Parse(txtAwayPTS.Text))
-        //        {
-        //            lblHome.ForeColor = Color.Red;
-        //        }
-        //        else
-        //        {
-        //            lblHome.ForeColor = Color.Red;
-        //        }
-        //    }
-        //}
-        private void checkWinner(TextBox sender, EventArgs e)
+        private void checkWinner(object sender, EventArgs e)
         {
-            if (sender.Text.Equals(""))
+            //check if input is empty
+            if (txtHomePTS.Text.Equals("")) return;
+
+            if (txtAwayPTS.Text.Equals("")) return;
+            //check if input contains letters
+            if (txtHomePTS.Text.Any(char.IsLetter))
             {
-                MessageBox.Show("No value entered", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                sender.Focus();
+                MessageBox.Show("Please enter whole numbers only", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtHomePTS.Clear();
                 return;
             }
    
-            if (sender.Text.Any(char.IsLetter))
+            if (txtAwayPTS.Text.Any(char.IsLetter))
             {
-                sender.Clear();
                 MessageBox.Show("Please enter whole numbers only", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                sender.Focus();
+                txtAwayPTS.Clear();
                 return;
             }
 
@@ -189,11 +168,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
             if (int.Parse(txtHomePTS.Text.Trim()) > int.Parse(txtAwayPTS.Text.Trim()))
             {
-                lblHome.ForeColor = Color.Red;
+                lblHome.ForeColor = Color.Blue;
+                lblHome.Font = new Font(lblHome.Font, FontStyle.Bold);
+                lblAway.ForeColor = default;
+                lblAway.Font = default;
+                winner = lblHome.Text;
             }
             else
             {
-                lblHome.ForeColor = Color.Red;
+                lblAway.ForeColor = Color.Blue;
+                lblAway.Font = new Font(lblHome.Font, FontStyle.Bold);
+                lblHome.ForeColor = default;
+                lblHome.Font = default;
+                winner = lblAway.Text;
             }
         }
     }
