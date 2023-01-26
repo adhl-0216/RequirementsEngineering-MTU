@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,23 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.awayRebounds = awayRebounds;
             this.awayAssists = awayAssists;
             this.gameID = gameID;
+        }
+
+        public void addGameResult()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            String sqlInsert = $"INSERT INTO {"GAME_RESULTS"} VALUES('{winner}',{homeScore},{awayScore},{homeRebounds},{awayRebounds},{homeAssists},{awayAssists}, '{gameID}')";
+            OracleCommand cmd = new OracleCommand(sqlInsert, conn);
+            try
+            {
+                int affectedRows = cmd.ExecuteNonQuery();
+                Console.WriteLine(affectedRows + " row(s) are affected.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

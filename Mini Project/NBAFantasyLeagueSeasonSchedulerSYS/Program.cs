@@ -20,6 +20,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         
         static void Main()
         {
+            //close connection when exiting
+            Application.ApplicationExit += new EventHandler(OnApplicationExit);
+
+            //open connection to database
             conn = new OracleConnection(File.ReadAllLines(@"C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\.gitignore")[364]);
             conn.Open();
             MessageBox.Show("Connection to database is " + conn.State.ToString().ToUpper(), "Connection State", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -27,6 +31,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMainMenu());
+        }
+
+        private static void OnApplicationExit(object sender, EventArgs e)
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+                MessageBox.Show("Connection to database is " + conn.State.ToString().ToUpper(), "Connection State", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public static OracleConnection getOracleConnection()

@@ -42,7 +42,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         {
             string winnerName = null;
             DialogResult rs;
-            string msg;
             TextBox[] textBoxes = { txtHomePTS, txtHomeTRB, txtHomeAST, txtAwayPTS, txtAwayTRB, txtAwayAST };
             //input validation
             foreach (TextBox textBox in textBoxes)
@@ -62,39 +61,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 }
             }
 
-            if (grpWinner.Controls.OfType<RadioButton>().FirstOrDefault(x => x.Checked) == null)
-            {
-                MessageBox.Show("Please select the Winner of the Game", "No Winner Selected", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                grpWinner.Focus();
-                return;
-            }
-            else
-            {
-                string winner = grpWinner.Controls.OfType<RadioButton>().FirstOrDefault(x => x.Checked).Tag.ToString();
-                if (winner.Equals("H"))
-                {
-                    winnerName = selectedGame.Cells["home"].Value.ToString();
-                }
-                else if (winner.Equals("A"))
-                {
-                    winnerName = selectedGame.Cells["away"].Value.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("An Unknown Error has occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            //object[] args = { 
-            //    selectedGame.Cells["home"].Value, txtHomePTS.Text, txtHomeTRB.Text, txtHomeAST.Text,
-            //    selectedGame.Cells["away"].Value, txtAwayPTS.Text, txtAwayTRB.Text, txtAwayAST.Text,
-            //    winnerName
-            //};
-
-            //msg = string.Format("{0}: {1} PTS / {2} TRB / {3} AST\n" +
-            //    "{4}: {5} PTS / {6} TRB / {7} AST\n" +
-            //    "WINNER: {8}", args);
-
             GameResult newGameResult = new GameResult(
                 winnerName,
                 Int32.Parse(txtHomePTS.Text), Int32.Parse(txtHomeTRB.Text), Int32.Parse(txtHomeAST.Text),
@@ -102,16 +68,21 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 selectedGame.Cells["gameID"].Value.ToString()
             );
 
-            rs = MessageBox.Show("text","Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            string msg = $"[{newGameResult.gameID}]" +
+                $"\n{selectedGame.Cells["home"].Value}: {newGameResult.homeScore} PTS/ {newGameResult.homeRebounds} TRB/ {newGameResult.homeAssists} AST" +
+                $"\n{selectedGame.Cells["away"].Value}: {newGameResult.awayScore} PTS/ {newGameResult.awayRebounds} TRB/ {newGameResult.awayAssists} AST" +
+                $"WINNER: {newGameResult.winner}";
+
+            rs = MessageBox.Show(msg,"Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (rs == DialogResult.OK)
             {
-                MessageBox.Show("Game Results for [" + selectedGame.Cells["gameID"].Value + "] has succesfully been saved to Game Results File.", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                MessageBox.Show($"Game Results for [{newGameResult.gameID}] has succesfully been saved to Game Results File.", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 dtgGames.Enabled = true;
                 btnSelect.Text = "SELECT";
-                rdHome.Text = "HOME";
-                rdHome.Checked = false;
-                rdAway.Text = "AWAY";
-                rdAway.Checked = false;
+                lblHome.Text = "HOME";
+                lblHome.ForeColor = Color.Black;
+                lblAway.Text = "AWAY";
+                lblAway.ForeColor = Color.Black;
                 foreach (TextBox textBox in textBoxes)
                 {
                     textBox.Enabled = false;
@@ -129,8 +100,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             {
                 dtgGames.Enabled = false;
                 btnSelect.Text = "CANCEL";
-                rdHome.Text = selectedGame.Cells["home"].Value.ToString();
-                rdAway.Text = selectedGame.Cells["away"].Value.ToString();
+                lblHome.Text = selectedGame.Cells["home"].Value.ToString();
+                lblAway.Text = selectedGame.Cells["away"].Value.ToString();
                 foreach (TextBox textBox in textBoxes)
                 {
                     textBox.Enabled = true;
@@ -142,10 +113,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             {
                 dtgGames.Enabled = true;
                 btnSelect.Text = "SELECT";
-                rdHome.Text = "HOME";
-                rdHome.Checked = false;
-                rdAway.Text = "AWAY";
-                rdAway.Checked = false;
+                lblHome.Text = "HOME";
+                lblHome.ForeColor = Color.Black;
+                lblAway.Text = "AWAY";
+                lblAway.ForeColor = Color.Black;
                 foreach (TextBox textBox in textBoxes)
                 {
                     textBox.Enabled = false;
@@ -162,35 +133,67 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
         }
 
-        private void txtHomePTS_Leave(object sender, EventArgs e)
-        {
-            if (!txtHomePTS.Text.Equals("") && txtHomePTS.Text.Any(char.IsDigit) &&
-                !txtAwayPTS.Text.Equals("") && txtAwayPTS.Text.Any(char.IsDigit))
-            {
-                if (int.Parse(txtHomePTS.Text) > int.Parse(txtAwayPTS.Text))
-                {
-                    rdHome.Checked = true;
-                }
-                else
-                {
-                    rdAway.Checked = true;
-                }
-            }
-        }
+        //private void txtHomePTS_Leave(object sender, EventArgs e)
+        //{
+        //    if (!txtHomePTS.Text.Equals("") && txtHomePTS.Text.Any(char.IsDigit) &&
+        //        !txtAwayPTS.Text.Equals("") && txtAwayPTS.Text.Any(char.IsDigit))
+        //    {
+        //        if (int.Parse(txtHomePTS.Text) > int.Parse(txtAwayPTS.Text))
+        //        {
+        //            lblHome.ForeColor = Color.Red;
+        //        }
+        //        else
+        //        {
+        //            lblAway.ForeColor = Color.Red;
+        //        }
+        //    }
+        //}
 
-        private void txtAwayPTS_Leave(object sender, EventArgs e)
+        //private void txtAwayPTS_Leave(object sender, EventArgs e)
+        //{
+        //    if (!txtHomePTS.Text.Equals("") && txtHomePTS.Text.Any(char.IsDigit) && 
+        //        !txtAwayPTS.Text.Equals("") && txtAwayPTS.Text.Any(char.IsDigit))
+        //    {
+        //        if (int.Parse(txtHomePTS.Text) > int.Parse(txtAwayPTS.Text))
+        //        {
+        //            lblHome.ForeColor = Color.Red;
+        //        }
+        //        else
+        //        {
+        //            lblHome.ForeColor = Color.Red;
+        //        }
+        //    }
+        //}
+        private void checkWinner(TextBox sender, EventArgs e)
         {
-            if (!txtHomePTS.Text.Equals("") && txtHomePTS.Text.Any(char.IsDigit) && 
-                !txtAwayPTS.Text.Equals("") && txtAwayPTS.Text.Any(char.IsDigit))
+            if (sender.Text.Equals(""))
             {
-                if (int.Parse(txtHomePTS.Text) > int.Parse(txtAwayPTS.Text))
-                {
-                    rdHome.Checked = true;
-                }
-                else
-                {
-                    rdAway.Checked = true;
-                }
+                MessageBox.Show("No value entered", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                sender.Focus();
+                return;
+            }
+   
+            if (sender.Text.Any(char.IsLetter))
+            {
+                sender.Clear();
+                MessageBox.Show("Please enter whole numbers only", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                sender.Focus();
+                return;
+            }
+
+            if (int.Parse(txtHomePTS.Text.Trim()) == int.Parse(txtAwayPTS.Text.Trim()))
+            {
+                MessageBox.Show("An NBA Game can not result in a draw.", "Impossible Situation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (int.Parse(txtHomePTS.Text.Trim()) > int.Parse(txtAwayPTS.Text.Trim()))
+            {
+                lblHome.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblHome.ForeColor = Color.Red;
             }
         }
     }

@@ -39,8 +39,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.venue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpGameResult = new System.Windows.Forms.GroupBox();
             this.grpWinner = new System.Windows.Forms.GroupBox();
-            this.rdHome = new System.Windows.Forms.RadioButton();
-            this.rdAway = new System.Windows.Forms.RadioButton();
+            this.lblAway = new System.Windows.Forms.Label();
+            this.lblHome = new System.Windows.Forms.Label();
             this.txtAwayTRB = new System.Windows.Forms.TextBox();
             this.txtAwayAST = new System.Windows.Forms.TextBox();
             this.txtAwayPTS = new System.Windows.Forms.TextBox();
@@ -78,15 +78,14 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.time,
             this.venue});
             this.dtgGames.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dtgGames.Location = new System.Drawing.Point(13, 14);
-            this.dtgGames.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtgGames.Location = new System.Drawing.Point(9, 9);
             this.dtgGames.MultiSelect = false;
             this.dtgGames.Name = "dtgGames";
             this.dtgGames.ReadOnly = true;
             this.dtgGames.RowHeadersVisible = false;
             this.dtgGames.RowHeadersWidth = 62;
             this.dtgGames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgGames.Size = new System.Drawing.Size(1174, 376);
+            this.dtgGames.Size = new System.Drawing.Size(783, 247);
             this.dtgGames.TabIndex = 2;
             this.dtgGames.SelectionChanged += new System.EventHandler(this.dtgGames_SelectionChanged);
             // 
@@ -97,7 +96,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.gameID.MinimumWidth = 8;
             this.gameID.Name = "gameID";
             this.gameID.ReadOnly = true;
-            this.gameID.Width = 62;
+            this.gameID.Width = 43;
             // 
             // home
             // 
@@ -106,7 +105,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.home.MinimumWidth = 8;
             this.home.Name = "home";
             this.home.ReadOnly = true;
-            this.home.Width = 141;
+            this.home.Width = 97;
             // 
             // away
             // 
@@ -115,7 +114,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.away.MinimumWidth = 8;
             this.away.Name = "away";
             this.away.ReadOnly = true;
-            this.away.Width = 141;
+            this.away.Width = 97;
             // 
             // date
             // 
@@ -124,7 +123,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.date.MinimumWidth = 8;
             this.date.Name = "date";
             this.date.ReadOnly = true;
-            this.date.Width = 88;
+            this.date.Width = 61;
             // 
             // time
             // 
@@ -133,7 +132,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.time.MinimumWidth = 8;
             this.time.Name = "time";
             this.time.ReadOnly = true;
-            this.time.Width = 83;
+            this.time.Width = 58;
             // 
             // venue
             // 
@@ -160,125 +159,132 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.grpGameResult.Controls.Add(this.lblAST);
             this.grpGameResult.Controls.Add(this.lblTRB);
             this.grpGameResult.Controls.Add(this.lblPTS);
-            this.grpGameResult.Location = new System.Drawing.Point(12, 398);
+            this.grpGameResult.Location = new System.Drawing.Point(8, 261);
+            this.grpGameResult.Margin = new System.Windows.Forms.Padding(2);
             this.grpGameResult.Name = "grpGameResult";
-            this.grpGameResult.Size = new System.Drawing.Size(1176, 296);
+            this.grpGameResult.Padding = new System.Windows.Forms.Padding(2);
+            this.grpGameResult.Size = new System.Drawing.Size(784, 202);
             this.grpGameResult.TabIndex = 31;
             this.grpGameResult.TabStop = false;
             // 
             // grpWinner
             // 
             this.grpWinner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.grpWinner.Controls.Add(this.rdHome);
-            this.grpWinner.Controls.Add(this.rdAway);
-            this.grpWinner.Enabled = false;
-            this.grpWinner.Location = new System.Drawing.Point(443, 47);
+            this.grpWinner.Controls.Add(this.lblAway);
+            this.grpWinner.Controls.Add(this.lblHome);
+            this.grpWinner.Location = new System.Drawing.Point(297, 34);
+            this.grpWinner.Margin = new System.Windows.Forms.Padding(2);
             this.grpWinner.Name = "grpWinner";
-            this.grpWinner.Size = new System.Drawing.Size(288, 56);
+            this.grpWinner.Padding = new System.Windows.Forms.Padding(2);
+            this.grpWinner.Size = new System.Drawing.Size(192, 33);
             this.grpWinner.TabIndex = 43;
             this.grpWinner.TabStop = false;
             this.grpWinner.Text = "WINNER";
             // 
-            // rdHome
+            // lblAway
             // 
-            this.rdHome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rdHome.AutoSize = true;
-            this.rdHome.Location = new System.Drawing.Point(6, 26);
-            this.rdHome.Name = "rdHome";
-            this.rdHome.Size = new System.Drawing.Size(82, 24);
-            this.rdHome.TabIndex = 27;
-            this.rdHome.TabStop = true;
-            this.rdHome.Tag = "H";
-            this.rdHome.Text = "HOME";
-            this.rdHome.UseVisualStyleBackColor = true;
+            this.lblAway.AutoSize = true;
+            this.lblAway.Location = new System.Drawing.Point(123, 15);
+            this.lblAway.Name = "lblAway";
+            this.lblAway.Size = new System.Drawing.Size(39, 13);
+            this.lblAway.TabIndex = 1;
+            this.lblAway.Text = "AWAY";
             // 
-            // rdAway
+            // lblHome
             // 
-            this.rdAway.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.rdAway.AutoSize = true;
-            this.rdAway.Location = new System.Drawing.Point(200, 26);
-            this.rdAway.Name = "rdAway";
-            this.rdAway.Size = new System.Drawing.Size(82, 24);
-            this.rdAway.TabIndex = 28;
-            this.rdAway.TabStop = true;
-            this.rdAway.Tag = "A";
-            this.rdAway.Text = "AWAY";
-            this.rdAway.UseVisualStyleBackColor = true;
+            this.lblHome.AutoSize = true;
+            this.lblHome.Location = new System.Drawing.Point(30, 15);
+            this.lblHome.Name = "lblHome";
+            this.lblHome.Size = new System.Drawing.Size(39, 13);
+            this.lblHome.TabIndex = 0;
+            this.lblHome.Text = "HOME";
             // 
             // txtAwayTRB
             // 
             this.txtAwayTRB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtAwayTRB.Enabled = false;
-            this.txtAwayTRB.Location = new System.Drawing.Point(632, 144);
+            this.txtAwayTRB.Location = new System.Drawing.Point(421, 94);
+            this.txtAwayTRB.Margin = new System.Windows.Forms.Padding(2);
             this.txtAwayTRB.Name = "txtAwayTRB";
-            this.txtAwayTRB.Size = new System.Drawing.Size(100, 26);
-            this.txtAwayTRB.TabIndex = 42;
+            this.txtAwayTRB.Size = new System.Drawing.Size(68, 20);
+            this.txtAwayTRB.TabIndex = 5;
             // 
             // txtAwayAST
             // 
             this.txtAwayAST.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtAwayAST.Enabled = false;
-            this.txtAwayAST.Location = new System.Drawing.Point(632, 181);
+            this.txtAwayAST.Location = new System.Drawing.Point(421, 118);
+            this.txtAwayAST.Margin = new System.Windows.Forms.Padding(2);
             this.txtAwayAST.Name = "txtAwayAST";
-            this.txtAwayAST.Size = new System.Drawing.Size(100, 26);
-            this.txtAwayAST.TabIndex = 41;
+            this.txtAwayAST.Size = new System.Drawing.Size(68, 20);
+            this.txtAwayAST.TabIndex = 6;
             // 
             // txtAwayPTS
             // 
             this.txtAwayPTS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtAwayPTS.Enabled = false;
-            this.txtAwayPTS.Location = new System.Drawing.Point(632, 109);
+            this.txtAwayPTS.Location = new System.Drawing.Point(421, 71);
+            this.txtAwayPTS.Margin = new System.Windows.Forms.Padding(2);
             this.txtAwayPTS.Name = "txtAwayPTS";
-            this.txtAwayPTS.Size = new System.Drawing.Size(100, 26);
-            this.txtAwayPTS.TabIndex = 40;
+            this.txtAwayPTS.Size = new System.Drawing.Size(68, 20);
+            this.txtAwayPTS.TabIndex = 4;
+            this.txtAwayPTS.Leave += new System.EventHandler(this.checkWinner);
             // 
             // txtHomeTRB
             // 
             this.txtHomeTRB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtHomeTRB.Enabled = false;
-            this.txtHomeTRB.Location = new System.Drawing.Point(445, 144);
+            this.txtHomeTRB.Location = new System.Drawing.Point(297, 94);
+            this.txtHomeTRB.Margin = new System.Windows.Forms.Padding(2);
             this.txtHomeTRB.Name = "txtHomeTRB";
-            this.txtHomeTRB.Size = new System.Drawing.Size(100, 26);
-            this.txtHomeTRB.TabIndex = 39;
+            this.txtHomeTRB.Size = new System.Drawing.Size(68, 20);
+            this.txtHomeTRB.TabIndex = 2;
             // 
             // txtHomeAST
             // 
             this.txtHomeAST.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtHomeAST.Enabled = false;
-            this.txtHomeAST.Location = new System.Drawing.Point(445, 181);
+            this.txtHomeAST.Location = new System.Drawing.Point(297, 118);
+            this.txtHomeAST.Margin = new System.Windows.Forms.Padding(2);
             this.txtHomeAST.Name = "txtHomeAST";
-            this.txtHomeAST.Size = new System.Drawing.Size(100, 26);
-            this.txtHomeAST.TabIndex = 38;
+            this.txtHomeAST.Size = new System.Drawing.Size(68, 20);
+            this.txtHomeAST.TabIndex = 3;
             // 
             // txtHomePTS
             // 
             this.txtHomePTS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtHomePTS.Enabled = false;
-            this.txtHomePTS.Location = new System.Drawing.Point(445, 109);
+            this.txtHomePTS.Location = new System.Drawing.Point(297, 71);
+            this.txtHomePTS.Margin = new System.Windows.Forms.Padding(2);
             this.txtHomePTS.Name = "txtHomePTS";
-            this.txtHomePTS.Size = new System.Drawing.Size(100, 26);
-            this.txtHomePTS.TabIndex = 37;
+            this.txtHomePTS.Size = new System.Drawing.Size(68, 20);
+            this.txtHomePTS.TabIndex = 1;
+            this.txtHomePTS.Leave += new System.EventHandler(this.checkWinner);
             // 
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnSelect.Location = new System.Drawing.Point(618, 8);
+            this.btnSelect.Location = new System.Drawing.Point(411, 4);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(121, 33);
+            this.btnSelect.Size = new System.Drawing.Size(81, 31);
             this.btnSelect.TabIndex = 36;
             this.btnSelect.Text = "SELECT";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnConfirm
             // 
             this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnConfirm.Enabled = false;
-            this.btnConfirm.Location = new System.Drawing.Point(437, 213);
+            this.btnConfirm.Location = new System.Drawing.Point(295, 142);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(302, 75);
+            this.btnConfirm.Size = new System.Drawing.Size(197, 55);
             this.btnConfirm.TabIndex = 35;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // lblGameID
             // 
@@ -286,9 +292,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.lblGameID.AutoSize = true;
             this.lblGameID.Font = new System.Drawing.Font("Arial Narrow", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGameID.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblGameID.Location = new System.Drawing.Point(437, 8);
+            this.lblGameID.Location = new System.Drawing.Point(291, 5);
+            this.lblGameID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGameID.Name = "lblGameID";
-            this.lblGameID.Size = new System.Drawing.Size(108, 33);
+            this.lblGameID.Size = new System.Drawing.Size(73, 23);
             this.lblGameID.TabIndex = 34;
             this.lblGameID.Text = "Game ID";
             this.lblGameID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -297,9 +304,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.lblAST.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblAST.AutoSize = true;
-            this.lblAST.Location = new System.Drawing.Point(568, 181);
+            this.lblAST.Location = new System.Drawing.Point(379, 118);
+            this.lblAST.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAST.Name = "lblAST";
-            this.lblAST.Size = new System.Drawing.Size(40, 20);
+            this.lblAST.Size = new System.Drawing.Size(28, 13);
             this.lblAST.TabIndex = 33;
             this.lblAST.Text = "AST";
             this.lblAST.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -308,9 +316,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.lblTRB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblTRB.AutoSize = true;
-            this.lblTRB.Location = new System.Drawing.Point(568, 147);
+            this.lblTRB.Location = new System.Drawing.Point(379, 96);
+            this.lblTRB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTRB.Name = "lblTRB";
-            this.lblTRB.Size = new System.Drawing.Size(41, 20);
+            this.lblTRB.Size = new System.Drawing.Size(29, 13);
             this.lblTRB.TabIndex = 32;
             this.lblTRB.Text = "TRB";
             this.lblTRB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -319,22 +328,22 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             // 
             this.lblPTS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblPTS.AutoSize = true;
-            this.lblPTS.Location = new System.Drawing.Point(569, 115);
+            this.lblPTS.Location = new System.Drawing.Point(379, 75);
+            this.lblPTS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPTS.Name = "lblPTS";
-            this.lblPTS.Size = new System.Drawing.Size(39, 20);
+            this.lblPTS.Size = new System.Drawing.Size(28, 13);
             this.lblPTS.TabIndex = 31;
             this.lblPTS.Text = "PTS";
             this.lblPTS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmLogGameResults
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(800, 462);
             this.Controls.Add(this.dtgGames);
             this.Controls.Add(this.grpGameResult);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmLogGameResults";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Games] - [Log Game Result]";
@@ -360,8 +369,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private System.Windows.Forms.DataGridViewTextBoxColumn venue;
         private System.Windows.Forms.GroupBox grpGameResult;
         private System.Windows.Forms.GroupBox grpWinner;
-        private System.Windows.Forms.RadioButton rdHome;
-        private System.Windows.Forms.RadioButton rdAway;
         private System.Windows.Forms.TextBox txtAwayTRB;
         private System.Windows.Forms.TextBox txtAwayAST;
         private System.Windows.Forms.TextBox txtAwayPTS;
@@ -374,5 +381,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private System.Windows.Forms.Label lblAST;
         private System.Windows.Forms.Label lblTRB;
         private System.Windows.Forms.Label lblPTS;
+        private System.Windows.Forms.Label lblAway;
+        private System.Windows.Forms.Label lblHome;
     }
 }
