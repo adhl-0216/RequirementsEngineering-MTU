@@ -31,7 +31,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             allGames = frmMainMenu.AllGames;
             foreach (Game game in allGames)
             {
-                dtgGames.Rows.Add(game.GameID, game.HomeID, game.AwayID, game.Date.ToString("dd/MM/yyyy"), game.Time, game.Venue);
+                dtgGames.Rows.Add(game.gameID, game.homeID, game.awayID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue);
             }
         }
 
@@ -57,7 +57,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                         MessageBox.Show("Selected Game(s) have been cancelled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         foreach (DataGridViewRow row in selectedRows)
                         {
-                            Game g = allGames.Find(x => x.GameID.Equals(row.Cells["gameID"].Value.ToString()));
+                            Game g = allGames.Find(x => x.gameID.Equals(row.Cells["gameID"].Value.ToString()));
                             CancelledGame cg = new CancelledGame(g, reason);
                             //update database 
                             frmMainMenu.AllCancelledGames.Add(cg);

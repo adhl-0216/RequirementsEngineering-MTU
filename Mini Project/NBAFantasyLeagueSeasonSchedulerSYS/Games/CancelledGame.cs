@@ -12,7 +12,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     {
         private string _reason;
         public string Reason { get => _reason; set => _reason = value; }
-        public CancelledGame(Game game, string reason) : base(game.HomeTeam, game.AwayTeam, game.Date, game.Time, game.MatchupCount)
+        public CancelledGame(Game game, string reason) : base(game.gameID, game.home, game.away, game.gameDate, game.gameTime)
         {
             Reason = reason;
         }

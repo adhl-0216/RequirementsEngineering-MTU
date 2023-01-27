@@ -63,23 +63,23 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             dtgGames.Rows.Clear();
             foreach (Game game in allGames)
             {
-                if (game.HomeID == selectedTeam.TeamID || game.AwayID == selectedTeam.TeamID)
+                if (game.homeID == selectedTeam.TeamID || game.awayID == selectedTeam.TeamID)
                 {
                     var idx = dtgGames.Rows.Add();
-                    dtgGames.Rows[idx].Cells["gameID"].Value = game.GameID;
+                    dtgGames.Rows[idx].Cells["gameID"].Value = game.gameID;
                     string opponent = "";
-                    if (game.HomeID == selectedTeam.TeamID)
+                    if (game.homeID == selectedTeam.TeamID)
                     {
-                        opponent = allTeams.Find(x => x.TeamID == game.AwayID).TeamName;
+                        opponent = allTeams.Find(x => x.TeamID == game.awayID).TeamName;
                     }
-                    else if (game.AwayID == selectedTeam.TeamID)
+                    else if (game.awayID == selectedTeam.TeamID)
                     {
-                        opponent = allTeams.Find(x => x.TeamID == game.HomeID).TeamName;
+                        opponent = allTeams.Find(x => x.TeamID == game.homeID).TeamName;
                     }
                     dtgGames.Rows[idx].Cells["opponent"].Value = opponent;
-                    dtgGames.Rows[idx].Cells["date"].Value = game.Date.ToString("dd/MM/yyyy");
-                    dtgGames.Rows[idx].Cells["time"].Value = game.Time.ToString("h':'mm");
-                    dtgGames.Rows[idx].Cells["venue"].Value = game.Venue;
+                    dtgGames.Rows[idx].Cells["date"].Value = game.gameDate.ToString("dd/MM/yyyy");
+                    dtgGames.Rows[idx].Cells["time"].Value = game.gameTime.ToString("h':'mm");
+                    dtgGames.Rows[idx].Cells["venue"].Value = game.venue;
                     dtgGames.Rows[idx].Cells["result"].Value = (new Random().Next(0,2)==1)?"W":"L";
                 }
             }

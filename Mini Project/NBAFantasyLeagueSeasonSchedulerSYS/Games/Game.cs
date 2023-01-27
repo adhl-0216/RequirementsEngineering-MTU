@@ -11,47 +11,57 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 {
     class Game
     {
-        private string gameID;
-        private string homeID;
-        private Team homeTeam;
-        private string awayID;
-        private Team awayTeam;
-        private DateTime date;
-        private TimeSpan time;
-        private string venue;
-        private int matchupCount;
-   
-        public string HomeID { get => homeID; set => homeID = value; }
-        public string AwayID { get => awayID; set => awayID = value; }
-        public DateTime Date { get => date; set => date = value; }
-        public TimeSpan Time { get => time; set => time = value; }
-        public string Venue { get => venue; set => venue = value; }
-        public string GameID { get => gameID; set => gameID = value; }
-        public int MatchupCount { get => matchupCount; set => matchupCount = value; }
-        internal Team HomeTeam { get => homeTeam; set => homeTeam = value; }
-        internal Team AwayTeam { get => awayTeam; set => awayTeam = value; }
+        private string _gameID;
+        private string _homeID;
+        private string _awayID;
+        private DateTime _gameDate;
+        private TimeSpan _gameTime;
+        private string _venue;
+        private Team _home;
+        private Team _away;
 
-        public Game(Team home, Team away, DateTime date, TimeSpan time, int matchupCount)
-        {
-            HomeTeam = home;
-            AwayTeam = away;
-            HomeID = HomeTeam.TeamID;
-            AwayID = AwayTeam.TeamID;
-            Date = date.Date;
-            Time = time;
-            Venue = home.HomeCourt;
-            MatchupCount = matchupCount;
-            setGameId();
-        }
+        public string gameID { get => _gameID; set => _gameID = value; }
+        public string homeID { get => _homeID; set => _homeID = value; }
+        public string awayID { get => _awayID; set => _awayID = value; }
+        public DateTime gameDate { get => _gameDate; set => _gameDate = value; }
+        public TimeSpan gameTime { get => _gameTime; set => _gameTime = value; }
+        public string venue { get => _venue; set => _venue = value; }
+        internal Team home { get => _home; set => _home = value; }
+        internal Team away { get => _away; set => _away = value; }
 
-        private void setGameId()
+        public Game(string GameID, Team Home, Team Away, DateTime GameDate, TimeSpan GameTime)
         {
-            GameID = awayID + "@" + homeID + ":" + MatchupCount;
+            gameID = GameID;
+            homeID = Home.TeamID;
+            awayID = Away.TeamID;
+            gameDate = GameDate.Date;
+            gameTime= GameTime;
+            venue = Home.HomeCourt;
+            home = Home;
+            away = Away;
         }
 
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);
+        }
+
+        public void saveGame()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlInsert = $"INSERT INTO GAMES VALUES ('{gameID}','{homeID}','{awayID}',{gameDate},{gameTime},'{venue}')";
+            OracleCommand cmd = new OracleCommand(sqlInsert, conn);
+
+            try
+            {
+                int affectedRows = cmd.ExecuteNonQuery();
+                Console.WriteLine($"{affectedRows} row(s) are inserted.");
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

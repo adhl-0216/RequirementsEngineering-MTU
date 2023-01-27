@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Newtonsoft.Json;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 Console.WriteLine(e.StackTrace);
                 Console.WriteLine(e.Message);
             }
+        }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

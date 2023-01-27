@@ -61,12 +61,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
             //temp Game data
 
-            Game g1 = new Game(t1, t2, new DateTime(2022, 1, 1), new TimeSpan(20, 0 ,0), 1);
-            Game g2 = new Game(t2, t1, new DateTime(2022, 1, 2), new TimeSpan(20, 0, 0), 2);
-            Game g3 = new Game(t1, t2, new DateTime(2022, 1, 3), new TimeSpan(20, 0, 0), 3);
-            Game g4 = new Game(t2, t3, new DateTime(2022, 1, 4), new TimeSpan(20, 0, 0), 1);
-            Game g5 = new Game(t3, t2, new DateTime(2022, 1, 5), new TimeSpan(20, 0, 0), 2);
-            Game g6 = new Game(t2, t3, new DateTime(2022, 1, 6), new TimeSpan(20, 0, 0), 3);
+            Game g1 = new Game(string.Format("{0}@{1}:{2}",t1.TeamID,t2.TeamID, 1), t1, t2, new DateTime(2022, 1, 1), new TimeSpan(20, 0 ,0));
+            Game g2 = new Game(string.Format("{0}@{1}:{2}", t2.TeamID, t1.TeamID, 2), t2, t1, new DateTime(2022, 1, 2), new TimeSpan(20, 0, 0));
+            Game g3 = new Game(string.Format("{0}@{1}:{2}", t1.TeamID, t2.TeamID, 3), t1, t2, new DateTime(2022, 1, 3), new TimeSpan(20, 0, 0));
+            Game g4 = new Game(string.Format("{0}@{1}:{2}", t2.TeamID, t3.TeamID, 1), t2, t3, new DateTime(2022, 1, 4), new TimeSpan(20, 0, 0));
+            Game g5 = new Game(string.Format("{0}@{1}:{2}", t3.TeamID, t2.TeamID, 2), t3, t2, new DateTime(2022, 1, 5), new TimeSpan(20, 0, 0));
+            Game g6 = new Game(string.Format("{0}@{1}:{2}", t2.TeamID, t3.TeamID, 3), t2, t3, new DateTime(2022, 1, 6), new TimeSpan(20, 0, 0));
 
             AllGames = new List<Game> { g1, g2, g3, g4, g5, g6 };
         }

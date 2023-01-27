@@ -33,7 +33,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             allGames = frmMainMenu.AllGames;
             foreach (Game game in allGames)
             {
-                dtgGames.Rows.Add(game.GameID, game.HomeID, game.AwayID, game.Date.ToString("dd/MM/yyyy"), game.Time, game.Venue);
+                dtgGames.Rows.Add(game.gameID, game.homeID, game.awayID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue);
             }
             selectedGame = dtgGames.SelectedRows[0];
             lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
