@@ -1,4 +1,5 @@
 ﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     {
         private static new Form Parent;
         private Team selectedTeam;
-        private static List<Team> allTeams = frmMainMenu.AllTeams;
+        private static List<Team> allTeams;
 
         public frmRemoveTeam(Form parent)
         {
@@ -64,6 +65,21 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                 string[] teamDetails = { selectedTeam.TeamID, selectedTeam.TeamName, selectedTeam.Gm, selectedTeam.HeadCoach, selectedTeam.AsstCoach, selectedTeam.HomeCourt};
                 dtgTeamDetails.Rows.Clear();
                 dtgTeamDetails.Rows.Add(teamDetails);
+            }
+        }
+
+        private void retrieveTeams()
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlSelect = "SELECT * FROM TEAMS";
+            OracleCommand cmd = new OracleCommand(sqlSelect, conn);
+            OracleDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                object[] teamDetails = { };
+                int numRows = reader.GetValues(teamDetails);
+                Console.WriteLine(teamDetails.ToString());
             }
         }
 

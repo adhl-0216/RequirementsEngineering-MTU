@@ -84,4 +84,3 @@ C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Projec
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\System.Text.Json.xml
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\bin\Debug\System.ValueTuple.xml
-C:\Users\T00229173\Source\Repos\mtu-adhl\RequirementsEngineering-MTU\Mini Project\NBAFantasyLeagueSeasonSchedulerSYS\obj\Debug\NBAFantasyLeagueSeasonSchedulerSYS.csproj.SuggestedBindingRedirects.cache
