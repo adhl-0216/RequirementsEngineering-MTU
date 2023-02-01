@@ -32,13 +32,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void frmRemoveTeam_Load(object sender, EventArgs e)
         {
-            foreach (Team team in allTeams)
-            {
-                if (team.TeamName != null)
-                {
-                    cboSelectTeam.Items.Add(team.TeamName);
-                }
-            }
+            refreshComboBox();
         }
 
         private void btnRemoveTeam_Click(object sender, EventArgs e)
@@ -46,9 +40,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             if (selectedTeam != null) { 
                 DialogResult dialogResult = MessageBox.Show("Remove " + selectedTeam.TeamName + " from the system ?", "Remove Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if ( dialogResult == DialogResult.Yes){
+                    deleteTeam(selectedTeam);
                     MessageBox.Show(selectedTeam.TeamName + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cboSelectTeam.Items.Remove(cboSelectTeam.SelectedItem);
-                    allTeams.Remove(selectedTeam);
+                    refreshComboBox();
+
                     cboSelectTeam.SelectedIndex = -1;
                     dtgTeamDetails.Rows.Clear();
                 }
@@ -68,20 +63,34 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             }
         }
 
-        private void retrieveTeams()
+        private void deleteTeam(Team team)
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlSelect = "SELECT * FROM TEAMS";
-            OracleCommand cmd = new OracleCommand(sqlSelect, conn);
-            OracleDataReader reader = cmd.ExecuteReader();
+            string sqlDelete = $"DELETE FROM TEAMS WHERE TEAM_ID='{team.TeamID}'";
+            OracleCommand cmd = new OracleCommand(sqlDelete, conn);
 
-            while (reader.Read())
+            try
             {
-                object[] teamDetails = { };
-                int numRows = reader.GetValues(teamDetails);
-                Console.WriteLine(teamDetails.ToString());
+                int affected = cmd.ExecuteNonQuery();
+                Console.WriteLine(affected + " row(s) affected.");
+            }catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
         }
 
+        private void refreshComboBox()
+        {
+            frmUpdateTeam.retrieveTeams(ref allTeams);
+            cboSelectTeam.Items.Clear();
+            foreach (Team team in allTeams)
+            {
+                if (team.TeamName != null)
+                {
+                    cboSelectTeam.Items.Add(team.TeamName);
+                }
+            }
+        }
     }
 }

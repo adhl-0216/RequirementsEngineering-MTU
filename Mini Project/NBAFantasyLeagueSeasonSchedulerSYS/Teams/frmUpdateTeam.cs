@@ -21,7 +21,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         public frmUpdateTeam(Form parent)
         {
             InitializeComponent();
-            allTeams = new List<Team>();
             Parent = parent;
         }
 
@@ -158,6 +157,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             try
             {
                 OracleDataReader dataReader = cmd.ExecuteReader();
+                allTeams = new List<Team>(10);
                 while (dataReader.Read())
                 {
                     string teamName = dataReader.GetString(1);
