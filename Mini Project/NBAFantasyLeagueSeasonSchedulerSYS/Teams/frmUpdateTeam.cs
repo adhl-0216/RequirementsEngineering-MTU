@@ -1,4 +1,5 @@
 ﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,27 +21,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         public frmUpdateTeam(Form parent)
         {
             InitializeComponent();
+            allTeams = new List<Team>();
             Parent = parent;
         }
 
         private void frmUpdateTeam_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Parent != null)
-                Parent.Show();
+            if (Parent != null) Parent.Show();
         }
 
         private void frmUpdateTeam_Load(object sender, EventArgs e)
         {
-            allTeams = frmMainMenu.AllTeams;
-            foreach (Team team in allTeams)
-            {
-                if (team.TeamName != null)
-                {
-                    cboTeamName.Items.Add(team.TeamName);
-                }
-            }
+            refreshComboBox();
         }
-
 
         private void cboTeamName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -60,6 +53,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
                 txtHomeCourt.Text = selectedTeam.HomeCourt;
                 txtHomeCourt.Enabled = true;
+
+                btnUpdateTeam.Enabled = true;
             }
         }
 
@@ -87,15 +82,14 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             {
                 foreach (TextBox txtBox in txtBoxes)
                 {
-                    if (txtBox == txtNewName)
+                    if (txtBox.Text.Equals(""))
                     {
-                        continue;
-                    }
-                    else if (txtBox.Text.Equals(""))
-                    {
-                        errorMsg("Field can not be empty!");
-                        txtBox.Focus();
-                        return;
+                        if (txtBox != txtNewName)
+                        {
+                            errorMsg("Field can not be empty!");
+                            txtBox.Focus();
+                            return;
+                        }
                     }
                     else if (txtBox == txtGM || txtBox == txtHeadCoach || txtBox == txtAsstCoach)
                     {
@@ -113,27 +107,95 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
             if (valid)
             {
-                String successMsg;
-                selectedTeam.TeamName = (txtNewName.Text.Equals(""))?cboTeamName.Text:txtNewName.Text;
+                
+                selectedTeam.TeamName = (txtNewName.Text.Equals(""))?cboTeamName.Text.Substring(6):txtNewName.Text;
                 selectedTeam.Gm = txtGM.Text;
                 selectedTeam.HeadCoach = txtHeadCoach.Text;
                 selectedTeam.AsstCoach = txtAsstCoach.Text;
                 selectedTeam.HomeCourt = txtHomeCourt.Text;
 
-                successMsg = "Team Updated Successfully! \n\n";
-                for (int i = 0; i < txtBoxes.Length; i++)
-                {
-                    if (txtBoxes[i].Text != "") {
-                        successMsg += lbls[i].Text + ": " + txtBoxes[i].Text + "\n";
-                    }
-                    else { 
-                        successMsg += lbls[i].Text + ": " + cboTeamName.Text + "\n";
-                    }
-                    txtBoxes[i].Clear();
-                    txtBoxes[i].Enabled = false;
-                }
+                amendTeam(selectedTeam);
+
+                string successMsg = $"Team Updated Successfully! \n\n" +
+                    $"{selectedTeam.TeamName}\n" +
+                    $"{selectedTeam.Gm}\n" +
+                    $"{selectedTeam.HeadCoach}\n" +
+                    $"{selectedTeam.AsstCoach}\n" +
+                    $"{selectedTeam.HomeCourt}\n";
+
                 MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 cboTeamName.SelectedIndex = -1;
+                btnUpdateTeam.Enabled = false;
+                foreach (TextBox txtBox in txtBoxes)
+                {
+                    txtBox.Text = "";
+                    txtBox.Enabled = false;
+                }
+                refreshComboBox();
+            }
+        }
+
+        private void refreshComboBox()
+        {
+            retrieveTeams(ref allTeams);
+            cboTeamName.Items.Clear();
+            foreach (Team team in allTeams)
+            {
+                if (team.TeamName != null)
+                {
+                    cboTeamName.Items.Add($"[{team.TeamID}] {team.TeamName}");
+                }
+            }
+        }
+
+        public static void retrieveTeams(ref List<Team> allTeams)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlSelect = "SELECT * FROM TEAMS";
+            OracleCommand cmd = new OracleCommand(sqlSelect, conn);
+
+            try
+            {
+                OracleDataReader dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    string teamName = dataReader.GetString(1);
+                    string gM = dataReader.GetString(2);
+                    string headCoach = dataReader.GetString(3);
+                    string asstCoach = dataReader.GetString(4);
+                    string homeCourt = dataReader.GetString(5);
+
+                    allTeams.Add(new Team(teamName, gM, headCoach, asstCoach, homeCourt));  
+                }
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private static void amendTeam(Team team)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlUpdate = $"UPDATE TEAMS " +
+                $"SET TEAM_NAME='{team.TeamName.Replace("'","''")}'," +
+                $"GENERAL_MANAGER='{team.Gm}'," +
+                $"HEAD_COACH='{team.HeadCoach}'," +
+                $"ASSISTANT_COACH='{team.AsstCoach}'," +
+                $"HOME_COURT='{team.HomeCourt}'" +
+                $"WHERE TEAM_ID='{team.TeamID}'";
+            OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
+
+            try
+            {
+                int affected = cmd.ExecuteNonQuery();
+                Console.WriteLine(affected + " row(s) affected");
+            }catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
         }
     }

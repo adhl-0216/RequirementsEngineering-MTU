@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
 {
-    class Team
+    public class Team
     {
         private String _teamID;
         private String _teamName;
