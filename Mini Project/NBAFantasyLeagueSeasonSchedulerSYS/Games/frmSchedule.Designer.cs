@@ -39,16 +39,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.headCoach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.asstCoach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.homeCourt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtpSeasonStart = new System.Windows.Forms.DateTimePicker();
+            this.lblSeasonStart = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTeamDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSchedule
             // 
             this.btnSchedule.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSchedule.Location = new System.Drawing.Point(466, 463);
-            this.btnSchedule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSchedule.Location = new System.Drawing.Point(311, 301);
             this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(270, 77);
+            this.btnSchedule.Size = new System.Drawing.Size(180, 50);
             this.btnSchedule.TabIndex = 0;
             this.btnSchedule.Text = "SCHEDULE";
             this.btnSchedule.UseVisualStyleBackColor = true;
@@ -76,14 +77,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.asstCoach,
             this.homeCourt});
             this.dtgTeamDetails.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dtgTeamDetails.Location = new System.Drawing.Point(13, 14);
-            this.dtgTeamDetails.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtgTeamDetails.Location = new System.Drawing.Point(9, 9);
             this.dtgTeamDetails.Name = "dtgTeamDetails";
             this.dtgTeamDetails.ReadOnly = true;
             this.dtgTeamDetails.RowHeadersVisible = false;
             this.dtgTeamDetails.RowHeadersWidth = 62;
             this.dtgTeamDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTeamDetails.Size = new System.Drawing.Size(1174, 439);
+            this.dtgTeamDetails.Size = new System.Drawing.Size(783, 260);
             this.dtgTeamDetails.TabIndex = 3;
             // 
             // teamID
@@ -93,7 +93,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.teamID.MinimumWidth = 8;
             this.teamID.Name = "teamID";
             this.teamID.ReadOnly = true;
-            this.teamID.Width = 62;
+            this.teamID.Width = 43;
             // 
             // teamName
             // 
@@ -102,7 +102,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.teamName.MinimumWidth = 8;
             this.teamName.Name = "teamName";
             this.teamName.ReadOnly = true;
-            this.teamName.Width = 91;
+            this.teamName.Width = 63;
             // 
             // manager
             // 
@@ -111,7 +111,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.manager.MinimumWidth = 8;
             this.manager.Name = "manager";
             this.manager.ReadOnly = true;
-            this.manager.Width = 127;
+            this.manager.Width = 86;
             // 
             // headCoach
             // 
@@ -120,7 +120,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.headCoach.MinimumWidth = 8;
             this.headCoach.Name = "headCoach";
             this.headCoach.ReadOnly = true;
-            this.headCoach.Width = 140;
+            this.headCoach.Width = 94;
             // 
             // asstCoach
             // 
@@ -129,7 +129,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.asstCoach.MinimumWidth = 8;
             this.asstCoach.Name = "asstCoach";
             this.asstCoach.ReadOnly = true;
-            this.asstCoach.Width = 179;
+            this.asstCoach.Width = 121;
             // 
             // homeCourt
             // 
@@ -139,15 +139,32 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.homeCourt.Name = "homeCourt";
             this.homeCourt.ReadOnly = true;
             // 
+            // dtpSeasonStart
+            // 
+            this.dtpSeasonStart.Location = new System.Drawing.Point(352, 275);
+            this.dtpSeasonStart.Name = "dtpSeasonStart";
+            this.dtpSeasonStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpSeasonStart.TabIndex = 4;
+            // 
+            // lblSeasonStart
+            // 
+            this.lblSeasonStart.AutoSize = true;
+            this.lblSeasonStart.Location = new System.Drawing.Point(278, 281);
+            this.lblSeasonStart.Name = "lblSeasonStart";
+            this.lblSeasonStart.Size = new System.Drawing.Size(68, 13);
+            this.lblSeasonStart.TabIndex = 5;
+            this.lblSeasonStart.Text = "Season Start";
+            // 
             // frmSchedule
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 554);
+            this.ClientSize = new System.Drawing.Size(800, 360);
+            this.Controls.Add(this.lblSeasonStart);
+            this.Controls.Add(this.dtpSeasonStart);
             this.Controls.Add(this.dtgTeamDetails);
             this.Controls.Add(this.btnSchedule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "frmSchedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -156,6 +173,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.Load += new System.EventHandler(this.frmSchedule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgTeamDetails)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -169,5 +187,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private System.Windows.Forms.DataGridViewTextBoxColumn headCoach;
         private System.Windows.Forms.DataGridViewTextBoxColumn asstCoach;
         private System.Windows.Forms.DataGridViewTextBoxColumn homeCourt;
+        private System.Windows.Forms.DateTimePicker dtpSeasonStart;
+        private System.Windows.Forms.Label lblSeasonStart;
     }
 }

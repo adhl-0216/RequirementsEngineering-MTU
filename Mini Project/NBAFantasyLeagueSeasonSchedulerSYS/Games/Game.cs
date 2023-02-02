@@ -23,7 +23,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public string gameID { get => _gameID; set => _gameID = value; }
         public string homeID { get => _homeID; set => _homeID = value; }
         public string awayID { get => _awayID; set => _awayID = value; }
-        public DateTime gameDate { get => _gameDate; set => _gameDate = value; }
+        public DateTime gameDate { get => _gameDate.Date ; set => _gameDate = value.Date; }
         public TimeSpan gameTime { get => _gameTime; set => _gameTime = value; }
         public string venue { get => _venue; set => _venue = value; }
         internal Team home { get => _home; set => _home = value; }
