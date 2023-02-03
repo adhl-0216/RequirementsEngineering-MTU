@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 {
-    class Game
+    public class Game
     {
         private string _gameID;
         private string _homeID;
@@ -39,6 +39,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             venue = Home.HomeCourt;
             home = Home;
             away = Away;
+        }
+
+        public Game(string GameID, DateTime GameDate)
+        {
+            gameID = GameID;
+            gameDate = GameDate;
         }
 
         public override string ToString()

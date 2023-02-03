@@ -1,6 +1,5 @@
 using NBAFantasyLeagueSeasonSchedulerSYS.Games;
 using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
-using System.Windows.Forms;
 
 namespace AlgorithmTest
 {
@@ -29,20 +28,22 @@ namespace AlgorithmTest
 
         private Team[] allTeams = { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 };
 
-        [TestMethod]
+        private List<string> allGameID = new List<string>();
 
+        private List<Game> allGames = new List<Game>();
+        
+        private Random rand = new Random();
+
+        [TestMethod]
         public void generateGameIDTest()
         {
-            
-            List<string> allGameID = new List<string>();
-
             generateGameID(new Queue<Team>(allTeams), ref allGameID);
 
             Assert.AreEqual(135, allGameID.Count);
-            Console.WriteLine(string.Join("\n", allGameID));
+            //Console.WriteLine(string.Join("\n", allGameID));
         }
 
-        public void generateGameID(Queue<Team> teamsQueue, ref List<string> allGameID)
+        private void generateGameID(Queue<Team> teamsQueue, ref List<string> allGameID)
         {
             if (teamsQueue.Count == 0) return;
 
@@ -55,6 +56,48 @@ namespace AlgorithmTest
             }
 
             generateGameID(teamsQueue, ref allGameID);
+        }
+
+        [TestMethod]
+        public void generateDatesTest()
+        {
+            generateGameIDTest();
+            int actual = generateDates(DateTime.Now, allGameID);
+            Assert.AreEqual(135, allGames.Count);
+            Assert.AreEqual(135, actual);
+        
+        
+        }
+        public void Shuffle<T>(ref List<T> values)
+        {
+            for (int i = values.Count - 1; i > 0; i--)
+            {
+                int k = rand.Next(i + 1);
+                T value = values[k];
+                values[k] = values[i];
+                values[i] = value;
+            }
+        }
+        int generateDates(DateTime seasonStart, List<string> allGameID)
+        {
+            int count = 0;
+            DateTime gameDate = seasonStart;
+            Shuffle(ref allGameID);
+            foreach (string gameID in allGameID)
+            {
+                if (gameID == allGameID[0])
+                {
+                    allGames.Add(new Game(gameID, gameDate));
+                }
+                else
+                {
+                    gameDate = gameDate.AddDays(rand.Next(1,4));
+                    allGames.Add(new Game(gameID, gameDate));
+                }
+                    count++;
+            }
+
+            return count;
         }
     }
 }
