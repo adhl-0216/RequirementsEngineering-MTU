@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32802.440
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBAFantasyLeagueSeasonSchedulerSYS", "NBAFantasyLeagueSeasonSchedulerSYS.csproj", "{C218B9E0-3C36-47A5-B962-BEB0B217FACA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmTest", "..\AlgorithmTest\AlgorithmTest.csproj", "{48046CDF-56A1-455C-A3AF-045A2AEBBECA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C218B9E0-3C36-47A5-B962-BEB0B217FACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C218B9E0-3C36-47A5-B962-BEB0B217FACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C218B9E0-3C36-47A5-B962-BEB0B217FACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48046CDF-56A1-455C-A3AF-045A2AEBBECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48046CDF-56A1-455C-A3AF-045A2AEBBECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48046CDF-56A1-455C-A3AF-045A2AEBBECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48046CDF-56A1-455C-A3AF-045A2AEBBECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
