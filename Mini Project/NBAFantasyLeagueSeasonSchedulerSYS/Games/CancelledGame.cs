@@ -1,10 +1,4 @@
-﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 {
@@ -12,7 +6,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     {
         private string _reason;
         public string Reason { get => _reason; set => _reason = value; }
-        public CancelledGame(Game game, string reason) : base(game.gameID, game.home, game.away, game.gameDate, game.gameTime)
+        public CancelledGame(Game game, string reason) : base(game.gameID, game.gameDate)
         {
             Reason = reason;
         }

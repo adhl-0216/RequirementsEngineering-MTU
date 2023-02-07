@@ -12,8 +12,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     public class Game
     {
         private string _gameID;
-        private string _homeID;
-        private string _awayID;
         private DateTime _gameDate;
         private TimeSpan _gameTime;
         private string _venue;
@@ -21,30 +19,23 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private Team _away;
 
         public string gameID { get => _gameID; set => _gameID = value; }
-        public string homeID { get => _homeID; set => _homeID = value; }
-        public string awayID { get => _awayID; set => _awayID = value; }
         public DateTime gameDate { get => _gameDate.Date ; set => _gameDate = value.Date; }
         public TimeSpan gameTime { get => _gameTime; set => _gameTime = value; }
         public string venue { get => _venue; set => _venue = value; }
         internal Team home { get => _home; set => _home = value; }
         internal Team away { get => _away; set => _away = value; }
 
-        public Game(string GameID, Team Home, Team Away, DateTime GameDate, TimeSpan GameTime)
-        {
-            gameID = GameID;
-            homeID = Home.TeamID;
-            awayID = Away.TeamID;
-            gameDate = GameDate.Date;
-            gameTime= GameTime;
-            venue = Home.HomeCourt;
-            home = Home;
-            away = Away;
-        }
-
         public Game(string GameID, DateTime GameDate)
         {
+            List<Team> allTeams = new List<Team>(10);
+            Team.retrieveTeams(ref allTeams);
+            
             gameID = GameID;
+            home = allTeams.Find(team => team.TeamID == GameID.Substring(4,3));
+            away = allTeams.Find(team => team.TeamID == GameID.Substring(0,3));
             gameDate = GameDate;
+            gameTime = new TimeSpan(20,0,0);
+            venue = home.HomeCourt;
         }
 
         public override string ToString()
@@ -55,7 +46,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public void saveGame()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = $"INSERT INTO GAMES VALUES ('{gameID}','{homeID}','{awayID}',{gameDate},{gameTime},'{venue}')";
+            string sqlInsert = $"INSERT INTO GAMES VALUES ('{gameID}','{home.TeamID}','{away.TeamID}',{gameDate},{gameTime},'{venue}')";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
 
             try
@@ -67,6 +58,34 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             {
                 Console.WriteLine(ex.StackTrace);
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static void retrieveGames(ref List<Game> allGames)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlSelectGames = "SELECT * FROM GAMES";
+            OracleCommand cmd = new OracleCommand(sqlSelectGames, conn);
+
+            try
+            {
+                OracleDataReader dataReader = cmd.ExecuteReader();
+                allGames = new List<Game>(10);
+                while (dataReader.Read())
+                {
+                    string gameID = dataReader.GetString(0);
+                    //string homeID = dataReader.GetString(1);
+                    //string awayID = dataReader.GetString(2);
+                    DateTime gameDate = dataReader.GetDateTime(3);
+
+                    //allGames.Add(new Game(gameID, homeID, awayID, gameDate, gameTime));
+                    allGames.Add(new Game(gameID, gameDate));
+                }
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
         }
     }

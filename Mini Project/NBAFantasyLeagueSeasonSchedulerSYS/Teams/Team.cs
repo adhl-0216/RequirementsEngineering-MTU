@@ -79,5 +79,58 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                 Console.WriteLine(e.Message);
             }
         }
+
+        public static void retrieveTeams(ref List<Team> allTeams)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlSelect = "SELECT * FROM TEAMS";
+            OracleCommand cmd = new OracleCommand(sqlSelect, conn);
+
+            try
+            {
+                OracleDataReader dataReader = cmd.ExecuteReader();
+                allTeams = new List<Team>(10);
+                while (dataReader.Read())
+                {
+                    string teamName = dataReader.GetString(1);
+                    string gM = dataReader.GetString(2);
+                    string headCoach = dataReader.GetString(3);
+                    string asstCoach = dataReader.GetString(4);
+                    string homeCourt = dataReader.GetString(5);
+
+                    allTeams.Add(new Team(teamName, gM, headCoach, asstCoach, homeCourt));
+                }
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        public static void amendTeam(Team team)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlUpdate = $"UPDATE TEAMS " +
+                $"SET TEAM_NAME='{team.TeamName.Replace("'", "''")}'," +
+                $"GENERAL_MANAGER='{team.Gm}'," +
+                $"HEAD_COACH='{team.HeadCoach}'," +
+                $"ASSISTANT_COACH='{team.AsstCoach}'," +
+                $"HOME_COURT='{team.HomeCourt}'" +
+                $"WHERE TEAM_ID='{team.TeamID}'";
+            OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
+
+            try
+            {
+                int affected = cmd.ExecuteNonQuery();
+                Console.WriteLine(affected + " row(s) affected");
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
     }
 }

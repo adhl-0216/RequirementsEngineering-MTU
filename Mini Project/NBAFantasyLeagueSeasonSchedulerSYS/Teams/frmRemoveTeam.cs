@@ -82,7 +82,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void refreshComboBox()
         {
-            frmUpdateTeam.retrieveTeams(ref allTeams);
+            Team.retrieveTeams(ref allTeams);
             cboSelectTeam.Items.Clear();
             foreach (Team team in allTeams)
             {

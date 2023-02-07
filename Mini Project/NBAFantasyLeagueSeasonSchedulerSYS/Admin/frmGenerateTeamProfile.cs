@@ -63,18 +63,18 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             dtgGames.Rows.Clear();
             foreach (Game game in allGames)
             {
-                if (game.homeID == selectedTeam.TeamID || game.awayID == selectedTeam.TeamID)
+                if (game.home.TeamID == selectedTeam.TeamID || game.away.TeamID == selectedTeam.TeamID)
                 {
                     var idx = dtgGames.Rows.Add();
                     dtgGames.Rows[idx].Cells["gameID"].Value = game.gameID;
                     string opponent = "";
-                    if (game.homeID == selectedTeam.TeamID)
+                    if (game.home.TeamID == selectedTeam.TeamID)
                     {
-                        opponent = allTeams.Find(x => x.TeamID == game.awayID).TeamName;
+                        opponent = allTeams.Find(x => x.TeamID == game.away.TeamID).TeamName;
                     }
-                    else if (game.awayID == selectedTeam.TeamID)
+                    else if (game.away.TeamID == selectedTeam.TeamID)
                     {
-                        opponent = allTeams.Find(x => x.TeamID == game.homeID).TeamName;
+                        opponent = allTeams.Find(x => x.TeamID == game.home.TeamID).TeamName;
                     }
                     dtgGames.Rows[idx].Cells["opponent"].Value = opponent;
                     dtgGames.Rows[idx].Cells["date"].Value = game.gameDate.ToString("dd/MM/yyyy");
