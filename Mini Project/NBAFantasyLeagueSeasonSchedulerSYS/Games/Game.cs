@@ -34,7 +34,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             home = allTeams.Find(team => team.TeamID == GameID.Substring(4,3));
             away = allTeams.Find(team => team.TeamID == GameID.Substring(0,3));
             gameDate = GameDate;
-            gameTime = new TimeSpan(20,0,0);
+            gameTime = GameDate.TimeOfDay;
             venue = home.HomeCourt;
         }
 
@@ -46,7 +46,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public void saveGame()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = $"INSERT INTO GAMES VALUES ('{gameID}','{home.TeamID}','{away.TeamID}',{gameDate},{gameTime},'{venue}')";
+            string sqlInsert = $"INSERT INTO GAMES VALUES ('{gameID}','{home.TeamID}','{away.TeamID}',TIMESTAMP'{gameDate.ToString("yyyy-MM-dd")} {gameTime.ToString()}','{venue}')";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
 
             try
@@ -74,11 +74,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 while (dataReader.Read())
                 {
                     string gameID = dataReader.GetString(0);
-                    //string homeID = dataReader.GetString(1);
-                    //string awayID = dataReader.GetString(2);
                     DateTime gameDate = dataReader.GetDateTime(3);
 
-                    //allGames.Add(new Game(gameID, homeID, awayID, gameDate, gameTime));
                     allGames.Add(new Game(gameID, gameDate));
                 }
             }

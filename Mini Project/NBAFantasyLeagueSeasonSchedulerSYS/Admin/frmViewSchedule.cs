@@ -25,19 +25,24 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         public frmViewSchedule(Form parent)
         {
             InitializeComponent();
+            allTeams = new List<Team>();
+            allGames = new List<Game>();
             Parent = parent;
         }
 
         private void frmViewSchedule_Load(object sender, EventArgs e)
         {
             //retrive data
-            allGames = frmMainMenu.AllGames;
+            Team.retrieveTeams(ref allTeams);
+            Game.retrieveGames(ref allGames);
             allCancelledGames = frmMainMenu.AllCancelledGames;
-            allTeams = frmMainMenu.AllTeams;
+
+            //init GUI
             foreach (Game game in allGames)
             {
-                dtgScheduledGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue);
+                dtgScheduledGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("yyyy/MM/dd"), game.gameTime, game.venue);
             }
+
             if (allCancelledGames != null) {
                 foreach (CancelledGame cg in allCancelledGames)
                 {
