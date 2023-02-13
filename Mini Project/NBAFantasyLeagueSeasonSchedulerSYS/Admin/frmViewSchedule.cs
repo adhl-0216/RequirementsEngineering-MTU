@@ -33,8 +33,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         private void frmViewSchedule_Load(object sender, EventArgs e)
         {
             //retrive data
-            Team.retrieveTeams(ref allTeams);
-            Game.retrieveGames(ref allGames);
+            Team.sqlSelectTeam(ref allTeams);
+            Game.sqlSelectGame(ref allGames);
             allCancelledGames = frmMainMenu.AllCancelledGames;
 
             //init GUI

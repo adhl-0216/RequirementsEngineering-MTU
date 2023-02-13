@@ -113,7 +113,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                 selectedTeam.AsstCoach = txtAsstCoach.Text;
                 selectedTeam.HomeCourt = txtHomeCourt.Text;
 
-                Team.amendTeam(selectedTeam);
+                selectedTeam.sqlUpdateTeam();
 
                 string successMsg = $"Team Updated Successfully! \n\n" +
                     $"{selectedTeam.TeamName}\n" +
@@ -137,7 +137,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void refreshComboBox()
         {
-            Team.retrieveTeams(ref allTeams);
+            Team.sqlSelectTeam(ref allTeams);
             cboTeamName.Items.Clear();
             foreach (Team team in allTeams)
             {

@@ -22,6 +22,18 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             get => _teamID; 
             set
             {
+
+                if (value.Contains("Lakers"))
+                {
+                    _teamID = "LAK";
+                    return;
+                } 
+                if (value.Contains("Oklahoma"))
+                {
+                    _teamID = "OKC";
+                    return;
+                }
+
                 string[] teamNameArr = value.Split(' ');
                 if (teamNameArr.Length == 4)
                 {
@@ -29,14 +41,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                     {
                         _teamID += teamNameArr[i].Substring(0, 1);
                     }
+                    return;
                 }
                 else if (teamNameArr.Length == 3)
                 {
                     _teamID = teamNameArr[1].Substring(0, 3).ToUpper();
+                    return;
                 }
                 else
                 {
                     _teamID = value.Substring(0, 3).ToUpper();
+                    return;
                 }
             } 
         }
@@ -63,15 +78,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             return JsonConvert.SerializeObject(this);
         }
 
-        public void addTeam()
+        public void sqlInsertTeam()
         {
             OracleConnection conn = Program.getOracleConnection();
-            String sqlInsert = $"INSERT INTO TEAMS VALUES('{TeamID}','{TeamName.Replace("'","''")}','{Gm}','{HeadCoach}','{AsstCoach}','{HomeCourt}',{TeamWins[0]})";
+            string sqlInsert = $"INSERT INTO TEAMS VALUES('{TeamID}','{TeamName.Replace("'","''")}','{Gm}','{HeadCoach}','{AsstCoach}','{HomeCourt}',{TeamWins[0]})";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
-                Console.WriteLine(affectedRows + " row(s) are affected.");
+                Console.WriteLine(affectedRows + " row(s) are inserted.");
             }
             catch (Exception e)
             {
@@ -80,7 +95,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             }
         }
 
-        public static void retrieveTeams(ref List<Team> allTeams)
+        public static void sqlSelectTeam(ref List<Team> allTeams)
         {
             OracleConnection conn = Program.getOracleConnection();
             string sqlSelect = "SELECT * FROM TEAMS";
@@ -108,22 +123,22 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             }
         }
 
-        public static void amendTeam(Team team)
+        public void sqlUpdateTeam()
         {
             OracleConnection conn = Program.getOracleConnection();
             string sqlUpdate = $"UPDATE TEAMS " +
-                $"SET TEAM_NAME='{team.TeamName.Replace("'", "''")}'," +
-                $"GENERAL_MANAGER='{team.Gm}'," +
-                $"HEAD_COACH='{team.HeadCoach}'," +
-                $"ASSISTANT_COACH='{team.AsstCoach}'," +
-                $"HOME_COURT='{team.HomeCourt}'" +
-                $"WHERE TEAM_ID='{team.TeamID}'";
+                $"SET TEAM_NAME='{TeamName.Replace("'", "''")}'," +
+                $"GENERAL_MANAGER='{Gm}'," +
+                $"HEAD_COACH='{HeadCoach}'," +
+                $"ASSISTANT_COACH='{AsstCoach}'," +
+                $"HOME_COURT='{HomeCourt}'" +
+                $"WHERE TEAM_ID='{TeamID}'";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
 
             try
             {
                 int affected = cmd.ExecuteNonQuery();
-                Console.WriteLine(affected + " row(s) affected");
+                Console.WriteLine(affected + " row(s) updated.");
             }
             catch (OracleException ex)
             {

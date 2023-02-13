@@ -84,7 +84,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             if (valid) {
                 String successMsg;
                 Team newTeam = new Team(txtTeamName.Text, txtGM.Text, txtHeadCoach.Text, txtAsstCoach.Text, txtHomeCourt.Text);
-                newTeam.addTeam();
+                newTeam.sqlInsertTeam();
                 Console.WriteLine(newTeam.ToString());
                 //allTeams.Add(newTeam);
                 successMsg = "Team Added Successfully! \n\n";

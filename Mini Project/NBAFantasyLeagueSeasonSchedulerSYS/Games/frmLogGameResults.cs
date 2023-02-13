@@ -14,9 +14,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     {
         private static new Form Parent;
         private static List<Game> allGames;
-        private static DataGridViewRow selectedGame;
-        private static bool selectStatus = true;
-        private string winner;
+        private static Game selectedGame;
+        private char winner;
         public frmLogGameResults(Form parent)
         {
             InitializeComponent();
@@ -30,13 +29,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private void frmLogGameResults_Load(object sender, EventArgs e)
         {
-            allGames = frmMainMenu.AllGames;
-            foreach (Game game in allGames)
-            {
-                dtgGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue);
-            }
-            selectedGame = dtgGames.SelectedRows[0];
-            lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
+            refreshDTG();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -60,83 +53,54 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 }
             }
 
-            GameResult newGameResult = new GameResult(
+            GameResult gameResult = new GameResult(
                 winner,
                 Int32.Parse(txtHomePTS.Text), Int32.Parse(txtHomeTRB.Text), Int32.Parse(txtHomeAST.Text),
                 Int32.Parse(txtAwayPTS.Text), Int32.Parse(txtAwayTRB.Text), Int32.Parse(txtAwayAST.Text),
-                selectedGame.Cells["gameID"].Value.ToString()
+                selectedGame.gameID
             );
 
-            string msg = $"[{newGameResult.gameID}]" +
-                $"\n{selectedGame.Cells["home"].Value}: {newGameResult.homeScore} PTS/ {newGameResult.homeRebounds} TRB/ {newGameResult.homeAssists} AST" +
-                $"\n{selectedGame.Cells["away"].Value}: {newGameResult.awayScore} PTS/ {newGameResult.awayRebounds} TRB/ {newGameResult.awayAssists} AST" +
-                $"\n\nWINNER: {newGameResult.winner}";
+            string msg = $"[{gameResult.gameID}]" +
+                $"\n{selectedGame.home.TeamID}: {gameResult.homeScore} PTS/ {gameResult.homeRebounds} TRB/ {gameResult.homeAssists} AST" +
+                $"\n{selectedGame.away.TeamID}: {gameResult.awayScore} PTS/ {gameResult.awayRebounds} TRB/ {gameResult.awayAssists} AST" +
+                $"\n\nWINNER: {((gameResult.winner == 'H') ? selectedGame.home.TeamID : selectedGame.away.TeamID)}";
 
             DialogResult response = MessageBox.Show(msg,"Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (response == DialogResult.OK)
             {
-                newGameResult.saveGameResult();
-            }
-            
-            { 
-                MessageBox.Show($"Game Results for [{newGameResult.gameID}] has succesfully been saved to Game Results File.", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                dtgGames.Enabled = true;
-                btnSelect.Text = "SELECT";
-                lblHome.Text = "HOME";
-                lblHome.Font = default;
-                lblHome.ForeColor = default;
-                lblAway.Text = "AWAY";
-                lblAway.ForeColor = default;
-                lblAway.Font = default;
-                foreach (TextBox textBox in textBoxes)
-                {
-                    textBox.Enabled = false;
-                    textBox.Clear();
-                }
-                btnConfirm.Enabled = false;
-                selectStatus = true;
-                dtgGames.Rows.Remove(dtgGames.SelectedRows[0]);
+                gameResult.sqlInsertGameResult();
+                selectedGame.sqlGameRecorded();
+
+                MessageBox.Show($"Game Results for [{gameResult.gameID}] has succesfully been saved to Game Results File.", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                refreshDTG();
+                enableInputs(false);
             }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            TextBox[] textBoxes = { txtHomePTS, txtHomeTRB, txtHomeAST, txtAwayPTS, txtAwayTRB, txtAwayAST };
-            if (selectStatus)
-            {
-                dtgGames.Enabled = false;
+            if (btnSelect.Text.Equals("SELECT")){
                 btnSelect.Text = "CANCEL";
-                lblHome.Text = selectedGame.Cells["home"].Value.ToString();
-                lblAway.Text = selectedGame.Cells["away"].Value.ToString();
-                foreach (TextBox textBox in textBoxes)
-                {
-                    textBox.Enabled = true;
-                }
-                btnConfirm.Enabled = true;
-                selectStatus = false;
-            }
-            else
-            {
-                dtgGames.Enabled = true;
+                enableInputs();
+                return;
+            }     
+            
+            if (btnSelect.Text.Equals("CANCEL")){
                 btnSelect.Text = "SELECT";
-                lblHome.Text = "HOME";
-                lblHome.ForeColor = Color.Black;
-                lblAway.Text = "AWAY";
-                lblAway.ForeColor = Color.Black;
-                foreach (TextBox textBox in textBoxes)
-                {
-                    textBox.Enabled = false;
-                    textBox.Clear();
-                }
-                btnConfirm.Enabled = false;
-                selectStatus = true;
+                enableInputs(false);
+                return;
             }
         }
 
         private void dtgGames_SelectionChanged(object sender, EventArgs e)
         {
-            selectedGame = dtgGames.SelectedRows[0];
-            lblGameID.Text = selectedGame.Cells["gameID"].Value.ToString();
+            if (dtgGames.SelectedRows.Count == 0) return;
+            int idx = dtgGames.SelectedRows[0].Index;
+            selectedGame = allGames[idx];
+            lblGameID.Text = selectedGame.gameID;
+            lblHome.Text = selectedGame.home.TeamID;
+            lblAway.Text = selectedGame.away.TeamID;
         }
 
         private void checkWinner(object sender, EventArgs e)
@@ -145,6 +109,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             if (txtHomePTS.Text.Equals("")) return;
 
             if (txtAwayPTS.Text.Equals("")) return;
+
             //check if input contains letters
             if (txtHomePTS.Text.Any(char.IsLetter))
             {
@@ -172,7 +137,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 lblHome.Font = new Font(lblHome.Font, FontStyle.Bold);
                 lblAway.ForeColor = default;
                 lblAway.Font = default;
-                winner = lblHome.Text;
+                winner = 'H';
             }
             else
             {
@@ -180,8 +145,34 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 lblAway.Font = new Font(lblHome.Font, FontStyle.Bold);
                 lblHome.ForeColor = default;
                 lblHome.Font = default;
-                winner = lblAway.Text;
+                winner = 'A';
             }
+        }
+
+        private void refreshDTG()
+        {
+            Game.sqlSelectGame(ref allGames);
+            dtgGames.Rows.Clear();
+            foreach (Game game in allGames)
+            {
+                dtgGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue);
+            }
+        }
+
+        private void enableInputs(bool enable = true)
+        {
+            TextBox[] textBoxes = { txtHomePTS, txtHomeTRB, txtHomeAST, txtAwayPTS, txtAwayTRB, txtAwayAST };
+            dtgGames.Enabled = !enable;
+            lblHome.ForeColor = default;
+            lblHome.Font = default;
+            lblAway.ForeColor = default;
+            lblAway.Font = default;
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Enabled = enable;
+                textBox.Clear();
+            }
+            btnConfirm.Enabled = enable;
         }
     }
 }

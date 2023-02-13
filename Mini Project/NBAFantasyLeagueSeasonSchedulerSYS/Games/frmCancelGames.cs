@@ -28,54 +28,41 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private void frmCancelGames_Load(object sender, EventArgs e)
         {
-            allGames = frmMainMenu.AllGames;
-            foreach (Game game in allGames)
-            {
-                dtgGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue);
-            }
+            refreshDTG();
         }
 
         private void btnCancelGame_Click(object sender, EventArgs e)
         {
-            string reason;
-            DataGridViewSelectedRowCollection selectedRows;
+            int idx = dtgGames.SelectedRows[0].Index;
+            Game selectedGame = allGames[idx];
 
-            reason = txtReason.Text;
-            selectedRows = dtgGames.SelectedRows;
-            if (selectedRows.Count > 0 ){
-                if (!reason.Equals(""))
+            string reason = txtReason.Text;
+
+            if (!reason.Equals(""))
+            {
+                DialogResult cfm = MessageBox.Show($"Proceed to cancel selected Game(s)?\n\n[{selectedGame.gameID}]\nReason\n\n{ reason}", "Confirm Game Cancellation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (cfm == DialogResult.OK)
                 {
-                    StringBuilder str = new StringBuilder();
-                    foreach (DataGridViewRow row in selectedRows)
-                    {
-                        str.Append('-');
-                        str.AppendLine(row.Cells["gameID"].Value.ToString());
-                    }
-                    DialogResult cfm = MessageBox.Show("Proceed to cancel selected Game(s)?\n\n" + str + "\nReason\n\n" + reason, "Confirm Game Cancellation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (cfm == DialogResult.OK)
-                    {
-                        MessageBox.Show("Selected Game(s) have been cancelled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        foreach (DataGridViewRow row in selectedRows)
-                        {
-                            Game g = allGames.Find(x => x.gameID.Equals(row.Cells["gameID"].Value.ToString()));
-                            CancelledGame cg = new CancelledGame(g, reason);
-                            //update database 
-                            frmMainMenu.AllCancelledGames.Add(cg);
-                            frmMainMenu.AllGames.Remove(g);
-                            //
-                            dtgGames.Rows.Remove(row);
-                        }
-                        txtReason.Text = "";
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please provide a valid reason for Game Cancellation", "Reason for Cancellation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    selectedGame.sqlDeleteGame();
+
+                    MessageBox.Show("Selected Game(s) have been cancelled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtReason.Clear();
+                    refreshDTG();
                 }
             }
             else
             {
-                MessageBox.Show("Please select the Game(s) to be cancelled", "No Games Selected", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Please provide a valid reason for Game Cancellation", "Missing Reason for Cancellation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void refreshDTG()
+        {
+            Game.sqlSelectGame(ref allGames);
+            dtgGames.Rows.Clear();
+            foreach (Game game in allGames)
+            {
+                dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue);
             }
         }
     }
