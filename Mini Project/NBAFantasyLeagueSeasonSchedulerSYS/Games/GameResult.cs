@@ -48,7 +48,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
-                Console.WriteLine(affectedRows + " row(s) are inserted.");
+                Console.WriteLine(affectedRows + " row(s) inserted.");
             }
             catch (Exception e)
             {

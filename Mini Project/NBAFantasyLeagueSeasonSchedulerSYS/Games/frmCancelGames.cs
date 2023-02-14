@@ -43,9 +43,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 DialogResult cfm = MessageBox.Show($"Proceed to cancel selected Game(s)?\n\n[{selectedGame.gameID}]\nReason\n\n{ reason}", "Confirm Game Cancellation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (cfm == DialogResult.OK)
                 {
-                    selectedGame.sqlDeleteGame();
+                    selectedGame.sqlDeleteGame(reason);
 
-                    MessageBox.Show("Selected Game(s) have been cancelled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Selected Game has been cancelled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtReason.Clear();
                     refreshDTG();
                 }

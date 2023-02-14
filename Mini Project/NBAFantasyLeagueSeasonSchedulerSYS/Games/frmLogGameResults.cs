@@ -61,7 +61,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             );
 
             string msg = $"[{gameResult.gameID}]" +
-                $"\n{selectedGame.home.TeamID}: {gameResult.homeScore} PTS/ {gameResult.homeRebounds} TRB/ {gameResult.homeAssists} AST" +
+                $"\n\n{selectedGame.home.TeamID}: {gameResult.homeScore} PTS/ {gameResult.homeRebounds} TRB/ {gameResult.homeAssists} AST" +
                 $"\n{selectedGame.away.TeamID}: {gameResult.awayScore} PTS/ {gameResult.awayRebounds} TRB/ {gameResult.awayAssists} AST" +
                 $"\n\nWINNER: {((gameResult.winner == 'H') ? selectedGame.home.TeamID : selectedGame.away.TeamID)}";
 

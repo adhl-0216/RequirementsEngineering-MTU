@@ -115,7 +115,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
         }
 
-        public void sqlDeleteGame()
+        public void sqlDeleteGame(string reason)
         {
             OracleConnection conn = Program.getOracleConnection();
             string sqlDel = $"DELETE FROM GAMES WHERE GAME_ID='{gameID}'";
@@ -125,6 +125,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             {
                 int affectedRows = cmd.ExecuteNonQuery();
                 Console.WriteLine($"{affectedRows} row(s) deleted.");
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
+            }
+
+            string sqlInsert = $"INSERT INTO CANCELLED_GAMES VALUES ('{gameID}','{home.TeamID}','{away.TeamID}',TIMESTAMP'{gameDate.ToString("yyyy-MM-dd")} {gameTime}','{venue}','{reason}')";
+            cmd.CommandText = sqlInsert;
+            try
+            {
+                int affectedRows = cmd.ExecuteNonQuery();
+                Console.WriteLine($"{affectedRows} row(s) inserted.");
             }
             catch (OracleException ex)
             {

@@ -18,15 +18,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         private static List<Game> allGames;
         private static List<CancelledGame> allCancelledGames;
         private static List<Team> allTeams; 
-        public frmViewSchedule()
-        {
-            InitializeComponent();
-        }        
+      
         public frmViewSchedule(Form parent)
         {
             InitializeComponent();
-            allTeams = new List<Team>();
-            allGames = new List<Game>();
             Parent = parent;
         }
 
@@ -35,18 +30,18 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             //retrive data
             Team.sqlSelectTeam(ref allTeams);
             Game.sqlSelectGame(ref allGames);
-            allCancelledGames = frmMainMenu.AllCancelledGames;
+            CancelledGame.sqlSelectCancelledGames(ref allCancelledGames);
 
             //init GUI
             foreach (Game game in allGames)
             {
-                dtgScheduledGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("yyyy/MM/dd"), game.gameTime, game.venue);
+                dtgScheduledGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue);
             }
 
             if (allCancelledGames != null) {
                 foreach (CancelledGame cg in allCancelledGames)
                 {
-                    dtgCancelledGames.Rows.Add(cg.gameID, cg.home.TeamID, cg.away.TeamID, cg.gameDate.ToString("dd/MM/yyyy"), cg.gameTime, cg.venue, cg.Reason);
+                    dtgCancelledGames.Rows.Add(cg.gameDate.ToString("dd/MM/yyyy"), cg.gameID, cg.home.TeamID, cg.away.TeamID, cg.gameTime, cg.venue, cg.Reason);
                 }
             }
         }
