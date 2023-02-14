@@ -45,7 +45,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         {
             return JsonConvert.SerializeObject(this);
         }
-
+        
         public static void sqlSelectGame(ref List<Game> allGames)
         {
             OracleConnection conn = Program.getOracleConnection();
@@ -60,9 +60,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 {
                     string gameID = dataReader.GetString(0);
                     DateTime gameDateTime = dataReader.GetDateTime(3);
+                    char recorded = dataReader.GetString(5)[0];
 
                     Game game = new Game(gameID, gameDateTime);
                     game.gameTime = gameDateTime.TimeOfDay;
+                    game.recorded = recorded;
 
                     allGames.Add(game);
                 }
@@ -83,7 +85,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
-                Console.WriteLine($"{affectedRows} row(s) are inserted.");
+                Console.WriteLine($"{affectedRows} row(s) inserted.");
             }
             catch (OracleException ex)
             {
@@ -122,7 +124,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
-                Console.WriteLine($"{affectedRows} row(s) are deleted.");
+                Console.WriteLine($"{affectedRows} row(s) deleted.");
             }
             catch (OracleException ex)
             {
@@ -136,7 +138,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             recorded = 'Y';
             OracleConnection conn = Program.getOracleConnection();
             string sqlUpdate = $"UPDATE GAMES " +
-                $"SET RECORDED={recorded}" +
+                $"SET RECORDED='{recorded}'" +
                 $"WHERE GAME_ID='{gameID}'";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
 

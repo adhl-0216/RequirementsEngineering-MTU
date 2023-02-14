@@ -59,11 +59,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void refreshDTG()
         {
             Game.sqlSelectGame(ref allGames);
+            allGames.RemoveAll(game => game.gameDate < DateTime.Now);
+
             dtgGames.Rows.Clear();
-            foreach (Game game in allGames)
-            {
-                dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue);
-            }
+            allGames.ForEach(game => dtgGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue));
         }
     }
 }

@@ -81,13 +81,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void btnSelect_Click(object sender, EventArgs e)
         {
             if (btnSelect.Text.Equals("SELECT")){
-                btnSelect.Text = "CANCEL";
                 enableInputs();
                 return;
             }     
             
             if (btnSelect.Text.Equals("CANCEL")){
-                btnSelect.Text = "SELECT";
                 enableInputs(false);
                 return;
             }
@@ -152,16 +150,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void refreshDTG()
         {
             Game.sqlSelectGame(ref allGames);
+            allGames.RemoveAll(game => game.recorded.Equals('Y') || game.gameDate > DateTime.Now);
+            allGames.Sort((x, y) => x.gameDate.CompareTo(y.gameDate));
+
             dtgGames.Rows.Clear();
-            foreach (Game game in allGames)
-            {
-                dtgGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue);
-            }
+            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("dd/MM/yyyy"), game.gameID, game.home.TeamID, game.away.TeamID,  game.gameTime, game.venue));
         }
 
         private void enableInputs(bool enable = true)
         {
             TextBox[] textBoxes = { txtHomePTS, txtHomeTRB, txtHomeAST, txtAwayPTS, txtAwayTRB, txtAwayAST };
+            btnSelect.Text = (enable) ? "CANCEL" : "SELECT";
             dtgGames.Enabled = !enable;
             lblHome.ForeColor = default;
             lblHome.Font = default;

@@ -69,6 +69,26 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private void btnReschedule_Click(object sender, EventArgs e)
         {
+            //validation
+            if (dtpDate.Value < DateTime.Now)
+            {
+                MessageBox.Show("Can not reschedule game to a date in the past.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                dtpDate.Focus();
+                return;
+            }
+
+            foreach (Game game in allGames)
+            {
+                if (game.gameID != selectedGame.gameID)
+                {
+                    if (game.gameDate.Equals(dtpDate.Value))
+                    {
+                        MessageBox.Show($"A game is already scheduled on this date. {dtpDate.Value:dd/MM/yyyy}", "Busy Schedule", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+
             string msg = $"Reschedule Game: [{lblGameID.Text}] \n-Date: {dtpDate.Value.ToString("dd/MM/yyyy")}\n-Time: {dtpTime.Value.ToString("HH:mm")}\n-Venue: {txtVenue.Text}";
             DialogResult rs = MessageBox.Show(msg, "Reschedule Game", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (rs == DialogResult.OK)
@@ -86,11 +106,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void refreshDTG()
         {
             Game.sqlSelectGame(ref allGames);
+            allGames.RemoveAll(game => game.gameDate < DateTime.Now);
+            allGames.Sort((x,y) => x.gameDate.CompareTo(y.gameDate));
+
             dtgGames.Rows.Clear();
-            foreach (Game game in allGames)
-            {
-                dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"),game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue);
-            }
+            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("dd/MM/yyyy"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue));
         }
     }
 }

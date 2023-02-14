@@ -31,12 +31,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogGameResults));
             this.dtgGames = new System.Windows.Forms.DataGridView();
-            this.gameID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.home = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.away = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.venue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpGameResult = new System.Windows.Forms.GroupBox();
             this.grpWinner = new System.Windows.Forms.GroupBox();
             this.lblAway = new System.Windows.Forms.Label();
@@ -53,6 +47,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.lblAST = new System.Windows.Forms.Label();
             this.lblTRB = new System.Windows.Forms.Label();
             this.lblPTS = new System.Windows.Forms.Label();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gameID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.home = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.away = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.venue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgGames)).BeginInit();
             this.grpGameResult.SuspendLayout();
             this.grpWinner.SuspendLayout();
@@ -71,10 +71,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.dtgGames.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dtgGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgGames.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.date,
             this.gameID,
             this.home,
             this.away,
-            this.date,
             this.time,
             this.venue});
             this.dtgGames.GridColor = System.Drawing.SystemColors.ActiveCaption;
@@ -88,59 +88,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.dtgGames.Size = new System.Drawing.Size(783, 247);
             this.dtgGames.TabIndex = 2;
             this.dtgGames.SelectionChanged += new System.EventHandler(this.dtgGames_SelectionChanged);
-            // 
-            // gameID
-            // 
-            this.gameID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gameID.HeaderText = "ID";
-            this.gameID.MinimumWidth = 8;
-            this.gameID.Name = "gameID";
-            this.gameID.ReadOnly = true;
-            this.gameID.Width = 43;
-            // 
-            // home
-            // 
-            this.home.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.home.HeaderText = "HOME TEAM";
-            this.home.MinimumWidth = 8;
-            this.home.Name = "home";
-            this.home.ReadOnly = true;
-            this.home.Width = 97;
-            // 
-            // away
-            // 
-            this.away.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.away.HeaderText = "AWAY TEAM";
-            this.away.MinimumWidth = 8;
-            this.away.Name = "away";
-            this.away.ReadOnly = true;
-            this.away.Width = 97;
-            // 
-            // date
-            // 
-            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.date.HeaderText = "DATE";
-            this.date.MinimumWidth = 8;
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            this.date.Width = 61;
-            // 
-            // time
-            // 
-            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.time.HeaderText = "TIME";
-            this.time.MinimumWidth = 8;
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            this.time.Width = 58;
-            // 
-            // venue
-            // 
-            this.venue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.venue.HeaderText = "VENUE";
-            this.venue.MinimumWidth = 8;
-            this.venue.Name = "venue";
-            this.venue.ReadOnly = true;
             // 
             // grpGameResult
             // 
@@ -336,6 +283,59 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.lblPTS.Text = "PTS";
             this.lblPTS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // date
+            // 
+            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.date.HeaderText = "DATE";
+            this.date.MinimumWidth = 8;
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            this.date.Width = 61;
+            // 
+            // gameID
+            // 
+            this.gameID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gameID.HeaderText = "ID";
+            this.gameID.MinimumWidth = 8;
+            this.gameID.Name = "gameID";
+            this.gameID.ReadOnly = true;
+            this.gameID.Width = 43;
+            // 
+            // home
+            // 
+            this.home.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.home.HeaderText = "HOME TEAM";
+            this.home.MinimumWidth = 8;
+            this.home.Name = "home";
+            this.home.ReadOnly = true;
+            this.home.Width = 97;
+            // 
+            // away
+            // 
+            this.away.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.away.HeaderText = "AWAY TEAM";
+            this.away.MinimumWidth = 8;
+            this.away.Name = "away";
+            this.away.ReadOnly = true;
+            this.away.Width = 97;
+            // 
+            // time
+            // 
+            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.time.HeaderText = "TIME";
+            this.time.MinimumWidth = 8;
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            this.time.Width = 58;
+            // 
+            // venue
+            // 
+            this.venue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.venue.HeaderText = "VENUE";
+            this.venue.MinimumWidth = 8;
+            this.venue.Name = "venue";
+            this.venue.ReadOnly = true;
+            // 
             // frmLogGameResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,12 +361,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         #endregion
 
         private System.Windows.Forms.DataGridView dtgGames;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gameID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn home;
-        private System.Windows.Forms.DataGridViewTextBoxColumn away;
-        private System.Windows.Forms.DataGridViewTextBoxColumn date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn venue;
         private System.Windows.Forms.GroupBox grpGameResult;
         private System.Windows.Forms.GroupBox grpWinner;
         private System.Windows.Forms.TextBox txtAwayTRB;
@@ -383,5 +377,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private System.Windows.Forms.Label lblPTS;
         private System.Windows.Forms.Label lblAway;
         private System.Windows.Forms.Label lblHome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gameID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn home;
+        private System.Windows.Forms.DataGridViewTextBoxColumn away;
+        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn venue;
     }
 }
