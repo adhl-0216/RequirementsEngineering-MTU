@@ -19,10 +19,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         private static new Form Parent;
         private static List<Team> allTeams;
         private static List<Game> allGames;
-        public frmGenerateTeamProfile()
-        {
-            InitializeComponent();
-        }
+        private static List<GameResult> allResults;
+
         public frmGenerateTeamProfile(Form parent)
         {
             InitializeComponent();
@@ -31,12 +29,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
 
         private void frmGenerateTeamProfile_Load(object sender, EventArgs e)
         {
-            allTeams = frmMainMenu.AllTeams;
-            allGames = frmMainMenu.AllGames;
-            foreach (Team team in allTeams)
-            {
-                cboTeams.Items.Add(team.TeamName);
-            }
+            Team.sqlSelectTeam(ref allTeams);
+            allTeams.ForEach(team => cboTeams.Items.Add($"[{team.TeamID}] {team.TeamName}"));
         }
 
         private void frmGenerateTeamProfile_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,33 +51,43 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             txtHeadCoach.Text = selectedTeam.HeadCoach;
             txtAsstCoach.Text = selectedTeam.AsstCoach;
             txtHomeCourt.Text = selectedTeam.HomeCourt;
-            selectedTeam.TeamWins = new int[]{ ((int)new Random().Next(0,27)), 27 };
 
             //display Game Details
             dtgGames.Rows.Clear();
-            foreach (Game game in allGames)
+            Game.sqlSelectGame(ref allGames);
+            allGames.RemoveAll(game => !(game.gameID.Contains(selectedTeam.TeamID)));
+            GameResult.sqlSelectResults(ref allResults);
+            allResults.RemoveAll(results => !(results.gameID.Contains(selectedTeam.TeamID)));
+            foreach (GameResult result in allResults)
             {
-                if (game.home.TeamID == selectedTeam.TeamID || game.away.TeamID == selectedTeam.TeamID)
+                Game game = allGames.Find(g => g.gameID.Equals(result.gameID));
+                string opponent = (game.home.TeamID == selectedTeam.TeamID) ? game.away.TeamID : game.home.TeamID ;
+                string outcome = "L";
+                if (game.home.TeamID == selectedTeam.TeamID)
                 {
-                    var idx = dtgGames.Rows.Add();
-                    dtgGames.Rows[idx].Cells["gameID"].Value = game.gameID;
-                    string opponent = "";
-                    if (game.home.TeamID == selectedTeam.TeamID)
-                    {
-                        opponent = allTeams.Find(x => x.TeamID == game.away.TeamID).TeamName;
-                    }
-                    else if (game.away.TeamID == selectedTeam.TeamID)
-                    {
-                        opponent = allTeams.Find(x => x.TeamID == game.home.TeamID).TeamName;
-                    }
-                    dtgGames.Rows[idx].Cells["opponent"].Value = opponent;
-                    dtgGames.Rows[idx].Cells["date"].Value = game.gameDate.ToString("dd/MM/yyyy");
-                    dtgGames.Rows[idx].Cells["time"].Value = game.gameTime.ToString("h':'mm");
-                    dtgGames.Rows[idx].Cells["venue"].Value = game.venue;
-                    dtgGames.Rows[idx].Cells["result"].Value = (new Random().Next(0,2)==1)?"W":"L";
+                    if (result.winner.Equals('H')) outcome = "W";
+                    if (result.winner.Equals('A')) outcome = "L";
+                }else
+                {
+                    if (result.winner.Equals('H')) outcome = "L";
+                    if (result.winner.Equals('A')) outcome = "W";
                 }
+                string homeFinalStat = $"{result.homeScore} PTS/ {result.homeRebounds} TRB/ {result.homeAssists} AST";
+                string awayFinalStat = $"{result.awayScore} PTS/ {result.awayRebounds} TRB/ {result.awayAssists} AST";
+
+                dtgGames.Rows.Add(
+                    game.gameDate.ToString("yyyy/MM/dd"), 
+                    game.gameID, 
+                    opponent, 
+                    homeFinalStat,
+                    awayFinalStat,
+                    outcome,
+                    game.gameTime.ToString("h':'mm"), 
+                    game.venue
+                    );
             }
-            int wins = 0, total;
+
+            int wins = 0, total = dtgGames.RowCount;
             foreach (DataGridViewRow row in dtgGames.Rows)
             {
                 if (row.Cells["result"].Value.ToString().Equals("W"))
@@ -91,8 +95,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                     wins++;
                 }
             }
-            total = dtgGames.RowCount;
-            lblTeamWins.Text = string.Format("({0}-{1})", wins, total);
+            lblTeamWins.Text = $"({wins}-{total})";
         }
     }
 }

@@ -33,9 +33,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private void btnCancelGame_Click(object sender, EventArgs e)
         {
-            int idx = dtgGames.SelectedRows[0].Index;
-            Game selectedGame = allGames[idx];
-
+            Game selectedGame = allGames.Find(game => game.gameID.Equals(dtgGames.SelectedRows[0].Cells["gameID"].Value));
             string reason = txtReason.Text;
 
             if (!reason.Equals(""))
@@ -62,7 +60,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             allGames.RemoveAll(game => game.gameDate < DateTime.Now);
 
             dtgGames.Rows.Clear();
-            allGames.ForEach(game => dtgGames.Rows.Add(game.gameID, game.home.TeamID, game.away.TeamID, game.gameDate.ToString("dd/MM/yyyy"), game.gameTime, game.venue));
+            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue));
         }
     }
 }

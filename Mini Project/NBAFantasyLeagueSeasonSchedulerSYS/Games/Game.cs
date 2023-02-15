@@ -55,7 +55,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             try
             {
                 OracleDataReader dataReader = cmd.ExecuteReader();
-                allGames = new List<Game>(10);
+                allGames = new List<Game>();
                 while (dataReader.Read())
                 {
                     string gameID = dataReader.GetString(0);
@@ -146,7 +146,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
         }
 
-        public void sqlGameRecorded()
+        public void gameRecorded()
         {
             recorded = 'Y';
             OracleConnection conn = Program.getOracleConnection();
@@ -166,5 +166,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 Console.WriteLine(ex.StackTrace);
             }
         }
+
     }
 }

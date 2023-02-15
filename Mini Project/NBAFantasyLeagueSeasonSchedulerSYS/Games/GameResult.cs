@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using Newtonsoft.Json;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,39 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.gameID = gameID;
         }
 
-        public void sqlInsertGameResult()
+        public static void sqlSelectResults(ref List<GameResult> allResults)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlSelect = "SELECT * FROM GAME_RESULTS";
+            OracleCommand cmd = new OracleCommand(sqlSelect, conn);
+
+            try
+            {
+                OracleDataReader dataReader = cmd.ExecuteReader();
+                allResults = new List<GameResult>();
+                while (dataReader.Read())
+                {
+                    char winner = dataReader.GetString(0)[0];
+
+                    int homeScore = (int)dataReader.GetInt16(1);
+                    int awayScore = (int)dataReader.GetInt16(2);                    
+                    int homeTRB = (int)dataReader.GetInt16(3);
+                    int awayTRB = (int)dataReader.GetInt16(4);                    
+                    int homeAST = (int)dataReader.GetInt16(5);
+                    int awayAST = (int)dataReader.GetInt16(6);
+
+                    string gameID = dataReader.GetString(7);
+
+                    allResults.Add(new GameResult(winner, homeScore, homeTRB, homeAST, awayScore, awayTRB, awayAST, gameID));
+                }
+            }
+            catch (OracleException ex)
+            {
+                throw(ex);
+            }
+        }
+
+        public void sqlInsertResult()
         {
             OracleConnection conn = Program.getOracleConnection();
             string sqlInsert = $"INSERT INTO GAME_RESULTS VALUES('{winner}',{homeScore},{awayScore},{homeRebounds},{awayRebounds},{homeAssists},{awayAssists},'{gameID}')";
@@ -50,10 +83,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 int affectedRows = cmd.ExecuteNonQuery();
                 Console.WriteLine(affectedRows + " row(s) inserted.");
             }
-            catch (Exception e)
+            catch (OracleException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                Console.WriteLine(e.Message);
+                throw(ex);
             }
         }
 

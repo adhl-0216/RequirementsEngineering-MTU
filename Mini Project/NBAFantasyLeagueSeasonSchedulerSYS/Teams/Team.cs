@@ -16,7 +16,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         private String _headCoach;
         private String _asstCoach;
         private String _homeCourt;
-        private int[] _teamWins;
+        private int _teamWins;
 
         public string TeamID { 
             get => _teamID; 
@@ -60,7 +60,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public string HeadCoach { get => _headCoach; set => _headCoach = value; }
         public string AsstCoach { get => _asstCoach; set => _asstCoach = value; }
         public string HomeCourt { get => _homeCourt; set => _homeCourt = value; }
-        public int[] TeamWins { get => _teamWins; set => _teamWins = value; }
+        public int TeamWins { get => _teamWins; set => _teamWins = value; }
 
         public Team(string teamName, string gm, string headCoach, string asstCoach, string homeCourt)
         {
@@ -70,7 +70,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             HeadCoach = headCoach;
             AsstCoach = asstCoach;
             HomeCourt = homeCourt;
-            TeamWins = new int[]{0, 0};
+            TeamWins = 0;
         }
 
         public override string ToString()
@@ -81,12 +81,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public void sqlInsertTeam()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = $"INSERT INTO TEAMS VALUES('{TeamID}','{TeamName.Replace("'","''")}','{Gm}','{HeadCoach}','{AsstCoach}','{HomeCourt}',{TeamWins[0]})";
+            string sqlInsert = $"INSERT INTO TEAMS VALUES(" +
+                $"'{TeamID}'," +
+                $"'{TeamName.Replace("'","''")}'," +
+                $"'{Gm}'," +
+                $"'{HeadCoach}'," +
+                $"'{AsstCoach}'," +
+                $"'{HomeCourt}'," +
+                $"{TeamWins})";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
-                Console.WriteLine(affectedRows + " row(s) are inserted.");
+                Console.WriteLine(affectedRows + " row(s) inserted.");
             }
             catch (Exception e)
             {
@@ -132,6 +139,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                 $"HEAD_COACH='{HeadCoach}'," +
                 $"ASSISTANT_COACH='{AsstCoach}'," +
                 $"HOME_COURT='{HomeCourt}'" +
+                $"TEAM_WINS='{TeamWins}'" +
                 $"WHERE TEAM_ID='{TeamID}'";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
 
@@ -146,6 +154,5 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                 Console.WriteLine(ex.StackTrace);
             }
         }
-
     }
 }

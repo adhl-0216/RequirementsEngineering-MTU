@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     public partial class frmLogGameResults : Form
     {
         private static new Form Parent;
+        private static List<Team> allTeams;
         private static List<Game> allGames;
         private static Game selectedGame;
+        private static DataGridViewRow selectedRow;
         private char winner;
         public frmLogGameResults(Form parent)
         {
@@ -68,8 +71,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             DialogResult response = MessageBox.Show(msg,"Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (response == DialogResult.OK)
             {
-                gameResult.sqlInsertGameResult();
-                selectedGame.sqlGameRecorded();
+                gameResult.sqlInsertResult();
+                selectedGame.gameRecorded();
 
                 MessageBox.Show($"Game Results for [{gameResult.gameID}] has succesfully been saved to Game Results File.", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
@@ -94,8 +97,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void dtgGames_SelectionChanged(object sender, EventArgs e)
         {
             if (dtgGames.SelectedRows.Count == 0) return;
-            int idx = dtgGames.SelectedRows[0].Index;
-            selectedGame = allGames[idx];
+            selectedGame = allGames.Find(game => game.gameID.Equals(dtgGames.SelectedRows[0].Cells["gameID"].Value));
             lblGameID.Text = selectedGame.gameID;
             lblHome.Text = selectedGame.home.TeamID;
             lblAway.Text = selectedGame.away.TeamID;
@@ -129,6 +131,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 return;
             }
 
+            Team.sqlSelectTeam(ref allTeams);
+
             if (int.Parse(txtHomePTS.Text.Trim()) > int.Parse(txtAwayPTS.Text.Trim()))
             {
                 lblHome.ForeColor = Color.Blue;
@@ -136,6 +140,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 lblAway.ForeColor = default;
                 lblAway.Font = default;
                 winner = 'H';
+                Team home = allTeams.Find(team => team.TeamID.Equals(selectedGame.home.TeamID));
+                home.TeamWins += 1;
+                home.sqlUpdateTeam();
+
             }
             else
             {
@@ -144,6 +152,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 lblHome.ForeColor = default;
                 lblHome.Font = default;
                 winner = 'A';
+                Team away = allTeams.Find(team => team.TeamID.Equals(selectedGame.away.TeamID));
+                away.TeamWins += 1;
+                away.sqlUpdateTeam();
             }
         }
 
@@ -154,7 +165,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             allGames.Sort((x, y) => x.gameDate.CompareTo(y.gameDate));
 
             dtgGames.Rows.Clear();
-            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("dd/MM/yyyy"), game.gameID, game.home.TeamID, game.away.TeamID,  game.gameTime, game.venue));
+            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID,  game.gameTime, game.venue));
         }
 
         private void enableInputs(bool enable = true)

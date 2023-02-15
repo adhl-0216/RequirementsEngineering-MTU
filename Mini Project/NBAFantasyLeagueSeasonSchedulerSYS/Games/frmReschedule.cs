@@ -58,8 +58,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void dtgGames_SelectionChanged(object sender, EventArgs e)
         {
             if (dtgGames.SelectedRows.Count == 0) return;
-            int idx = dtgGames.SelectedRows[0].Index;
-            selectedGame = allGames[idx];
+            selectedGame = allGames.Find(game => game.gameID.Equals(dtgGames.SelectedRows[0].Cells["gameID"].Value));
 
             lblGameID.Text = selectedGame.gameID;
             dtpDate.Value = selectedGame.gameDate;
@@ -83,13 +82,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 {
                     if (game.gameDate.Equals(dtpDate.Value))
                     {
-                        MessageBox.Show($"A game is already scheduled on this date. {dtpDate.Value:dd/MM/yyyy}", "Busy Schedule", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"A game is already scheduled on this date. {dtpDate.Value:yyyy/MM/dd}", "Busy Schedule", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
             }
 
-            string msg = $"Reschedule Game: [{lblGameID.Text}] \n-Date: {dtpDate.Value.ToString("dd/MM/yyyy")}\n-Time: {dtpTime.Value.ToString("HH:mm")}\n-Venue: {txtVenue.Text}";
+            string msg = $"Reschedule Game: [{lblGameID.Text}] \n-Date: {dtpDate.Value.ToString("yyyy/MM/dd")}\n-Time: {dtpTime.Value.ToString("HH:mm")}\n-Venue: {txtVenue.Text}";
             DialogResult rs = MessageBox.Show(msg, "Reschedule Game", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (rs == DialogResult.OK)
             {
@@ -110,7 +109,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             allGames.Sort((x,y) => x.gameDate.CompareTo(y.gameDate));
 
             dtgGames.Rows.Clear();
-            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("dd/MM/yyyy"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue));
+            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue));
         }
     }
 }

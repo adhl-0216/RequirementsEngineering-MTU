@@ -41,7 +41,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             if (allCancelledGames != null) {
                 foreach (CancelledGame cg in allCancelledGames)
                 {
-                    dtgCancelledGames.Rows.Add(cg.gameDate.ToString("dd/MM/yyyy"), cg.gameID, cg.home.TeamID, cg.away.TeamID, cg.gameTime, cg.venue, cg.Reason);
+                    dtgCancelledGames.Rows.Add(cg.gameDate.ToString("yyyy/MM/dd"), cg.gameID, cg.home.TeamID, cg.away.TeamID, cg.gameTime, cg.venue, cg.Reason);
                 }
             }
         }
