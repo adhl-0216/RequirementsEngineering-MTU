@@ -51,7 +51,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.txtHomeCourt = new System.Windows.Forms.TextBox();
             this.lblHomeCourt = new System.Windows.Forms.Label();
             this.dtgGames = new System.Windows.Forms.DataGridView();
-            this.lblTeamWins = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gameID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opponent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +59,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.venue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTeamWins = new System.Windows.Forms.Label();
             this.pnlTeamDetails.SuspendLayout();
             this.pnlTeamID.SuspendLayout();
             this.pnlTeamName.SuspendLayout();
@@ -344,19 +344,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.dtgGames.Size = new System.Drawing.Size(599, 353);
             this.dtgGames.TabIndex = 6;
             // 
-            // lblTeamWins
-            // 
-            this.lblTeamWins.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblTeamWins.AutoSize = true;
-            this.lblTeamWins.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeamWins.Location = new System.Drawing.Point(234, 191);
-            this.lblTeamWins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTeamWins.Name = "lblTeamWins";
-            this.lblTeamWins.Size = new System.Drawing.Size(136, 42);
-            this.lblTeamWins.TabIndex = 5;
-            this.lblTeamWins.Text = "(27-27)";
-            this.lblTeamWins.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // date
             // 
             this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -426,6 +413,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.venue.Name = "venue";
             this.venue.ReadOnly = true;
             this.venue.Width = 69;
+            // 
+            // lblTeamWins
+            // 
+            this.lblTeamWins.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblTeamWins.AutoSize = true;
+            this.lblTeamWins.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTeamWins.Location = new System.Drawing.Point(244, 191);
+            this.lblTeamWins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTeamWins.Name = "lblTeamWins";
+            this.lblTeamWins.Size = new System.Drawing.Size(136, 42);
+            this.lblTeamWins.TabIndex = 5;
+            this.lblTeamWins.Text = "(27-27)";
+            this.lblTeamWins.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmGenerateTeamProfile
             // 

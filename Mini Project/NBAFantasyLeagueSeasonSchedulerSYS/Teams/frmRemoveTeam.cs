@@ -1,4 +1,5 @@
-﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+﻿using NBAFantasyLeagueSeasonSchedulerSYS.Games;
+using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     {
         private static new Form Parent;
         private Team selectedTeam;
-        private static List<Team> allTeams;
+        private List<Team> allTeams;
+        private List<Game> allGames;
 
         public frmRemoveTeam(Form parent)
         {
@@ -33,6 +35,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void frmRemoveTeam_Load(object sender, EventArgs e)
         {
             refreshComboBox();
+            
+            Game.sqlSelectGame(ref allGames);
+            if (allGames.Count > 0)
+            {
+                MessageBox.Show("Schedule has been generated, unable to remove any team(s).", "Unable To Remove Team", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnRemoveTeam_Click(object sender, EventArgs e)
@@ -50,6 +58,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             }else
             {
                 MessageBox.Show("Please select a Team to be removed from the system.", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
             }
         }
 
@@ -88,7 +97,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             {
                 if (team.TeamName != null)
                 {
-                    cboSelectTeam.Items.Add(team.TeamName);
+                    cboSelectTeam.Items.Add($"[{team.TeamID}] {team.TeamName}");
                 }
             }
         }

@@ -78,7 +78,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             return JsonConvert.SerializeObject(this);
         }
 
-        public void sqlInsertTeam()
+        public void sqlInsertTeam() 
         {
             OracleConnection conn = Program.getOracleConnection();
             string sqlInsert = $"INSERT INTO TEAMS VALUES(" +
@@ -95,10 +95,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                 int affectedRows = cmd.ExecuteNonQuery();
                 Console.WriteLine(affectedRows + " row(s) inserted.");
             }
-            catch (Exception e)
+            catch (OracleException ex)
             {
-                Console.WriteLine(e.StackTrace);
-                Console.WriteLine(e.Message);
+                throw (ex);
             }
         }
 

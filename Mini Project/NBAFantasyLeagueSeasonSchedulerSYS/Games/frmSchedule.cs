@@ -16,9 +16,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public frmSchedule(Form parent)
         {
             InitializeComponent();
-            allTeams = new List<Team>();
-            Team.sqlSelectTeam(ref allTeams);
-            checkIfScheduleExists();
+
             Parent = parent;
         }
 
@@ -29,6 +27,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private void frmSchedule_Load(object sender, EventArgs e)
         {
+            Team.sqlSelectTeam(ref allTeams);
+            checkIfScheduleExists();
             foreach (Team team in allTeams)
             {
                 dtgTeamDetails.Rows.Add(team.TeamID, team.TeamName, team.Gm, team.HeadCoach, team.AsstCoach, team.HomeCourt);

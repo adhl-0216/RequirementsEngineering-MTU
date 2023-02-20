@@ -17,8 +17,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private static List<Team> allTeams;
         private static List<Game> allGames;
         private static Game selectedGame;
-        private static DataGridViewRow selectedRow;
         private char winner;
+
         public frmLogGameResults(Form parent)
         {
             InitializeComponent();

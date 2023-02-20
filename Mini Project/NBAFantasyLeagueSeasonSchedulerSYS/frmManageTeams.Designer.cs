@@ -40,51 +40,60 @@
             // 
             // grpTeamDetails
             // 
+            this.grpTeamDetails.BackColor = System.Drawing.Color.Transparent;
             this.grpTeamDetails.Controls.Add(this.btnAddTeam);
             this.grpTeamDetails.Controls.Add(this.btnRemoveTeam);
             this.grpTeamDetails.Controls.Add(this.btnUpdateTeam);
             this.grpTeamDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.grpTeamDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grpTeamDetails.Location = new System.Drawing.Point(18, 220);
-            this.grpTeamDetails.Margin = new System.Windows.Forms.Padding(12);
+            this.grpTeamDetails.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.grpTeamDetails.Location = new System.Drawing.Point(12, 143);
+            this.grpTeamDetails.Margin = new System.Windows.Forms.Padding(8);
             this.grpTeamDetails.Name = "grpTeamDetails";
-            this.grpTeamDetails.Padding = new System.Windows.Forms.Padding(6);
-            this.grpTeamDetails.Size = new System.Drawing.Size(900, 194);
+            this.grpTeamDetails.Padding = new System.Windows.Forms.Padding(4);
+            this.grpTeamDetails.Size = new System.Drawing.Size(600, 126);
             this.grpTeamDetails.TabIndex = 4;
             this.grpTeamDetails.TabStop = false;
             this.grpTeamDetails.Text = "Team Details";
             // 
             // btnAddTeam
             // 
-            this.btnAddTeam.Location = new System.Drawing.Point(9, 25);
-            this.btnAddTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddTeam.BackColor = System.Drawing.Color.Firebrick;
+            this.btnAddTeam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddTeam.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAddTeam.Location = new System.Drawing.Point(6, 16);
             this.btnAddTeam.Name = "btnAddTeam";
-            this.btnAddTeam.Size = new System.Drawing.Size(285, 154);
+            this.btnAddTeam.Size = new System.Drawing.Size(190, 100);
             this.btnAddTeam.TabIndex = 4;
             this.btnAddTeam.Text = "Add Team";
-            this.btnAddTeam.UseVisualStyleBackColor = true;
+            this.btnAddTeam.UseVisualStyleBackColor = false;
             this.btnAddTeam.Click += new System.EventHandler(this.btnAddTeam_Click);
             // 
             // btnRemoveTeam
             // 
-            this.btnRemoveTeam.Location = new System.Drawing.Point(606, 25);
-            this.btnRemoveTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRemoveTeam.BackColor = System.Drawing.Color.Firebrick;
+            this.btnRemoveTeam.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnRemoveTeam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRemoveTeam.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRemoveTeam.Location = new System.Drawing.Point(404, 16);
             this.btnRemoveTeam.Name = "btnRemoveTeam";
-            this.btnRemoveTeam.Size = new System.Drawing.Size(285, 154);
+            this.btnRemoveTeam.Size = new System.Drawing.Size(190, 100);
             this.btnRemoveTeam.TabIndex = 7;
             this.btnRemoveTeam.Text = "Remove Team";
-            this.btnRemoveTeam.UseVisualStyleBackColor = true;
+            this.btnRemoveTeam.UseVisualStyleBackColor = false;
             this.btnRemoveTeam.Click += new System.EventHandler(this.btnRemoveTeam_Click);
             // 
             // btnUpdateTeam
             // 
-            this.btnUpdateTeam.Location = new System.Drawing.Point(308, 25);
-            this.btnUpdateTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUpdateTeam.BackColor = System.Drawing.Color.Firebrick;
+            this.btnUpdateTeam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUpdateTeam.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnUpdateTeam.Location = new System.Drawing.Point(205, 16);
             this.btnUpdateTeam.Name = "btnUpdateTeam";
-            this.btnUpdateTeam.Size = new System.Drawing.Size(285, 154);
+            this.btnUpdateTeam.Size = new System.Drawing.Size(190, 100);
             this.btnUpdateTeam.TabIndex = 6;
             this.btnUpdateTeam.Text = "Update Team";
-            this.btnUpdateTeam.UseVisualStyleBackColor = true;
+            this.btnUpdateTeam.UseVisualStyleBackColor = false;
             this.btnUpdateTeam.Click += new System.EventHandler(this.btnUpdateTeam_Click);
             // 
             // pboBanner
@@ -92,27 +101,27 @@
             this.pboBanner.BackgroundImage = global::NBAFantasyLeagueSeasonSchedulerSYS.Properties.Resources._1500x500;
             this.pboBanner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pboBanner.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pboBanner.Location = new System.Drawing.Point(18, 18);
-            this.pboBanner.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pboBanner.Location = new System.Drawing.Point(12, 12);
             this.pboBanner.Name = "pboBanner";
-            this.pboBanner.Size = new System.Drawing.Size(900, 197);
+            this.pboBanner.Size = new System.Drawing.Size(600, 128);
             this.pboBanner.TabIndex = 5;
             this.pboBanner.TabStop = false;
             // 
             // frmManageTeams
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 432);
+            this.BackgroundImage = global::NBAFantasyLeagueSeasonSchedulerSYS.Properties.Resources.bg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(624, 281);
             this.Controls.Add(this.pboBanner);
             this.Controls.Add(this.grpTeamDetails);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "frmManageTeams";
-            this.Padding = new System.Windows.Forms.Padding(18);
+            this.Padding = new System.Windows.Forms.Padding(12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Manage Teams]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManageTeams_FormClosing);

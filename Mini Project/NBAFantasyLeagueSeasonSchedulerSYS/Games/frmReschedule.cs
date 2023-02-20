@@ -13,10 +13,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 {
     public partial class frmReschedule : Form
     {
-        private static new Form Parent;
-        private static List<Game> allGames;
-        private static Game selectedGame;
-        private static bool selectStatus = true;
+        private new Form Parent;
+        private List<Game> allGames;
+        private Game selectedGame;
+        private bool selectStatus = true;
         public frmReschedule(Form parent)
         {
             InitializeComponent();

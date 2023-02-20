@@ -1,4 +1,5 @@
 ﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
     public partial class frmAddTeam : Form
     {
         private static new Form Parent;
-        private static List<Team> allTeams = new List<Team>(10);  
+        private static List<Team> allTeams;
         public frmAddTeam(Form parent)
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void frmAddTeam_Load(object sender, EventArgs e)
         {
-
+            checkTeamFull();
         }
 
         private void frmAddTeam_FormClosing(object sender, FormClosingEventArgs e)
@@ -45,7 +46,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             •    General Manger must NOT contain numbers.
             •    Head Coach must NOT contain numbers.
             •    Assistant Coach must NOT contain numbers.
-            •    All fields must be unique.
             */
 
             Boolean valid = false;
@@ -78,23 +78,47 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                         }
                     }
                 }
+
                 valid = true;
             }
 
             if (valid) {
-                String successMsg;
                 Team newTeam = new Team(txtTeamName.Text, txtGM.Text, txtHeadCoach.Text, txtAsstCoach.Text, txtHomeCourt.Text);
-                newTeam.sqlInsertTeam();
-                Console.WriteLine(newTeam.ToString());
-                //allTeams.Add(newTeam);
-                successMsg = "Team Added Successfully! \n\n";
+                if (allTeams.Any(team => team.TeamID.Equals(newTeam.TeamID))) 
+                {
+                    MessageBox.Show("Team Name is invalid.", "Invalid Team Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTeamName.Clear();
+                    txtTeamName.Focus();
+                    return;
+                }
+                try
+                {
+                    newTeam.sqlInsertTeam();
+                }catch (OracleException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                string successMsg = "Team Added Successfully! \n\n";
                 for (int i = 0; i < txtBoxes.Length; i++)
                 {
                     successMsg += lbls[i].Text + ": " + txtBoxes[i].Text + "\n";
-            
+                    //reset GUI
+
                     txtBoxes[i].Clear();
                 }
                 MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                checkTeamFull();
+            }
+        }
+
+        private void checkTeamFull()
+        {
+            Team.sqlSelectTeam(ref allTeams);
+            string msg = "Only a maximum of 10 Teams are allowed!\nTo amend Team Details, go to [Manage Teams] > [Update Team].\nTo remove a team, go to [Manage Teams] > [Remove Team].";
+            if (allTeams.Count == 10)
+            {
+                MessageBox.Show(msg, "Team List Full", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Close();
             }
         }
     }

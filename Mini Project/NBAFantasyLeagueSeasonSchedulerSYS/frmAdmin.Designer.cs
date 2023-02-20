@@ -37,35 +37,44 @@
             // 
             this.btnViewSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnViewSchedule.Location = new System.Drawing.Point(12, 12);
+            this.btnViewSchedule.BackColor = System.Drawing.Color.Firebrick;
+            this.btnViewSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnViewSchedule.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnViewSchedule.Location = new System.Drawing.Point(8, 8);
+            this.btnViewSchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewSchedule.Name = "btnViewSchedule";
-            this.btnViewSchedule.Size = new System.Drawing.Size(330, 201);
+            this.btnViewSchedule.Size = new System.Drawing.Size(220, 131);
             this.btnViewSchedule.TabIndex = 0;
             this.btnViewSchedule.Text = "View Schedule";
-            this.btnViewSchedule.UseVisualStyleBackColor = true;
+            this.btnViewSchedule.UseVisualStyleBackColor = false;
             this.btnViewSchedule.Click += new System.EventHandler(this.btnViewSchedule_Click);
             // 
             // btnTeamProfs
             // 
             this.btnTeamProfs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTeamProfs.Location = new System.Drawing.Point(352, 12);
+            this.btnTeamProfs.BackColor = System.Drawing.Color.Firebrick;
+            this.btnTeamProfs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTeamProfs.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnTeamProfs.Location = new System.Drawing.Point(235, 8);
+            this.btnTeamProfs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTeamProfs.Name = "btnTeamProfs";
-            this.btnTeamProfs.Size = new System.Drawing.Size(330, 201);
+            this.btnTeamProfs.Size = new System.Drawing.Size(220, 131);
             this.btnTeamProfs.TabIndex = 1;
             this.btnTeamProfs.Text = "Team Profiles";
-            this.btnTeamProfs.UseVisualStyleBackColor = true;
+            this.btnTeamProfs.UseVisualStyleBackColor = false;
             this.btnTeamProfs.Click += new System.EventHandler(this.btnTeamProfs_Click);
             // 
             // frmAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 229);
+            this.BackgroundImage = global::NBAFantasyLeagueSeasonSchedulerSYS.Properties.Resources.bg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(463, 149);
             this.Controls.Add(this.btnTeamProfs);
             this.Controls.Add(this.btnViewSchedule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
