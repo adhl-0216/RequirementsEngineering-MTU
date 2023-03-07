@@ -94,6 +94,12 @@
     <Compile Include="Admin\frmViewSchedule.Designer.cs">
       <DependentUpon>frmViewSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\frmViewTeamStandings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmViewTeamStandings.Designer.cs">
+      <DependentUpon>frmViewTeamStandings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Games\CancelledGame.cs" />
     <Compile Include="Games\Game.cs" />
     <Compile Include="Games\GameResult.cs" />
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\frmViewSchedule.resx">
       <DependentUpon>frmViewSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\frmViewTeamStandings.resx">
+      <DependentUpon>frmViewTeamStandings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Games\frmCancelGames.resx">
       <DependentUpon>frmCancelGames.cs</DependentUpon>
