@@ -130,5 +130,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             frmViewSchedule frmViewSchedule = new frmViewSchedule(frmAdmin);
             frmViewSchedule.Show();
         }
+
+        private void teamStandingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmAdmin = new frmAdmin(this);
+            frmViewTeamStandings frmViewTeamStandings = new frmViewTeamStandings(frmAdmin);
+            frmViewTeamStandings.Show();
+        }
     }
 }

@@ -12,9 +12,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
 {
     public partial class frmViewTeamStandings : Form
     {
-        public frmViewTeamStandings()
+        private static new Form Parent;
+        public frmViewTeamStandings(Form parent)
         {
+            Parent = parent;
             InitializeComponent();
+        }
+
+        private void frmViewTeamStandings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(Parent != null) Parent.Show();
         }
     }
 }

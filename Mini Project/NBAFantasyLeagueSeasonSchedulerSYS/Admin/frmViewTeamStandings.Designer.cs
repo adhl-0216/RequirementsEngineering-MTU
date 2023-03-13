@@ -69,6 +69,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmViewTeamStandings";
             this.Text = "NBA Fantasy League Season Scheduler - [Admin] - [Team Standings]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmViewTeamStandings_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dtgStandings)).EndInit();
             this.ResumeLayout(false);
 

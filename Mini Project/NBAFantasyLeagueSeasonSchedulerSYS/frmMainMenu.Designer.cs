@@ -43,6 +43,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateTeamProfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.teamStandingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,7 +137,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewScheduleToolStripMenuItem,
-            this.generateTeamProfilesToolStripMenuItem});
+            this.generateTeamProfilesToolStripMenuItem,
+            this.teamStandingsToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 22);
             this.adminToolStripMenuItem.Text = "Admin";
@@ -145,16 +147,23 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             // viewScheduleToolStripMenuItem
             // 
             this.viewScheduleToolStripMenuItem.Name = "viewScheduleToolStripMenuItem";
-            this.viewScheduleToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.viewScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewScheduleToolStripMenuItem.Text = "View Schedule";
             this.viewScheduleToolStripMenuItem.Click += new System.EventHandler(this.viewScheduleToolStripMenuItem_Click);
             // 
             // generateTeamProfilesToolStripMenuItem
             // 
             this.generateTeamProfilesToolStripMenuItem.Name = "generateTeamProfilesToolStripMenuItem";
-            this.generateTeamProfilesToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.generateTeamProfilesToolStripMenuItem.Text = "Generate Team Profiles";
+            this.generateTeamProfilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.generateTeamProfilesToolStripMenuItem.Text = "Team Profiles";
             this.generateTeamProfilesToolStripMenuItem.Click += new System.EventHandler(this.generateTeamProfilesToolStripMenuItem_Click);
+            // 
+            // teamStandingsToolStripMenuItem
+            // 
+            this.teamStandingsToolStripMenuItem.Name = "teamStandingsToolStripMenuItem";
+            this.teamStandingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.teamStandingsToolStripMenuItem.Text = "Team Standings";
+            this.teamStandingsToolStripMenuItem.Click += new System.EventHandler(this.teamStandingsToolStripMenuItem_Click);
             // 
             // frmMainMenu
             // 
@@ -194,6 +203,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private System.Windows.Forms.ToolStripMenuItem viewScheduleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateTeamProfilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scheduleGamesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem teamStandingsToolStripMenuItem;
     }
 }
 

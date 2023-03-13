@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.btnViewSchedule = new System.Windows.Forms.Button();
             this.btnTeamProfs = new System.Windows.Forms.Button();
+            this.btnTeamStandings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnViewSchedule
@@ -40,8 +41,8 @@
             this.btnViewSchedule.BackColor = System.Drawing.Color.Firebrick;
             this.btnViewSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnViewSchedule.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnViewSchedule.Location = new System.Drawing.Point(8, 8);
-            this.btnViewSchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnViewSchedule.Location = new System.Drawing.Point(10, 9);
+            this.btnViewSchedule.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewSchedule.Name = "btnViewSchedule";
             this.btnViewSchedule.Size = new System.Drawing.Size(220, 131);
             this.btnViewSchedule.TabIndex = 0;
@@ -51,13 +52,12 @@
             // 
             // btnTeamProfs
             // 
-            this.btnTeamProfs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTeamProfs.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnTeamProfs.BackColor = System.Drawing.Color.Firebrick;
             this.btnTeamProfs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTeamProfs.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnTeamProfs.Location = new System.Drawing.Point(235, 8);
-            this.btnTeamProfs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTeamProfs.Location = new System.Drawing.Point(235, 9);
+            this.btnTeamProfs.Margin = new System.Windows.Forms.Padding(2);
             this.btnTeamProfs.Name = "btnTeamProfs";
             this.btnTeamProfs.Size = new System.Drawing.Size(220, 131);
             this.btnTeamProfs.TabIndex = 1;
@@ -65,13 +65,29 @@
             this.btnTeamProfs.UseVisualStyleBackColor = false;
             this.btnTeamProfs.Click += new System.EventHandler(this.btnTeamProfs_Click);
             // 
+            // btnTeamStandings
+            // 
+            this.btnTeamStandings.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnTeamStandings.BackColor = System.Drawing.Color.Firebrick;
+            this.btnTeamStandings.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTeamStandings.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnTeamStandings.Location = new System.Drawing.Point(460, 8);
+            this.btnTeamStandings.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTeamStandings.Name = "btnTeamStandings";
+            this.btnTeamStandings.Size = new System.Drawing.Size(220, 131);
+            this.btnTeamStandings.TabIndex = 2;
+            this.btnTeamStandings.Text = "Team Standings";
+            this.btnTeamStandings.UseVisualStyleBackColor = false;
+            this.btnTeamStandings.Click += new System.EventHandler(this.btnTeamStandings_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::NBAFantasyLeagueSeasonSchedulerSYS.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(463, 149);
+            this.ClientSize = new System.Drawing.Size(690, 149);
+            this.Controls.Add(this.btnTeamStandings);
             this.Controls.Add(this.btnTeamProfs);
             this.Controls.Add(this.btnViewSchedule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -89,5 +105,6 @@
 
         private System.Windows.Forms.Button btnViewSchedule;
         private System.Windows.Forms.Button btnTeamProfs;
+        private System.Windows.Forms.Button btnTeamStandings;
     }
 }
