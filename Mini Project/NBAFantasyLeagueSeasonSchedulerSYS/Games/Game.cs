@@ -46,7 +46,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             return JsonConvert.SerializeObject(this);
         }
         
-        public static void sqlSelectGame(ref List<Game> allGames)
+        public static void sqlSelectAllGames(ref List<Game> allGames)
         {
             OracleConnection conn = Program.getOracleConnection();
             string sqlSelectGames = "SELECT * FROM GAMES";
@@ -67,6 +67,37 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                     game.recorded = recorded;
 
                     allGames.Add(game);
+                }
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        public static void sqlSelectGameByTeamID(string teamID, ref List<Game> teamGames)
+        {
+            OracleConnection conn = Program.getOracleConnection();
+            string sqlSelectGames = "SELECT * FROM GAMES WHERE GAME_ID LIKE :teamID";
+            OracleCommand cmd = new OracleCommand(sqlSelectGames, conn);
+            cmd.Parameters.Add(":teamID", $"%{teamID}%");
+            teamGames = new List<Game>();
+            try
+            {
+                OracleDataReader dataReader = cmd.ExecuteReader();
+                teamGames = new List<Game>();
+                while (dataReader.Read())
+                {
+                    string gameID = dataReader.GetString(0);
+                    DateTime gameDateTime = dataReader.GetDateTime(3);
+                    char recorded = dataReader.GetString(5)[0];
+
+                    Game game = new Game(gameID, gameDateTime);
+                    game.gameTime = gameDateTime.TimeOfDay;
+                    game.recorded = recorded;
+
+                    teamGames.Add(game);
                 }
             }
             catch (OracleException ex)

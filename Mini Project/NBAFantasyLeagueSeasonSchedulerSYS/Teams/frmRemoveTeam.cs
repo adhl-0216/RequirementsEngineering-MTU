@@ -36,7 +36,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         {
             refreshComboBox();
             
-            Game.sqlSelectGame(ref allGames);
+            Game.sqlSelectAllGames(ref allGames);
             if (allGames.Count > 0)
             {
                 MessageBox.Show("Schedule has been generated, unable to remove any team(s).", "Unable To Remove Team", MessageBoxButtons.OK, MessageBoxIcon.Warning);

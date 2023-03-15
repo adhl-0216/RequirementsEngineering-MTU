@@ -104,7 +104,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private void refreshDTG()
         {
-            Game.sqlSelectGame(ref allGames);
+            Game.sqlSelectAllGames(ref allGames);
             allGames.RemoveAll(game => game.gameDate < DateTime.Now);
             allGames.Sort((x,y) => x.gameDate.CompareTo(y.gameDate));
 

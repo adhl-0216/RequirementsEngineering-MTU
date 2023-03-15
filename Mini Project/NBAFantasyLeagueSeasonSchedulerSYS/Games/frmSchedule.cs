@@ -66,7 +66,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         //check if scheduleExist = true
         private void checkIfScheduleExists()
         {
-            Game.sqlSelectGame(ref allGames);
+            Game.sqlSelectAllGames(ref allGames);
             scheduleExists = (allGames.Count > 0) ?  true : false;
         }
 

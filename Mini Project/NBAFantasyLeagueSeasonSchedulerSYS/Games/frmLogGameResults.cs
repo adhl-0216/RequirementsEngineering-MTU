@@ -132,6 +132,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
 
             Team.sqlSelectTeam(ref allTeams);
+            Team home = allTeams.Find(team => team.TeamID.Equals(selectedGame.home.TeamID));
+            Team away = allTeams.Find(team => team.TeamID.Equals(selectedGame.away.TeamID));
 
             if (int.Parse(txtHomePTS.Text.Trim()) > int.Parse(txtAwayPTS.Text.Trim()))
             {
@@ -140,9 +142,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 lblAway.ForeColor = default;
                 lblAway.Font = default;
                 winner = 'H';
-                Team home = allTeams.Find(team => team.TeamID.Equals(selectedGame.home.TeamID));
                 home.TeamWins += 1;
+                away.TeamLoses += 1;
                 home.sqlUpdateTeam();
+                away.sqlUpdateTeam();
+
 
             }
             else
@@ -152,15 +156,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 lblHome.ForeColor = default;
                 lblHome.Font = default;
                 winner = 'A';
-                Team away = allTeams.Find(team => team.TeamID.Equals(selectedGame.away.TeamID));
-                away.TeamWins += 1;
+                home.TeamWins += 1;
+                away.TeamLoses += 1;
                 away.sqlUpdateTeam();
+                home.sqlUpdateTeam();
             }
         }
 
         private void refreshDTG()
         {
-            Game.sqlSelectGame(ref allGames);
+            Game.sqlSelectAllGames(ref allGames);
             allGames.RemoveAll(game => game.recorded.Equals('Y') || game.gameDate > DateTime.Now);
             allGames.Sort((x, y) => x.gameDate.CompareTo(y.gameDate));
 

@@ -41,16 +41,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.gameID = gameID;
         }
 
-        public static void sqlSelectResults(ref List<GameResult> allResults)
+        public static void sqlSelectResultsByID( string teamID,ref List<GameResult> teamResults)
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlSelect = "SELECT * FROM GAME_RESULTS";
+            string sqlSelect = "SELECT * FROM GAME_RESULTS WHERE GAME_ID LIKE :teamID";
             OracleCommand cmd = new OracleCommand(sqlSelect, conn);
+            cmd.Parameters.Add(":teamID", $"%{teamID}%");
+            teamResults = new List<GameResult>();
 
             try
             {
                 OracleDataReader dataReader = cmd.ExecuteReader();
-                allResults = new List<GameResult>();
                 while (dataReader.Read())
                 {
                     char winner = dataReader.GetString(0)[0];
@@ -64,7 +65,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
                     string gameID = dataReader.GetString(7);
 
-                    allResults.Add(new GameResult(winner, homeScore, homeTRB, homeAST, awayScore, awayTRB, awayAST, gameID));
+                    teamResults.Add(new GameResult(winner, homeScore, homeTRB, homeAST, awayScore, awayTRB, awayAST, gameID));
                 }
             }
             catch (OracleException ex)

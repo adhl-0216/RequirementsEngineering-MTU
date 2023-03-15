@@ -53,9 +53,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.dtgGames = new System.Windows.Forms.DataGridView();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gameID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opponent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.homeFinalStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.awayFinalStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.homeFinalStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opponent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.venue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -328,9 +328,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.dtgGames.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.date,
             this.gameID,
-            this.opponent,
-            this.homeFinalStat,
             this.awayFinalStat,
+            this.homeFinalStat,
+            this.opponent,
             this.result,
             this.time,
             this.venue});
@@ -362,14 +362,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.gameID.ReadOnly = true;
             this.gameID.Width = 43;
             // 
-            // opponent
+            // awayFinalStat
             // 
-            this.opponent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.opponent.HeaderText = "OPPONENT";
-            this.opponent.MinimumWidth = 8;
-            this.opponent.Name = "opponent";
-            this.opponent.ReadOnly = true;
-            this.opponent.Width = 92;
+            this.awayFinalStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.awayFinalStat.HeaderText = "AWAY FINAL";
+            this.awayFinalStat.Name = "awayFinalStat";
+            this.awayFinalStat.ReadOnly = true;
+            this.awayFinalStat.Width = 97;
             // 
             // homeFinalStat
             // 
@@ -379,13 +378,14 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.homeFinalStat.ReadOnly = true;
             this.homeFinalStat.Width = 97;
             // 
-            // awayFinalStat
+            // opponent
             // 
-            this.awayFinalStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.awayFinalStat.HeaderText = "AWAY FINAL";
-            this.awayFinalStat.Name = "awayFinalStat";
-            this.awayFinalStat.ReadOnly = true;
-            this.awayFinalStat.Width = 97;
+            this.opponent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.opponent.HeaderText = "OPPONENT";
+            this.opponent.MinimumWidth = 8;
+            this.opponent.Name = "opponent";
+            this.opponent.ReadOnly = true;
+            this.opponent.Width = 92;
             // 
             // result
             // 
@@ -422,9 +422,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             this.lblTeamWins.Location = new System.Drawing.Point(244, 191);
             this.lblTeamWins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTeamWins.Name = "lblTeamWins";
-            this.lblTeamWins.Size = new System.Drawing.Size(136, 42);
+            this.lblTeamWins.Size = new System.Drawing.Size(96, 42);
             this.lblTeamWins.TabIndex = 5;
-            this.lblTeamWins.Text = "(27-27)";
+            this.lblTeamWins.Text = "(0-0)";
             this.lblTeamWins.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmGenerateTeamProfile
@@ -490,9 +490,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         private System.Windows.Forms.Label lblTeamWins;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn gameID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn opponent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn homeFinalStat;
         private System.Windows.Forms.DataGridViewTextBoxColumn awayFinalStat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn homeFinalStat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opponent;
         private System.Windows.Forms.DataGridViewTextBoxColumn result;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn venue;

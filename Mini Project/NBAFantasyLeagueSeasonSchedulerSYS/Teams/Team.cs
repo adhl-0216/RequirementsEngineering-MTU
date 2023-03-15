@@ -17,6 +17,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         private String _asstCoach;
         private String _homeCourt;
         private int _teamWins;
+        private int _teamLoses;
 
         public string TeamID { 
             get => _teamID; 
@@ -61,6 +62,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public string AsstCoach { get => _asstCoach; set => _asstCoach = value; }
         public string HomeCourt { get => _homeCourt; set => _homeCourt = value; }
         public int TeamWins { get => _teamWins; set => _teamWins = value; }
+        public int TeamLoses { get => _teamLoses; set => _teamLoses = value; }
 
         public Team(string teamName, string gm, string headCoach, string asstCoach, string homeCourt)
         {
@@ -71,6 +73,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             AsstCoach = asstCoach;
             HomeCourt = homeCourt;
             TeamWins = 0;
+            TeamLoses = 0;
         }
 
         public override string ToString()
@@ -81,15 +84,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public void sqlInsertTeam() 
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = $"INSERT INTO TEAMS VALUES(" +
-                $"'{TeamID}'," +
-                $"'{TeamName.Replace("'","''")}'," +
-                $"'{Gm}'," +
-                $"'{HeadCoach}'," +
-                $"'{AsstCoach}'," +
-                $"'{HomeCourt}'," +
-                $"{TeamWins})";
+            string sqlInsert = $"INSERT INTO TEAMS VALUES(:p0, :p1, :p2, :p3, :p4, :p5, :p6, :p7)";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
+            cmd.Parameters.AddRange(new Object[] { TeamID, TeamName.Replace("'", "''"), Gm, HeadCoach, AsstCoach, HomeCourt, TeamWins, TeamLoses});
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
@@ -118,8 +115,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                     string headCoach = dataReader.GetString(3);
                     string asstCoach = dataReader.GetString(4);
                     string homeCourt = dataReader.GetString(5);
+                    int teamWins = dataReader.GetInt32(6);
+                    int teamLoses = dataReader.GetInt32(7);
 
-                    allTeams.Add(new Team(teamName, gM, headCoach, asstCoach, homeCourt));
+                    Team team = new Team(teamName, gM, headCoach, asstCoach, homeCourt);
+                    team.TeamWins = teamWins;
+                    team.TeamLoses = teamLoses;
+                    allTeams.Add(team);
                 }
             }
             catch (OracleException ex)
@@ -132,15 +134,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public void sqlUpdateTeam()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlUpdate = $"UPDATE TEAMS " +
-                $"SET TEAM_NAME='{TeamName.Replace("'", "''")}'," +
-                $"GENERAL_MANAGER='{Gm}'," +
-                $"HEAD_COACH='{HeadCoach}'," +
-                $"ASSISTANT_COACH='{AsstCoach}'," +
-                $"HOME_COURT='{HomeCourt}'" +
-                $"TEAM_WINS='{TeamWins}'" +
-                $"WHERE TEAM_ID='{TeamID}'";
+            string sqlUpdate = $"UPDATE TEAMS SET TEAM_NAME=:p0, GENERAL_MANAGER=:p1, HEAD_COACH=:p2, ASSISTANT_COACH=:p3, HOME_COURT=:p4, TEAM_WINS=:p5, TEAM_LOSES=:p6 WHERE TEAM_ID=:p7";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
+            cmd.Parameters.AddRange(new Object[] { TeamName.Replace("'", "''"), Gm, HeadCoach, AsstCoach, HomeCourt, TeamWins, TeamLoses, TeamID});
 
             try
             {

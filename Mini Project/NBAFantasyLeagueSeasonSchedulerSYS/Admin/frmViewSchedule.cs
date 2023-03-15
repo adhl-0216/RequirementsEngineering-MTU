@@ -29,7 +29,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         {
             //retrive data
             Team.sqlSelectTeam(ref allTeams);
-            Game.sqlSelectGame(ref allGames);
+            Game.sqlSelectAllGames(ref allGames);
             CancelledGame.sqlSelectCancelledGames(ref allCancelledGames);
 
             //init GUI
