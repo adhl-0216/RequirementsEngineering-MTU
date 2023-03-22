@@ -35,14 +35,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewTeamStandings));
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvStandings = new System.Windows.Forms.DataGridView();
-            this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teamWins = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teamLoses = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.winRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.homeRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.awayRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointsPerGame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opponentPointsPerGame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTEAM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWINS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLOSES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHOME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAWAY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPPG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOPPG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStandings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,14 +80,15 @@
             this.dgvStandings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStandings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStandings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.teamID,
-            this.teamWins,
-            this.teamLoses,
-            this.winRate,
-            this.homeRecord,
-            this.awayRecord,
-            this.pointsPerGame,
-            this.opponentPointsPerGame});
+            this.colRank,
+            this.colTEAM,
+            this.colWINS,
+            this.colLOSES,
+            this.colPCT,
+            this.colHOME,
+            this.colAWAY,
+            this.colPPG,
+            this.colOPPG});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,75 +105,82 @@
             this.dgvStandings.RowHeadersVisible = false;
             this.dgvStandings.RowHeadersWidth = 62;
             this.dgvStandings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStandings.Size = new System.Drawing.Size(489, 250);
+            this.dgvStandings.Size = new System.Drawing.Size(552, 250);
             this.dgvStandings.TabIndex = 2;
             // 
-            // teamID
+            // colRank
+            // 
+            this.colRank.HeaderText = "RANK";
+            this.colRank.Name = "colRank";
+            this.colRank.ReadOnly = true;
+            this.colRank.Width = 62;
+            // 
+            // colTEAM
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.teamID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.teamID.HeaderText = "TEAM";
-            this.teamID.Name = "teamID";
-            this.teamID.ReadOnly = true;
-            this.teamID.Width = 62;
+            this.colTEAM.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colTEAM.HeaderText = "TEAM";
+            this.colTEAM.Name = "colTEAM";
+            this.colTEAM.ReadOnly = true;
+            this.colTEAM.Width = 62;
             // 
-            // teamWins
+            // colWINS
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.teamWins.DefaultCellStyle = dataGridViewCellStyle3;
-            this.teamWins.HeaderText = "WINS";
-            this.teamWins.Name = "teamWins";
-            this.teamWins.ReadOnly = true;
-            this.teamWins.Width = 61;
+            this.colWINS.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colWINS.HeaderText = "WINS";
+            this.colWINS.Name = "colWINS";
+            this.colWINS.ReadOnly = true;
+            this.colWINS.Width = 61;
             // 
-            // teamLoses
+            // colLOSES
             // 
-            this.teamLoses.HeaderText = "LOSES";
-            this.teamLoses.Name = "teamLoses";
-            this.teamLoses.ReadOnly = true;
-            this.teamLoses.Width = 67;
+            this.colLOSES.HeaderText = "LOSES";
+            this.colLOSES.Name = "colLOSES";
+            this.colLOSES.ReadOnly = true;
+            this.colLOSES.Width = 67;
             // 
-            // winRate
+            // colPCT
             // 
-            this.winRate.HeaderText = "PCT";
-            this.winRate.Name = "winRate";
-            this.winRate.ReadOnly = true;
-            this.winRate.Width = 53;
+            this.colPCT.HeaderText = "PCT";
+            this.colPCT.Name = "colPCT";
+            this.colPCT.ReadOnly = true;
+            this.colPCT.Width = 53;
             // 
-            // homeRecord
+            // colHOME
             // 
-            this.homeRecord.HeaderText = "HOME";
-            this.homeRecord.Name = "homeRecord";
-            this.homeRecord.ReadOnly = true;
-            this.homeRecord.Width = 64;
+            this.colHOME.HeaderText = "HOME";
+            this.colHOME.Name = "colHOME";
+            this.colHOME.ReadOnly = true;
+            this.colHOME.Width = 64;
             // 
-            // awayRecord
+            // colAWAY
             // 
-            this.awayRecord.HeaderText = "AWAY";
-            this.awayRecord.Name = "awayRecord";
-            this.awayRecord.ReadOnly = true;
-            this.awayRecord.Width = 64;
+            this.colAWAY.HeaderText = "AWAY";
+            this.colAWAY.Name = "colAWAY";
+            this.colAWAY.ReadOnly = true;
+            this.colAWAY.Width = 64;
             // 
-            // pointsPerGame
+            // colPPG
             // 
-            this.pointsPerGame.HeaderText = "PPG";
-            this.pointsPerGame.Name = "pointsPerGame";
-            this.pointsPerGame.ReadOnly = true;
-            this.pointsPerGame.Width = 54;
+            this.colPPG.HeaderText = "PPG";
+            this.colPPG.Name = "colPPG";
+            this.colPPG.ReadOnly = true;
+            this.colPPG.Width = 54;
             // 
-            // opponentPointsPerGame
+            // colOPPG
             // 
-            this.opponentPointsPerGame.HeaderText = "OPPG";
-            this.opponentPointsPerGame.Name = "opponentPointsPerGame";
-            this.opponentPointsPerGame.ReadOnly = true;
-            this.opponentPointsPerGame.Width = 62;
+            this.colOPPG.HeaderText = "OPPG";
+            this.colOPPG.Name = "colOPPG";
+            this.colOPPG.ReadOnly = true;
+            this.colOPPG.Width = 62;
             // 
             // frmViewTeamStandings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::NBAFantasyLeagueSeasonSchedulerSYS.Properties.Resources.bg;
-            this.ClientSize = new System.Drawing.Size(518, 301);
+            this.ClientSize = new System.Drawing.Size(581, 301);
             this.Controls.Add(this.dgvStandings);
             this.Controls.Add(this.lblTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -188,13 +197,14 @@
         #endregion
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dgvStandings;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teamID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teamWins;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teamLoses;
-        private System.Windows.Forms.DataGridViewTextBoxColumn winRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn homeRecord;
-        private System.Windows.Forms.DataGridViewTextBoxColumn awayRecord;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointsPerGame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn opponentPointsPerGame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTEAM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colWINS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLOSES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPCT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHOME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAWAY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPPG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOPPG;
     }
 }
