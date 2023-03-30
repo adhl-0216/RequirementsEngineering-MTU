@@ -44,6 +44,7 @@
             this.colAWAY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPPG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOPPG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointsDiff = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStandings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,7 +89,8 @@
             this.colHOME,
             this.colAWAY,
             this.colPPG,
-            this.colOPPG});
+            this.colOPPG,
+            this.pointsDiff});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -105,7 +107,7 @@
             this.dgvStandings.RowHeadersVisible = false;
             this.dgvStandings.RowHeadersWidth = 62;
             this.dgvStandings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStandings.Size = new System.Drawing.Size(552, 250);
+            this.dgvStandings.Size = new System.Drawing.Size(608, 250);
             this.dgvStandings.TabIndex = 2;
             // 
             // colRank
@@ -175,12 +177,20 @@
             this.colOPPG.ReadOnly = true;
             this.colOPPG.Width = 62;
             // 
+            // pointsDiff
+            // 
+            this.pointsDiff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.pointsDiff.HeaderText = "DIFF";
+            this.pointsDiff.Name = "pointsDiff";
+            this.pointsDiff.ReadOnly = true;
+            this.pointsDiff.Width = 55;
+            // 
             // frmViewTeamStandings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::NBAFantasyLeagueSeasonSchedulerSYS.Properties.Resources.bg;
-            this.ClientSize = new System.Drawing.Size(581, 301);
+            this.ClientSize = new System.Drawing.Size(637, 301);
             this.Controls.Add(this.dgvStandings);
             this.Controls.Add(this.lblTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -206,5 +216,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colAWAY;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPPG;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOPPG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointsDiff;
     }
 }
