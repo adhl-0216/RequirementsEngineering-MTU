@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Admin.frmGenerateTeamProfile" Collapsed="true">
+    <Position X="9.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQBhAAQAEDIAAESABACVQAIDBAFSAABFoIACAYhQQAA=</HashCode>
+      <FileName>Admin\frmGenerateTeamProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Admin.frmViewSchedule" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACChAAQAAjAIAAChgACAQAADEAEAAAAEEAAAIQAAAAQ=</HashCode>
+      <FileName>Admin\frmViewSchedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Admin.frmViewTeamStandings" Collapsed="true">
+    <Position X="9.5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAACIAAAECAAAAIIAQDAQAAGAAEIAQAAAAAFACABAAA=</HashCode>
+      <FileName>Admin\frmViewTeamStandings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.frmAdmin" Collapsed="true">
+    <Position X="9.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAIAAAEAAKAQCACAAEAAAIAAAAACAACAAA=</HashCode>
+      <FileName>frmAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.frmMainMenu" Collapsed="true">
+    <Position X="7.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wCwIABAAMCAEIgAA8CGAARBCEocAAAABEBAAAAAggCA=</HashCode>
+      <FileName>frmMainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.frmManageGames" Collapsed="true">
+    <Position X="7.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAADAAACAAAAIAAACAQAACEAAAAAAIAAQBAAAAgAA=</HashCode>
+      <FileName>frmManageGames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.frmManageTeams" Collapsed="true">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAAAAAICBABAAAAACAQQACAAEAAAAAQAAAAACCAAI=</HashCode>
+      <FileName>frmManageTeams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Program" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAAAQAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.frmAddTeam" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQBgAAgAACIABAQAAACRQBgCAAFSAABBAAAAAIDBQAA=</HashCode>
+      <FileName>Teams\frmAddTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.frmRemoveTeam" Collapsed="true">
+    <Position X="6" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAAAlAABCEAAAAACIGAQEAGAAEAAhAgQAAAAQABQAI=</HashCode>
+      <FileName>Teams\frmRemoveTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.frmUpdateTeam" Collapsed="true">
+    <Position X="6" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RQBgAioAICIAAAQAIICRQAgCAAFCgABBAICAAIBRQAA=</HashCode>
+      <FileName>Teams\frmUpdateTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Games.CancelledGame">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Games\CancelledGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Games.frmCancelGames" Collapsed="true">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCDAAAAACAAgACACAKAQAADFAAAAAAEAAAAAQAAgAE=</HashCode>
+      <FileName>Games\frmCancelGames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Games.frmLogGameResults" Collapsed="true">
+    <Position X="7.75" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ECCDQAACECBAxIjAAACA0AATBAUAAIAEgAAAEYIQIBA=</HashCode>
+      <FileName>Games\frmLogGameResults.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Games.frmReschedule" Collapsed="true">
+    <Position X="7.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EKCBAAADACFAxACAAACAUARjBAAAAAAkAAAAQQAIAQA=</HashCode>
+      <FileName>Games\frmReschedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Games.frmSchedule" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAAAZAAgCGAAAIAABGBUAIGAAEAAgAAAAAAAAAAWAA=</HashCode>
+      <FileName>Games\frmSchedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Games.Game">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEDxAAAKEAAAAAyEAAAAAAIJEIAAAAAEAAAAAAAAEAg=</HashCode>
+      <FileName>Games\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Games.GameResult">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CANAAAgBAkAAIIAEAAAAAgQBBAAAEABQAAAAAAAAAAA=</HashCode>
+      <FileName>Games\GameResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Properties.Resources" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAIAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Properties.Settings" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NBAFantasyLeagueSeasonSchedulerSYS.Teams.Team">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAAUAAUAAQAAAkEIAgABgDAAAQAAAAABAAAAIABAA=</HashCode>
+      <FileName>Teams\Team.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
