@@ -76,11 +76,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             TeamLoses = 0;
         }
 
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
-
         public void sqlInsertTeam() 
         {
             OracleConnection conn = Program.getOracleConnection();

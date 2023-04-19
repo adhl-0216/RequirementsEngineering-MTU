@@ -40,11 +40,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             venue = home.HomeCourt;
             recorded = 'N';
         }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
         
         public static void sqlSelectAllGames(ref List<Game> allGames)
         {
