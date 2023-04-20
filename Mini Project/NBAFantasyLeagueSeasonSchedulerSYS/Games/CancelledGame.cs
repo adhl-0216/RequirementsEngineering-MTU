@@ -8,10 +8,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
     internal class CancelledGame : Game
     {
         private string _reason;
-        public string Reason { get => _reason; set => _reason = value; }
+        public string reason { get => _reason; set => _reason = value; }
         public CancelledGame(Game game, string reason) : base(game.gameID, game.gameDate)
         {
-            Reason = reason;
+            this.reason = reason;
         }
 
         public static void sqlSelectCancelledGames(ref List<CancelledGame> allCancelledGames)
@@ -19,20 +19,21 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             OracleConnection conn = Program.getOracleConnection();
             string sqlSelect = "SELECT * FROM CANCELLED_GAMES";
             OracleCommand cmd = new OracleCommand(sqlSelect, conn);
+            //initialise List
+            allCancelledGames = new List<CancelledGame>();
 
             try
             {
                 OracleDataReader dataReader = cmd.ExecuteReader();
-                allCancelledGames = new List<CancelledGame>(10);
                 while (dataReader.Read())
                 {
                     string gameID = dataReader.GetString(0);
                     DateTime gameDateTime = dataReader.GetDateTime(3);
                     string reason = dataReader.GetString(5);
-
+                    //create object
                     CancelledGame cGame = new CancelledGame(new Game(gameID, gameDateTime.Date), reason);
                     cGame.gameTime = gameDateTime.TimeOfDay;
-
+                    //add to List
                     allCancelledGames.Add(cGame);
                 }
             }
@@ -40,6 +41,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
+                throw ex;
             }
         }
 

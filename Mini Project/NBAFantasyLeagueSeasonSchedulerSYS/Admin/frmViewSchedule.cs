@@ -27,10 +27,19 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
 
         private void frmViewSchedule_Load(object sender, EventArgs e)
         {
-            //retrive data
-            Team.sqlSelectTeam(ref allTeams);
-            Game.sqlSelectAllGames(ref allGames);
-            CancelledGame.sqlSelectCancelledGames(ref allCancelledGames);
+            try
+            {
+                //retrive data
+                Team.sqlSelectTeam(ref allTeams);
+                Game.sqlSelectAllGames(ref allGames);
+                CancelledGame.sqlSelectCancelledGames(ref allCancelledGames);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
+                MessageBox.Show("An error retrieving data has occured. Exiting window.");
+                Close();
+            }
 
             //init GUI
             foreach (Game game in allGames)
@@ -41,7 +50,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             if (allCancelledGames != null) {
                 foreach (CancelledGame cg in allCancelledGames)
                 {
-                    dtgCancelledGames.Rows.Add(cg.gameDate.ToString("yyyy/MM/dd"), cg.gameID, cg.home.TeamID, cg.away.TeamID, cg.gameTime, cg.venue, cg.Reason);
+                    dtgCancelledGames.Rows.Add(cg.gameDate.ToString("yyyy/MM/dd"), cg.gameID, cg.home.TeamID, cg.away.TeamID, cg.gameTime, cg.venue, cg.reason);
                 }
             }
         }

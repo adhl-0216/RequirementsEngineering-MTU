@@ -1,11 +1,7 @@
 ﻿using NBAFantasyLeagueSeasonSchedulerSYS.Teams;
-using Newtonsoft.Json;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 {
@@ -66,8 +62,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                throw ex;
             }
         }
 
@@ -97,8 +92,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                throw ex;
             }
         }
 
@@ -115,8 +109,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.StackTrace);
-                Console.WriteLine(ex.Message);
+                throw ex;
             }
         }
 
@@ -136,30 +129,36 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                throw ex;
             }
         }
 
         public void sqlDeleteGame(string reason)
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlDel = $"DELETE FROM GAMES WHERE GAME_ID='{gameID}'";
-            OracleCommand cmd = new OracleCommand(sqlDel, conn);
-
+            string sqlDel = $"DELETE FROM GAMES WHERE GAME_ID=:gameID";
+            OracleCommand del = new OracleCommand(sqlDel, conn);
+            del.Parameters.Add(":gameID", gameID);
             try
             {
-                int affectedRows = cmd.ExecuteNonQuery();
+                int affectedRows = del.ExecuteNonQuery();
                 Console.WriteLine($"{affectedRows} row(s) deleted.");
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.StackTrace);
-                Console.WriteLine(ex.Message);
+                throw ex;
             }
 
-            string sqlInsert = $"INSERT INTO CANCELLED_GAMES VALUES ('{gameID}','{home.TeamID}','{away.TeamID}',TIMESTAMP'{gameDate.ToString("yyyy-MM-dd")} {gameTime}','{venue}','{reason}')";
-            cmd.CommandText = sqlInsert;
+            string sqlInsert = $"INSERT INTO CANCELLED_GAMES VALUES ( :gameID, :homeID, :awayID, :gameDateTime, :venue, :reason )";
+            OracleCommand cmd = new OracleCommand(sqlInsert, conn);
+            cmd.Parameters.Add(":gameID", gameID);
+            cmd.Parameters.Add(":homeID", home.TeamID);
+            cmd.Parameters.Add(":awayID", away.TeamID);
+            DateTime gameDateTime = new DateTime(gameDate.Year, gameDate.Month, gameDate.Day, gameTime.Hours, gameTime.Minutes, gameTime.Seconds);
+            cmd.Parameters.Add(":gameDateTime", gameDateTime);
+            cmd.Parameters.Add(":venue", venue);
+            cmd.Parameters.Add(":reason", reason);
+
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
@@ -167,19 +166,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.StackTrace);
-                Console.WriteLine(ex.Message);
+                throw ex;
             }
         }
 
         public void gameRecorded()
         {
-            recorded = 'Y';
             OracleConnection conn = Program.getOracleConnection();
-            string sqlUpdate = $"UPDATE GAMES " +
-                $"SET RECORDED='{recorded}'" +
-                $"WHERE GAME_ID='{gameID}'";
+            //set RECORDED column to Y for the specified GAME_ID
+            string sqlUpdate = $"UPDATE GAMES SET RECORDED='Y' WHERE GAME_ID=:gameID";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
+            cmd.Parameters.Add(":gameID", gameID);
 
             try
             {
@@ -188,10 +185,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                throw ex;
             }
         }
-
     }
 }

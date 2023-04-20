@@ -43,10 +43,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         public static void sqlSelectResultsByID( string teamID,ref List<GameResult> teamResults)
         {
+            //get connection
             OracleConnection conn = Program.getOracleConnection();
+            //select game results which GAME_ID consists of teamID
             string sqlSelect = "SELECT * FROM GAME_RESULTS WHERE GAME_ID LIKE :teamID";
             OracleCommand cmd = new OracleCommand(sqlSelect, conn);
             cmd.Parameters.Add(":teamID", $"%{teamID}%");
+            //initialise List
             teamResults = new List<GameResult>();
 
             try
@@ -56,12 +59,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 {
                     char winner = dataReader.GetString(0)[0];
 
-                    int homeScore = (int)dataReader.GetInt16(1);
-                    int awayScore = (int)dataReader.GetInt16(2);                    
-                    int homeTRB = (int)dataReader.GetInt16(3);
-                    int awayTRB = (int)dataReader.GetInt16(4);                    
-                    int homeAST = (int)dataReader.GetInt16(5);
-                    int awayAST = (int)dataReader.GetInt16(6);
+                    int homeScore = dataReader.GetInt16(1);
+                    int awayScore = dataReader.GetInt16(2);                    
+                    int homeTRB = dataReader.GetInt16(3);
+                    int awayTRB = dataReader.GetInt16(4);                    
+                    int homeAST = dataReader.GetInt16(5);
+                    int awayAST = dataReader.GetInt16(6);
 
                     string gameID = dataReader.GetString(7);
 
@@ -77,8 +80,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public void sqlInsertResult()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = $"INSERT INTO GAME_RESULTS VALUES('{winner}',{homeScore},{awayScore},{homeRebounds},{awayRebounds},{homeAssists},{awayAssists},'{gameID}')";
+            //insert game results
+            string sqlInsert = $"INSERT INTO GAME_RESULTS VALUES(:winner, :homeScore, :awayScore, :homeRebounds, :awayRebounds, :homeAssists, :awayAssists, :gameID)";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
+            cmd.Parameters.Add(":winner", winner);
+            cmd.Parameters.Add(":homeScore", homeScore);
+            cmd.Parameters.Add(":awayScore", awayScore);
+            cmd.Parameters.Add(":homeRebounds", homeRebounds);
+            cmd.Parameters.Add(":awayRebounds", awayRebounds);
+            cmd.Parameters.Add(":homeAssists", homeAssists);
+            cmd.Parameters.Add(":awayAssists", awayAssists);
+            cmd.Parameters.Add(":gameID", gameID);
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
@@ -88,11 +100,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             {
                 throw(ex);
             }
-        }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
         }
     }
 }

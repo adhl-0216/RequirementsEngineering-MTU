@@ -32,8 +32,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             List<teamStanding> allStandings = new List<teamStanding>(); 
             allTeams.ForEach(team => {
                 List<GameResult> teamResults = new List<GameResult>();
-                GameResult.sqlSelectResultsByID(team.TeamID, ref teamResults);
-                double winRate;
+                try
+                {
+                    GameResult.sqlSelectResultsByID(team.TeamID, ref teamResults);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
+                    MessageBox.Show("An error retrieving data has occured. Exiting window.");
+                    Close();
+                }
+
                 int homeWin = 0; int homeLose = 0;
                 int awayWin = 0; int awayLose = 0;
                 double pointsPerGame = 0;

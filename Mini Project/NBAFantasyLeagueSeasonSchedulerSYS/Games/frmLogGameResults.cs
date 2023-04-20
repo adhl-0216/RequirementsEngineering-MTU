@@ -68,14 +68,26 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 $"\n{selectedGame.away.TeamID}: {gameResult.awayScore} PTS/ {gameResult.awayRebounds} TRB/ {gameResult.awayAssists} AST" +
                 $"\n\nWINNER: {((gameResult.winner == 'H') ? selectedGame.home.TeamID : selectedGame.away.TeamID)}";
 
+            //confirmation dialog
             DialogResult response = MessageBox.Show(msg,"Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (response == DialogResult.OK)
+            if (response == DialogResult.OK) //confirm
             {
-                gameResult.sqlInsertResult();
-                selectedGame.gameRecorded();
+                try
+                {
+                    selectedGame.gameRecorded(); //update game recorded status to Y
+                    gameResult.sqlInsertResult(); //insert new game result to database
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
+                    MessageBox.Show("An error retrieving data has occured. Exiting window.");
+                    Close();
+                }
 
+                //success message
                 MessageBox.Show($"Game Results for [{gameResult.gameID}] has succesfully been saved to Game Results File.", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+                //reset GUI
                 refreshDTG();
                 enableInputs(false);
             }
