@@ -31,25 +31,33 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void frmReschedule_Load(object sender, EventArgs e)
         {
             refreshDTG();
+            if (dtgGames.Rows.Count < 1)
+            {
+                btnSelect.Enabled = false;
+                btnReschedule.Enabled = false;
+            }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            if (selectStatus){ 
+            if (selectStatus){ //enable inputs
                 dtgGames.Enabled = false;
                 btnSelect.Text = "CANCEL";
                 dtpDate.Enabled = true;
                 dtpTime.Enabled = true;
                 txtVenue.Enabled = true;
+                btnReschedule.Enabled = true;
 
                 selectStatus = false;
-            }else
+            }
+            else //disable inputs
             {
                 dtgGames.Enabled = true;
                 btnSelect.Text = "SELECT";
                 dtpDate.Enabled = false;
                 dtpTime.Enabled = false;
                 txtVenue.Enabled = false;
+                btnReschedule.Enabled = false;
 
                 selectStatus = true;
             }
@@ -58,8 +66,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void dtgGames_SelectionChanged(object sender, EventArgs e)
         {
             if (dtgGames.SelectedRows.Count == 0) return;
-            selectedGame = allGames.Find(game => game.gameID.Equals(dtgGames.SelectedRows[0].Cells["gameID"].Value));
+            selectedGame = allGames.Find(game => game.gameID.Equals(dtgGames.SelectedRows[0].Cells["gameID"].Value)); //set selectedGame
 
+            //display game details
             lblGameID.Text = selectedGame.gameID;
             dtpDate.Value = selectedGame.gameDate;
             dtpTime.Value = DateTime.Parse(selectedGame.gameTime.ToString());

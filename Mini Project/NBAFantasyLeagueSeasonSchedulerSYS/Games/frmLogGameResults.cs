@@ -33,6 +33,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void frmLogGameResults_Load(object sender, EventArgs e)
         {
             refreshDTG();
+            if (dtgGames.Rows.Count < 1)
+            {
+                btnSelect.Enabled = false;
+            }
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -109,7 +113,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void dtgGames_SelectionChanged(object sender, EventArgs e)
         {
             if (dtgGames.SelectedRows.Count == 0) return;
+            //set selectedGame
             selectedGame = allGames.Find(game => game.gameID.Equals(dtgGames.SelectedRows[0].Cells["gameID"].Value));
+            //display game details
             lblGameID.Text = selectedGame.gameID;
             lblHome.Text = selectedGame.home.TeamID;
             lblAway.Text = selectedGame.away.TeamID;
@@ -137,6 +143,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 return;
             }
 
+            //check if PTS are equal
             if (int.Parse(txtHomePTS.Text.Trim()) == int.Parse(txtAwayPTS.Text.Trim()))
             {
                 MessageBox.Show("An NBA Game can not result in a draw.", "Impossible Situation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -147,6 +154,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             Team home = allTeams.Find(team => team.TeamID.Equals(selectedGame.home.TeamID));
             Team away = allTeams.Find(team => team.TeamID.Equals(selectedGame.away.TeamID));
 
+            //algorithm determining winner
             if (int.Parse(txtHomePTS.Text.Trim()) > int.Parse(txtAwayPTS.Text.Trim()))
             {
                 lblHome.ForeColor = Color.Blue;
@@ -158,7 +166,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 away.TeamLoses += 1;
                 home.sqlUpdateTeam();
                 away.sqlUpdateTeam();
-
 
             }
             else

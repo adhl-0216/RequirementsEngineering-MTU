@@ -48,7 +48,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                 double pointsPerGame = 0;
                 double opponentPointsPerGame = 0;
                 double totalGames = team.TeamWins + team.TeamLoses;
-
+                
+                //teams analysis algorithm
                 foreach (GameResult result in teamResults) {
                     if (result.gameID.Substring(0,3) == team.TeamID)
                     {
@@ -87,15 +88,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                 
             });
 
-            allStandings.Sort();
+            allStandings.Sort();//sort teams
             for (int i = 0; i < allStandings.Count; i++)
             {
                 teamStanding team = allStandings[i];
+                //add teams to datagridview with rank
                 dgvStandings.Rows.Add(i+1, team.TeamID, team.TeamWins, team.TeamLoses, team.GetWinRate(), $"{team.HomeWin}-{team.HomeLose}", $"{team.AwayWin}-{team.AwayLose}", team.PointsPerGame, team.OpponentPointsPerGame, team.GetPointsDiff());
             }
 
-            int gridHeight = dgvStandings.Rows.GetRowsHeight(DataGridViewElementStates.Displayed) + dgvStandings.ColumnHeadersHeight + 2;
-            dgvStandings.Height = gridHeight;
+            int gridHeight = dgvStandings.Rows.GetRowsHeight(DataGridViewElementStates.Displayed) + dgvStandings.ColumnHeadersHeight + 2; 
+            dgvStandings.Height = gridHeight;//dynamic height
         }
         private class teamStanding : IComparable<teamStanding>
         {
@@ -135,7 +137,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             public double GetWinRate() => Math.Round((double)TeamWins / (TeamWins + TeamLoses), 2);
             public double GetPointsDiff() => Math.Round(PointsPerGame - OpponentPointsPerGame, 2);
 
-            public int CompareTo(teamStanding other)
+            public int CompareTo(teamStanding other) //sorting rule
             {
                 if (other.GetWinRate().CompareTo(this.GetWinRate()) != 0) 
                 {

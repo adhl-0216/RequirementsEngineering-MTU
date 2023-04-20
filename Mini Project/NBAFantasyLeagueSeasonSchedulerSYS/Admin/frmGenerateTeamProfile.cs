@@ -57,7 +57,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                 string opponent = (homeID == selectedTeam.TeamID) ? awayID : homeID ;
                 string outcome = "";
 
-                if (selectedTeam.TeamID == homeID)
+                if (selectedTeam.TeamID == homeID)//determine game result for specific team
                 {
                     outcome = (result.winner.Equals('H')) ? "W" : "L" ;
                 }

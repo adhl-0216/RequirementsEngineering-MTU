@@ -99,8 +99,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public void sqlInsertGame()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = $"INSERT INTO GAMES VALUES ('{gameID}','{home.TeamID}','{away.TeamID}',TIMESTAMP'{gameDate.ToString("yyyy-MM-dd")} {gameTime}','{venue}','{recorded}')";
+            string sqlInsert = $"INSERT INTO GAMES VALUES VALUES ( :gameID, :homeID, :awayID, :gameDateTime, :venue, :recorded )";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
+            cmd.Parameters.Add(":gameID", gameID);
+            cmd.Parameters.Add(":homeID", home.TeamID);
+            cmd.Parameters.Add(":awayID", away.TeamID);
+            DateTime gameDateTime = new DateTime(gameDate.Year, gameDate.Month, gameDate.Day, gameTime.Hours, gameTime.Minutes, gameTime.Seconds);
+            cmd.Parameters.Add(":gameDateTime", gameDateTime);
+            cmd.Parameters.Add(":venue", venue);
+            cmd.Parameters.Add(":recorded", recorded);
 
             try
             {
@@ -116,12 +123,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public void sqlUpdateGame()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlUpdate = $"UPDATE GAMES " +
-                $"SET GAME_DATETIME=TIMESTAMP'{gameDate.ToString("yyyy-MM-dd")} {gameTime}'," +
-                $"VENUE='{venue}'" +
-                $"WHERE GAME_ID='{gameID}'";
+            string sqlUpdate = "UPDATE GAMES " +
+                "SET GAME_DATETIME=:gameDateTime," +
+                "VENUE=:venue" +
+                "WHERE GAME_ID=:gameID";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
-
+            DateTime gameDateTime = new DateTime(gameDate.Year, gameDate.Month, gameDate.Day, gameTime.Hours, gameTime.Minutes, gameTime.Seconds);
+            cmd.Parameters.Add(":gameDateTime", gameDateTime);
+            cmd.Parameters.Add(":gameID", gameID);
+            cmd.Parameters.Add(":venue", venue);
             try
             {
                 int affected = cmd.ExecuteNonQuery();
@@ -136,7 +146,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public void sqlDeleteGame(string reason)
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlDel = $"DELETE FROM GAMES WHERE GAME_ID=:gameID";
+            string sqlDel = "DELETE FROM GAMES WHERE GAME_ID=:gameID"; //delete game from GAMES
             OracleCommand del = new OracleCommand(sqlDel, conn);
             del.Parameters.Add(":gameID", gameID);
             try
@@ -149,7 +159,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 throw ex;
             }
 
-            string sqlInsert = $"INSERT INTO CANCELLED_GAMES VALUES ( :gameID, :homeID, :awayID, :gameDateTime, :venue, :reason )";
+            string sqlInsert = "INSERT INTO CANCELLED_GAMES VALUES ( :gameID, :homeID, :awayID, :gameDateTime, :venue, :reason )"; //insert new entry to CANCELLED_GAMES
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
             cmd.Parameters.Add(":gameID", gameID);
             cmd.Parameters.Add(":homeID", home.TeamID);

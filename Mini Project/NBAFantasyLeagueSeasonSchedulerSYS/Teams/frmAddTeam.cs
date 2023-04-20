@@ -74,7 +74,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
             if (valid) {
                 Team newTeam = new Team(txtTeamName.Text, txtGM.Text, txtHeadCoach.Text, txtAsstCoach.Text, txtHomeCourt.Text);
-                if (allTeams.Any(team => team.TeamID.Equals(newTeam.TeamID))) 
+                if (allTeams.Any(team => team.TeamID.Equals(newTeam.TeamID))) //check for duplicated team names
                 {
                     MessageBox.Show("Team Name is invalid.", "Invalid Team Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTeamName.Clear();
@@ -84,9 +84,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                 try
                 {
                     newTeam.sqlInsertTeam();
-                }catch (OracleException ex)
+                }catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
+                    MessageBox.Show("An error with the database has occured. Exiting window.");
+                    Close();
                 }
                 string successMsg = "Team Added Successfully! \n\n";
                 for (int i = 0; i < txtBoxes.Length; i++)

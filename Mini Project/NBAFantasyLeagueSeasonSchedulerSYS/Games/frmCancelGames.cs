@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
@@ -29,14 +22,20 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void frmCancelGames_Load(object sender, EventArgs e)
         {
             refreshDTG();
+            if (dtgGames.Rows.Count < 1)//disable inputs if datagridview is empty
+            {
+                btnCancelGame.Enabled = false;
+                txtReason.Enabled = false;
+            }
         }
 
         private void btnCancelGame_Click(object sender, EventArgs e)
         {
+            //set selected game
             Game selectedGame = allGames.Find(game => game.gameID.Equals(dtgGames.SelectedRows[0].Cells["gameID"].Value));
             string reason = txtReason.Text;
 
-            if (!reason.Equals(""))
+            if (!reason.Equals(""))//reason cannot be empty
             {
                 DialogResult cfm = MessageBox.Show($"Proceed to cancel selected Game(s)?\n\n[{selectedGame.gameID}]\nReason\n\n{ reason}", "Confirm Game Cancellation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (cfm == DialogResult.OK)

@@ -35,9 +35,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void frmRemoveTeam_Load(object sender, EventArgs e)
         {
             refreshComboBox();
-            
+            //disable buttons if combobox is empty
+            if (cboSelectTeam.Items.Count < 1) btnRemoveTeam.Enabled = false;
+
+            //check if schedule has been generated
             Game.sqlSelectAllGames(ref allGames);
-            if (allGames.Count > 0)
+            if (allGames.Count > 0)//schedule exists, close window
             {
                 MessageBox.Show("Schedule has been generated, unable to remove any team(s).", "Unable To Remove Team", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Close();
@@ -47,16 +50,25 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void btnRemoveTeam_Click(object sender, EventArgs e)
         {
             if (selectedTeam != null) { 
+                //confirmation dialog
                 DialogResult dialogResult = MessageBox.Show("Remove " + selectedTeam.TeamName + " from the system ?", "Remove Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if ( dialogResult == DialogResult.Yes){
-                    deleteTeam(selectedTeam);
-                    MessageBox.Show(selectedTeam.TeamName + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    refreshComboBox();
+                if ( dialogResult == DialogResult.Yes){ //confirm
 
+                    try { deleteTeam(selectedTeam); }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
+                        MessageBox.Show("An error retrieving data has occured. Exiting window.");
+                        Close();
+                    }
+                    MessageBox.Show(selectedTeam.TeamName + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //reset GUI
+                    refreshComboBox();
                     cboSelectTeam.SelectedIndex = -1;
                     dtgTeamDetails.Rows.Clear();
                 }
-            }else
+            }
+            else
             {
                 MessageBox.Show("Please select a Team to be removed from the system.", "Empty Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
@@ -65,6 +77,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
         private void cboSelectTeam_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //display team details on datagridview on selection changed
             if (cboSelectTeam.SelectedIndex != -1) {
                 selectedTeam = allTeams[cboSelectTeam.SelectedIndex];
                 string[] teamDetails = { selectedTeam.TeamID, selectedTeam.TeamName, selectedTeam.Gm, selectedTeam.HeadCoach, selectedTeam.AsstCoach, selectedTeam.HomeCourt};
@@ -76,17 +89,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void deleteTeam(Team team)
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlDelete = $"DELETE FROM TEAMS WHERE TEAM_ID='{team.TeamID}'";
+            string sqlDelete = "DELETE FROM TEAMS WHERE TEAM_ID=:teamID";
             OracleCommand cmd = new OracleCommand(sqlDelete, conn);
-
+            cmd.Parameters.Add(":teamID", team.TeamID);
             try
             {
                 int affected = cmd.ExecuteNonQuery();
                 Console.WriteLine(affected + " row(s) affected.");
             }catch (OracleException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                throw ex;
             }
         }
 

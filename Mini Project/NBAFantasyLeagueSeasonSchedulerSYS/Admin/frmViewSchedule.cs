@@ -29,7 +29,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
         {
             try
             {
-                //retrive data
+                //retrieve data
                 Team.sqlSelectTeam(ref allTeams);
                 Game.sqlSelectAllGames(ref allGames);
                 CancelledGame.sqlSelectCancelledGames(ref allCancelledGames);
@@ -41,7 +41,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                 Close();
             }
 
-            //init GUI
+            //initialise GUI
             foreach (Game game in allGames)
             {
                 dtgScheduledGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue);

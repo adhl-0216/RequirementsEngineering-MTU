@@ -37,8 +37,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void cboTeamName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboTeamName.SelectedIndex != -1){
-                selectedTeam = allTeams[cboTeamName.SelectedIndex];
-
+                selectedTeam = allTeams[cboTeamName.SelectedIndex];//set selectedTeam
+                //enable inputs and display information
                 txtNewName.Enabled = true;
 
                 txtGM.Text = selectedTeam.Gm;
@@ -113,7 +113,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                 selectedTeam.AsstCoach = txtAsstCoach.Text;
                 selectedTeam.HomeCourt = txtHomeCourt.Text;
 
-                selectedTeam.sqlUpdateTeam();
+                try { selectedTeam.sqlUpdateTeam(); }//update team details to database
+                catch (Exception ex){
+                    Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
+                    MessageBox.Show("An error with the database has occured. Exiting window.");
+                    Close();
+                }
 
                 string successMsg = $"Team Updated Successfully! \n\n" +
                     $"{selectedTeam.TeamName}\n" +
@@ -123,7 +128,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                     $"{selectedTeam.HomeCourt}\n";
 
                 MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                
+                //reset GUI
                 cboTeamName.SelectedIndex = -1;
                 btnUpdateTeam.Enabled = false;
                 foreach (TextBox txtBox in txtBoxes)

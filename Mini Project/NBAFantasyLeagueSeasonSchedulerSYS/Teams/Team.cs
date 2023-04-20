@@ -23,7 +23,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             get => _teamID; 
             set
             {
-
+                //ID assigning algorithm
                 if (value.Contains("Lakers"))
                 {
                     _teamID = "LAK";
@@ -79,7 +79,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public void sqlInsertTeam() 
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = $"INSERT INTO TEAMS VALUES(:p0, :p1, :p2, :p3, :p4, :p5, :p6, :p7)";
+            string sqlInsert = "INSERT INTO TEAMS VALUES(:p0, :p1, :p2, :p3, :p4, :p5, :p6, :p7)";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
             cmd.Parameters.AddRange(new Object[] { TeamID, TeamName.Replace("'", "''"), Gm, HeadCoach, AsstCoach, HomeCourt, TeamWins, TeamLoses});
             try
@@ -102,7 +102,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             try
             {
                 OracleDataReader dataReader = cmd.ExecuteReader();
-                allTeams = new List<Team>(10);
+                allTeams = new List<Team>();
                 while (dataReader.Read())
                 {
                     string teamName = dataReader.GetString(1);
@@ -121,15 +121,14 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                throw ex;
             }
         }
 
         public void sqlUpdateTeam()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlUpdate = $"UPDATE TEAMS SET TEAM_NAME=:p0, GENERAL_MANAGER=:p1, HEAD_COACH=:p2, ASSISTANT_COACH=:p3, HOME_COURT=:p4, TEAM_WINS=:p5, TEAM_LOSES=:p6 WHERE TEAM_ID=:p7";
+            string sqlUpdate = "UPDATE TEAMS SET TEAM_NAME=:p0, GENERAL_MANAGER=:p1, HEAD_COACH=:p2, ASSISTANT_COACH=:p3, HOME_COURT=:p4, TEAM_WINS=:p5, TEAM_LOSES=:p6 WHERE TEAM_ID=:p7";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
             cmd.Parameters.AddRange(new Object[] { TeamName.Replace("'", "''"), Gm, HeadCoach, AsstCoach, HomeCourt, TeamWins, TeamLoses, TeamID});
 
@@ -140,8 +139,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
             }
             catch (OracleException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                throw ex;
             }
         }
     }
