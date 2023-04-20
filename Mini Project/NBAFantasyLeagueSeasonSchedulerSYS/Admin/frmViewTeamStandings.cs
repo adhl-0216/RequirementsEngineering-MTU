@@ -34,7 +34,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                 List<GameResult> teamResults = new List<GameResult>();
                 try
                 {
-                    GameResult.sqlSelectResultsByID(team.TeamID, ref teamResults);
+                    GameResult.sqlSelectResultsByID(team.teamID, ref teamResults);
                 }
                 catch(Exception ex)
                 {
@@ -47,11 +47,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                 int awayWin = 0; int awayLose = 0;
                 double pointsPerGame = 0;
                 double opponentPointsPerGame = 0;
-                double totalGames = team.TeamWins + team.TeamLoses;
+                double totalGames = team.teamWins + team.teamLoses;
                 
                 //teams analysis algorithm
                 foreach (GameResult result in teamResults) {
-                    if (result.gameID.Substring(0,3) == team.TeamID)
+                    if (result.gameID.Substring(0,3) == team.teamID)
                     {
                         if (result.winner == 'A')
                         {
@@ -65,7 +65,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                         pointsPerGame += result.awayScore;
                         opponentPointsPerGame += result.homeScore;
                     }
-                    else if (result.gameID.Substring(4,3) == team.TeamID)
+                    else if (result.gameID.Substring(4,3) == team.teamID)
                     {
                         if (result.winner == 'H')
                         {
@@ -84,7 +84,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
                 
                 pointsPerGame = Math.Round(pointsPerGame / totalGames, 2);
                 opponentPointsPerGame = Math.Round(opponentPointsPerGame / totalGames, 2);
-                allStandings.Add(new teamStanding(team.TeamID, team.TeamWins, team.TeamLoses, homeWin, homeLose, awayWin, awayLose, pointsPerGame, opponentPointsPerGame));
+                allStandings.Add(new teamStanding(team.teamID, team.teamWins, team.teamLoses, homeWin, homeLose, awayWin, awayLose, pointsPerGame, opponentPointsPerGame));
                 
             });
 

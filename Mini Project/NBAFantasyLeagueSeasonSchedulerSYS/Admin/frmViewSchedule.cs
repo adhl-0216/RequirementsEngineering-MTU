@@ -44,13 +44,13 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Admin
             //initialise GUI
             foreach (Game game in allGames)
             {
-                dtgScheduledGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue);
+                dtgScheduledGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.teamID, game.away.teamID, game.gameTime, game.venue);
             }
 
             if (allCancelledGames != null) {
                 foreach (CancelledGame cg in allCancelledGames)
                 {
-                    dtgCancelledGames.Rows.Add(cg.gameDate.ToString("yyyy/MM/dd"), cg.gameID, cg.home.TeamID, cg.away.TeamID, cg.gameTime, cg.venue, cg.reason);
+                    dtgCancelledGames.Rows.Add(cg.gameDate.ToString("yyyy/MM/dd"), cg.gameID, cg.home.teamID, cg.away.teamID, cg.gameTime, cg.venue, cg.reason);
                 }
             }
         }

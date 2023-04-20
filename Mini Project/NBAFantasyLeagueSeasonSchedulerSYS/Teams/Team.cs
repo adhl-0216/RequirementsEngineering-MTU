@@ -19,11 +19,17 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         private int _teamWins;
         private int _teamLoses;
 
-        public string TeamID { 
+        public string teamID { 
             get => _teamID; 
             set
             {
                 //ID assigning algorithm
+                if (teamName.Length < 3)
+                {
+                    _teamID = teamName.PadRight(3, '_');
+                    return;
+                }
+
                 if (value.Contains("Lakers"))
                 {
                     _teamID = "LAK";
@@ -56,32 +62,39 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                 }
             } 
         }
-        public string TeamName { get => _teamName; set => _teamName = value; }
-        public string Gm { get => _gm; set => _gm = value; }
-        public string HeadCoach { get => _headCoach; set => _headCoach = value; }
-        public string AsstCoach { get => _asstCoach; set => _asstCoach = value; }
-        public string HomeCourt { get => _homeCourt; set => _homeCourt = value; }
-        public int TeamWins { get => _teamWins; set => _teamWins = value; }
-        public int TeamLoses { get => _teamLoses; set => _teamLoses = value; }
+        public string teamName { get => _teamName; set => _teamName = value; }
+        public string gm { get => _gm; set => _gm = value; }
+        public string headCoach { get => _headCoach; set => _headCoach = value; }
+        public string asstCoach { get => _asstCoach; set => _asstCoach = value; }
+        public string homeCourt { get => _homeCourt; set => _homeCourt = value; }
+        public int teamWins { get => _teamWins; set => _teamWins = value; }
+        public int teamLoses { get => _teamLoses; set => _teamLoses = value; }
 
         public Team(string teamName, string gm, string headCoach, string asstCoach, string homeCourt)
         {
-            TeamName = teamName;
-            TeamID = teamName;
-            Gm = gm;
-            HeadCoach = headCoach;
-            AsstCoach = asstCoach;
-            HomeCourt = homeCourt;
-            TeamWins = 0;
-            TeamLoses = 0;
+            this.teamName = teamName;
+            teamID = teamName;
+            this.gm = gm;
+            this.headCoach = headCoach;
+            this.asstCoach = asstCoach;
+            this.homeCourt = homeCourt;
+            teamWins = 0;
+            teamLoses = 0;
         }
 
         public void sqlInsertTeam() 
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = "INSERT INTO TEAMS VALUES(:p0, :p1, :p2, :p3, :p4, :p5, :p6, :p7)";
+            string sqlInsert = "INSERT INTO TEAMS VALUES(:teamID, :teamName, :gm, :headCoach, :asstCoach, :homeCourt, :teamWins, :teamLoses)";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
-            cmd.Parameters.AddRange(new Object[] { TeamID, TeamName.Replace("'", "''"), Gm, HeadCoach, AsstCoach, HomeCourt, TeamWins, TeamLoses});
+            cmd.Parameters.Add(":teamID", teamID);
+            cmd.Parameters.Add(":teamName", teamName);
+            cmd.Parameters.Add(":gm", gm);
+            cmd.Parameters.Add(":headCoach", headCoach);
+            cmd.Parameters.Add(":asstCoach", asstCoach);
+            cmd.Parameters.Add(":homeCourt", homeCourt);
+            cmd.Parameters.Add(":teamWins", teamWins);
+            cmd.Parameters.Add(":teamLoses", teamLoses);
             try
             {
                 int affectedRows = cmd.ExecuteNonQuery();
@@ -114,8 +127,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                     int teamLoses = dataReader.GetInt32(7);
 
                     Team team = new Team(teamName, gM, headCoach, asstCoach, homeCourt);
-                    team.TeamWins = teamWins;
-                    team.TeamLoses = teamLoses;
+                    team.teamWins = teamWins;
+                    team.teamLoses = teamLoses;
                     allTeams.Add(team);
                 }
             }
@@ -128,10 +141,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
         public void sqlUpdateTeam()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlUpdate = "UPDATE TEAMS SET TEAM_NAME=:p0, GENERAL_MANAGER=:p1, HEAD_COACH=:p2, ASSISTANT_COACH=:p3, HOME_COURT=:p4, TEAM_WINS=:p5, TEAM_LOSES=:p6 WHERE TEAM_ID=:p7";
+            string sqlUpdate = "UPDATE TEAMS SET TEAM_NAME=:teamName, GENERAL_MANAGER=:gm, HEAD_COACH=:headCoach, ASSISTANT_COACH=:asstCoach, HOME_COURT=:homeCourt, TEAM_WINS=:teamWins, TEAM_LOSES=:teamLoses WHERE TEAM_ID=:teamID";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
-            cmd.Parameters.AddRange(new Object[] { TeamName.Replace("'", "''"), Gm, HeadCoach, AsstCoach, HomeCourt, TeamWins, TeamLoses, TeamID});
-
+            cmd.Parameters.Add(":teamName", teamName);
+            cmd.Parameters.Add(":gm", gm);
+            cmd.Parameters.Add(":headCoach", headCoach);
+            cmd.Parameters.Add(":asstCoach", asstCoach);
+            cmd.Parameters.Add(":homeCourt", homeCourt);
+            cmd.Parameters.Add(":teamWins", teamWins);
+            cmd.Parameters.Add(":teamLoses", teamLoses);
+            cmd.Parameters.Add(":teamID", teamID);
             try
             {
                 int affected = cmd.ExecuteNonQuery();

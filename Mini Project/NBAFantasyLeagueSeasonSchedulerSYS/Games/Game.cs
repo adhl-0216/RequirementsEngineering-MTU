@@ -29,11 +29,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             Team.sqlSelectTeam(ref allTeams);
             
             gameID = GameID;
-            home = allTeams.Find(team => team.TeamID == GameID.Substring(4,3));
-            away = allTeams.Find(team => team.TeamID == GameID.Substring(0,3));
+            home = allTeams.Find(team => team.teamID == GameID.Substring(4,3));
+            away = allTeams.Find(team => team.teamID == GameID.Substring(0,3));
             gameDate = GameDate.Date;
             gameTime = new TimeSpan(20, 0, 0);
-            venue = home.HomeCourt;
+            venue = home.homeCourt;
             recorded = 'N';
         }
         
@@ -99,11 +99,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public void sqlInsertGame()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlInsert = $"INSERT INTO GAMES VALUES VALUES ( :gameID, :homeID, :awayID, :gameDateTime, :venue, :recorded )";
+            string sqlInsert = "INSERT INTO GAMES VALUES ( :gameID, :homeID, :awayID, :gameDateTime, :venue, :recorded )";
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
             cmd.Parameters.Add(":gameID", gameID);
-            cmd.Parameters.Add(":homeID", home.TeamID);
-            cmd.Parameters.Add(":awayID", away.TeamID);
+            cmd.Parameters.Add(":homeID", home.teamID);
+            cmd.Parameters.Add(":awayID", away.teamID);
             DateTime gameDateTime = new DateTime(gameDate.Year, gameDate.Month, gameDate.Day, gameTime.Hours, gameTime.Minutes, gameTime.Seconds);
             cmd.Parameters.Add(":gameDateTime", gameDateTime);
             cmd.Parameters.Add(":venue", venue);
@@ -162,8 +162,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             string sqlInsert = "INSERT INTO CANCELLED_GAMES VALUES ( :gameID, :homeID, :awayID, :gameDateTime, :venue, :reason )"; //insert new entry to CANCELLED_GAMES
             OracleCommand cmd = new OracleCommand(sqlInsert, conn);
             cmd.Parameters.Add(":gameID", gameID);
-            cmd.Parameters.Add(":homeID", home.TeamID);
-            cmd.Parameters.Add(":awayID", away.TeamID);
+            cmd.Parameters.Add(":homeID", home.teamID);
+            cmd.Parameters.Add(":awayID", away.teamID);
             DateTime gameDateTime = new DateTime(gameDate.Year, gameDate.Month, gameDate.Day, gameTime.Hours, gameTime.Minutes, gameTime.Seconds);
             cmd.Parameters.Add(":gameDateTime", gameDateTime);
             cmd.Parameters.Add(":venue", venue);

@@ -195,6 +195,7 @@
             this.Controls.Add(this.lblTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmViewTeamStandings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBA Fantasy League Season Scheduler - [Admin] - [Team Standings]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmViewTeamStandings_FormClosing);
             this.Load += new System.EventHandler(this.frmViewTeamStandings_Load);

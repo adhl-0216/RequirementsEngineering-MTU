@@ -41,16 +41,16 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                 //enable inputs and display information
                 txtNewName.Enabled = true;
 
-                txtGM.Text = selectedTeam.Gm;
+                txtGM.Text = selectedTeam.gm;
                 txtGM.Enabled = true;
 
-                txtHeadCoach.Text = selectedTeam.HeadCoach;
+                txtHeadCoach.Text = selectedTeam.headCoach;
                 txtHeadCoach.Enabled = true;
 
-                txtAsstCoach.Text = selectedTeam.AsstCoach;
+                txtAsstCoach.Text = selectedTeam.asstCoach;
                 txtAsstCoach.Enabled = true;
 
-                txtHomeCourt.Text = selectedTeam.HomeCourt;
+                txtHomeCourt.Text = selectedTeam.homeCourt;
                 txtHomeCourt.Enabled = true;
 
                 btnUpdateTeam.Enabled = true;
@@ -107,25 +107,26 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             if (valid)
             {
                 
-                selectedTeam.TeamName = (txtNewName.Text.Equals(""))?cboTeamName.Text.Substring(6):txtNewName.Text;
-                selectedTeam.Gm = txtGM.Text;
-                selectedTeam.HeadCoach = txtHeadCoach.Text;
-                selectedTeam.AsstCoach = txtAsstCoach.Text;
-                selectedTeam.HomeCourt = txtHomeCourt.Text;
+                selectedTeam.teamName = (txtNewName.Text.Equals(""))?cboTeamName.Text.Substring(6):txtNewName.Text;
+                selectedTeam.gm = txtGM.Text;
+                selectedTeam.headCoach = txtHeadCoach.Text;
+                selectedTeam.asstCoach = txtAsstCoach.Text;
+                selectedTeam.homeCourt = txtHomeCourt.Text;
 
                 try { selectedTeam.sqlUpdateTeam(); }//update team details to database
                 catch (Exception ex){
                     Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
                     MessageBox.Show("An error with the database has occured. Exiting window.");
                     Close();
+                    return;
                 }
 
                 string successMsg = $"Team Updated Successfully! \n\n" +
-                    $"{selectedTeam.TeamName}\n" +
-                    $"{selectedTeam.Gm}\n" +
-                    $"{selectedTeam.HeadCoach}\n" +
-                    $"{selectedTeam.AsstCoach}\n" +
-                    $"{selectedTeam.HomeCourt}\n";
+                    $"{selectedTeam.teamName}\n" +
+                    $"{selectedTeam.gm}\n" +
+                    $"{selectedTeam.headCoach}\n" +
+                    $"{selectedTeam.asstCoach}\n" +
+                    $"{selectedTeam.homeCourt}\n";
 
                 MessageBox.Show(successMsg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
@@ -147,9 +148,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             cboTeamName.Items.Clear();
             foreach (Team team in allTeams)
             {
-                if (team.TeamName != null)
+                if (team.teamName != null)
                 {
-                    cboTeamName.Items.Add($"[{team.TeamID}] {team.TeamName}");
+                    cboTeamName.Items.Add($"[{team.teamID}] {team.teamName}");
                 }
             }
         }

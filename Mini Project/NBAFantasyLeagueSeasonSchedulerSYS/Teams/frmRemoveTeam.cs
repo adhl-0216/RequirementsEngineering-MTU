@@ -51,7 +51,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         {
             if (selectedTeam != null) { 
                 //confirmation dialog
-                DialogResult dialogResult = MessageBox.Show("Remove " + selectedTeam.TeamName + " from the system ?", "Remove Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Remove " + selectedTeam.teamName + " from the system ?", "Remove Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if ( dialogResult == DialogResult.Yes){ //confirm
 
                     try { deleteTeam(selectedTeam); }
@@ -61,7 +61,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                         MessageBox.Show("An error retrieving data has occured. Exiting window.");
                         Close();
                     }
-                    MessageBox.Show(selectedTeam.TeamName + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(selectedTeam.teamName + " has been removed from the system.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //reset GUI
                     refreshComboBox();
                     cboSelectTeam.SelectedIndex = -1;
@@ -80,7 +80,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             //display team details on datagridview on selection changed
             if (cboSelectTeam.SelectedIndex != -1) {
                 selectedTeam = allTeams[cboSelectTeam.SelectedIndex];
-                string[] teamDetails = { selectedTeam.TeamID, selectedTeam.TeamName, selectedTeam.Gm, selectedTeam.HeadCoach, selectedTeam.AsstCoach, selectedTeam.HomeCourt};
+                string[] teamDetails = { selectedTeam.teamID, selectedTeam.teamName, selectedTeam.gm, selectedTeam.headCoach, selectedTeam.asstCoach, selectedTeam.homeCourt};
                 dtgTeamDetails.Rows.Clear();
                 dtgTeamDetails.Rows.Add(teamDetails);
             }
@@ -91,7 +91,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             OracleConnection conn = Program.getOracleConnection();
             string sqlDelete = "DELETE FROM TEAMS WHERE TEAM_ID=:teamID";
             OracleCommand cmd = new OracleCommand(sqlDelete, conn);
-            cmd.Parameters.Add(":teamID", team.TeamID);
+            cmd.Parameters.Add(":teamID", team.teamID);
             try
             {
                 int affected = cmd.ExecuteNonQuery();
@@ -108,9 +108,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
             cboSelectTeam.Items.Clear();
             foreach (Team team in allTeams)
             {
-                if (team.TeamName != null)
+                if (team.teamName != null)
                 {
-                    cboSelectTeam.Items.Add($"[{team.TeamID}] {team.TeamName}");
+                    cboSelectTeam.Items.Add($"[{team.teamID}] {team.teamName}");
                 }
             }
         }

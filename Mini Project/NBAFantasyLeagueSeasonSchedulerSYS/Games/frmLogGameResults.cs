@@ -18,6 +18,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private static List<Game> allGames;
         private static Game selectedGame;
         private char winner;
+        private Team homeTeam;
+        private Team awayTeam;
 
         public frmLogGameResults(Form parent)
         {
@@ -33,10 +35,6 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void frmLogGameResults_Load(object sender, EventArgs e)
         {
             refreshDTG();
-            if (dtgGames.Rows.Count < 1)
-            {
-                btnSelect.Enabled = false;
-            }
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -68,9 +66,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             );
 
             string msg = $"[{gameResult.gameID}]" +
-                $"\n\n{selectedGame.home.TeamID}: {gameResult.homeScore} PTS/ {gameResult.homeRebounds} TRB/ {gameResult.homeAssists} AST" +
-                $"\n{selectedGame.away.TeamID}: {gameResult.awayScore} PTS/ {gameResult.awayRebounds} TRB/ {gameResult.awayAssists} AST" +
-                $"\n\nWINNER: {((gameResult.winner == 'H') ? selectedGame.home.TeamID : selectedGame.away.TeamID)}";
+                $"\n\n{selectedGame.home.teamID}: {gameResult.homeScore} PTS/ {gameResult.homeRebounds} TRB/ {gameResult.homeAssists} AST" +
+                $"\n{selectedGame.away.teamID}: {gameResult.awayScore} PTS/ {gameResult.awayRebounds} TRB/ {gameResult.awayAssists} AST" +
+                $"\n\nWINNER: {((gameResult.winner == 'H') ? selectedGame.home.teamID : selectedGame.away.teamID)}";
 
             //confirmation dialog
             DialogResult response = MessageBox.Show(msg,"Confirm Game Results", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -80,6 +78,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 {
                     selectedGame.gameRecorded(); //update game recorded status to Y
                     gameResult.sqlInsertResult(); //insert new game result to database
+                    homeTeam.sqlUpdateTeam();
+                    awayTeam.sqlUpdateTeam();
                 }
                 catch (Exception ex)
                 {
@@ -117,11 +117,11 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             selectedGame = allGames.Find(game => game.gameID.Equals(dtgGames.SelectedRows[0].Cells["gameID"].Value));
             //display game details
             lblGameID.Text = selectedGame.gameID;
-            lblHome.Text = selectedGame.home.TeamID;
-            lblAway.Text = selectedGame.away.TeamID;
+            lblHome.Text = selectedGame.home.teamID;
+            lblAway.Text = selectedGame.away.teamID;
         }
 
-        private void checkWinner(object sender, EventArgs e)
+        private void txtPTS_Leave(object sender, EventArgs e)
         {
             //check if input is empty
             if (txtHomePTS.Text.Equals("")) return;
@@ -150,9 +150,15 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 return;
             }
 
+            determineWinner();
+
+        }
+
+        private void determineWinner()
+        {
             Team.sqlSelectTeam(ref allTeams);
-            Team home = allTeams.Find(team => team.TeamID.Equals(selectedGame.home.TeamID));
-            Team away = allTeams.Find(team => team.TeamID.Equals(selectedGame.away.TeamID));
+            homeTeam = allTeams.Find(team => team.teamID.Equals(selectedGame.home.teamID));
+            awayTeam = allTeams.Find(team => team.teamID.Equals(selectedGame.away.teamID));
 
             //algorithm determining winner
             if (int.Parse(txtHomePTS.Text.Trim()) > int.Parse(txtAwayPTS.Text.Trim()))
@@ -162,11 +168,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 lblAway.ForeColor = default;
                 lblAway.Font = default;
                 winner = 'H';
-                home.TeamWins += 1;
-                away.TeamLoses += 1;
-                home.sqlUpdateTeam();
-                away.sqlUpdateTeam();
-
+                homeTeam.teamWins += 1;
+                awayTeam.teamLoses += 1;
             }
             else
             {
@@ -175,10 +178,8 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 lblHome.ForeColor = default;
                 lblHome.Font = default;
                 winner = 'A';
-                home.TeamWins += 1;
-                away.TeamLoses += 1;
-                away.sqlUpdateTeam();
-                home.sqlUpdateTeam();
+                awayTeam.teamWins += 1;
+                homeTeam.teamLoses += 1;
             }
         }
 
@@ -189,7 +190,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             allGames.Sort((x, y) => x.gameDate.CompareTo(y.gameDate));
 
             dtgGames.Rows.Clear();
-            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID,  game.gameTime, game.venue));
+            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.teamID, game.away.teamID,  game.gameTime, game.venue));
+
+            if (dtgGames.Rows.Count < 1) btnSelect.Enabled = false;
         }
 
         private void enableInputs(bool enable = true)

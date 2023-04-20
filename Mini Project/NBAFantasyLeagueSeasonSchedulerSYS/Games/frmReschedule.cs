@@ -116,9 +116,10 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             Game.sqlSelectAllGames(ref allGames);
             allGames.RemoveAll(game => game.gameDate < DateTime.Now);
             allGames.Sort((x,y) => x.gameDate.CompareTo(y.gameDate));
+            allGames.RemoveAll(game => game.recorded.Equals('Y'));
 
             dtgGames.Rows.Clear();
-            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.TeamID, game.away.TeamID, game.gameTime, game.venue));
+            allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.teamID, game.away.teamID, game.gameTime, game.venue));
         }
     }
 }

@@ -175,7 +175,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.txtAwayPTS.Name = "txtAwayPTS";
             this.txtAwayPTS.Size = new System.Drawing.Size(68, 20);
             this.txtAwayPTS.TabIndex = 4;
-            this.txtAwayPTS.Leave += new System.EventHandler(this.checkWinner);
+            this.txtAwayPTS.Leave += new System.EventHandler(this.txtPTS_Leave);
             // 
             // txtHomeTRB
             // 
@@ -206,7 +206,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             this.txtHomePTS.Name = "txtHomePTS";
             this.txtHomePTS.Size = new System.Drawing.Size(68, 20);
             this.txtHomePTS.TabIndex = 1;
-            this.txtHomePTS.Leave += new System.EventHandler(this.checkWinner);
+            this.txtHomePTS.Leave += new System.EventHandler(this.txtPTS_Leave);
             // 
             // btnSelect
             // 

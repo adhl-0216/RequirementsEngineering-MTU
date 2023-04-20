@@ -74,7 +74,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
 
             if (valid) {
                 Team newTeam = new Team(txtTeamName.Text, txtGM.Text, txtHeadCoach.Text, txtAsstCoach.Text, txtHomeCourt.Text);
-                if (allTeams.Any(team => team.TeamID.Equals(newTeam.TeamID))) //check for duplicated team names
+                if (allTeams.Any(team => team.teamID.Equals(newTeam.teamID))) //check for duplicated team names
                 {
                     MessageBox.Show("Team Name is invalid.", "Invalid Team Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTeamName.Clear();
@@ -89,6 +89,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
                     Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
                     MessageBox.Show("An error with the database has occured. Exiting window.");
                     Close();
+                    return;
                 }
                 string successMsg = "Team Added Successfully! \n\n";
                 for (int i = 0; i < txtBoxes.Length; i++)
@@ -106,9 +107,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS
         private void checkTeamFull()
         {
             Team.sqlSelectTeam(ref allTeams);
-            string msg = "Only a maximum of 10 Teams are allowed!\nTo amend Team Details, go to [Manage Teams] > [Update Team].\nTo remove a team, go to [Manage Teams] > [Remove Team].";
-            if (allTeams.Count == 10)
+            if (allTeams.Count >= 10)
             {
+                string msg = "Only a maximum of 10 Teams are allowed!\nTo amend Team Details, go to [Manage Teams] > [Update Team].\nTo remove a team, go to [Manage Teams] > [Remove Team].";
                 MessageBox.Show(msg, "Team List Full", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Close();
             }

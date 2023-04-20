@@ -31,7 +31,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             checkIfScheduleExists();
             foreach (Team team in allTeams)
             {
-                dtgTeamDetails.Rows.Add(team.TeamID, team.TeamName, team.Gm, team.HeadCoach, team.AsstCoach, team.HomeCourt);
+                dtgTeamDetails.Rows.Add(team.teamID, team.teamName, team.gm, team.headCoach, team.asstCoach, team.homeCourt);
             }
         }
 
@@ -62,6 +62,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                                 Console.WriteLine($"{ex.Message}: {ex.StackTrace}");
                                 MessageBox.Show("An error with the database has occured. Exiting window.");
                                 Close();
+                                return;
                             }
                         }
 
@@ -92,9 +93,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
             Team t1 = teamsQueue.Dequeue();
             foreach (Team t2 in teamsQueue)
             {
-                allGameID.Add($"{t1.TeamID}@{t2.TeamID}:1");
-                allGameID.Add($"{t2.TeamID}@{t1.TeamID}:2");
-                allGameID.Add($"{t1.TeamID}@{t2.TeamID}:3");
+                allGameID.Add($"{t1.teamID}@{t2.teamID}:1");
+                allGameID.Add($"{t2.teamID}@{t1.teamID}:2");
+                allGameID.Add($"{t1.teamID}@{t2.teamID}:3");
             }
 
             generateGameID(teamsQueue, ref allGameID);
