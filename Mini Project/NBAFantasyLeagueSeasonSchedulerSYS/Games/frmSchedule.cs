@@ -44,8 +44,9 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                     MessageBox.Show("Exactly 10 Teams are required to start scheduling a season.", "Insufficient Teams", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else {
-                    DialogResult cfm = MessageBox.Show("Proceed with these Teams?", "Teams Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (cfm == DialogResult.Yes)
+                    DialogResult teamConfirm = MessageBox.Show("Proceed with these Teams?", "Teams Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dateConfirm = MessageBox.Show($"Proceed with these Season Starting Date: {seasonStart.ToShortDateString()}?", "Season Starting Date Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (teamConfirm == DialogResult.Yes && dateConfirm == DialogResult.Yes)
                     {
                         List<string> allGameID = new List<string>();
 

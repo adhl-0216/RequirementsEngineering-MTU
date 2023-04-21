@@ -123,15 +123,12 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         public void sqlUpdateGame()
         {
             OracleConnection conn = Program.getOracleConnection();
-            string sqlUpdate = "UPDATE GAMES " +
-                "SET GAME_DATETIME=:gameDateTime," +
-                "VENUE=:venue" +
-                "WHERE GAME_ID=:gameID";
+            string sqlUpdate = " UPDATE GAMES SET GAME_DATETIME=:gameDateTime, VENUE=:venue WHERE GAME_ID=:gameID ";
             OracleCommand cmd = new OracleCommand(sqlUpdate, conn);
             DateTime gameDateTime = new DateTime(gameDate.Year, gameDate.Month, gameDate.Day, gameTime.Hours, gameTime.Minutes, gameTime.Seconds);
             cmd.Parameters.Add(":gameDateTime", gameDateTime);
-            cmd.Parameters.Add(":gameID", gameID);
             cmd.Parameters.Add(":venue", venue);
+            cmd.Parameters.Add(":gameID", gameID);
             try
             {
                 int affected = cmd.ExecuteNonQuery();
@@ -198,5 +195,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 throw ex;
             }
         }
+
+
     }
 }

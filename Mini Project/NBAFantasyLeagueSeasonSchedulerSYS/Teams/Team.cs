@@ -26,7 +26,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                 //ID assigning algorithm
                 if (teamName.Length < 3)
                 {
-                    _teamID = teamName.PadRight(3, '_');
+                    _teamID = teamName.PadRight(3, '_').ToUpper();
                     return;
                 }
 
@@ -46,7 +46,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                 {
                     for (int i = 1; i < teamNameArr.Length; i++)
                     {
-                        _teamID += teamNameArr[i].Substring(0, 1);
+                        _teamID += teamNameArr[i].Substring(0, 1).ToUpper();
                     }
                     return;
                 }
@@ -118,6 +118,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                 allTeams = new List<Team>();
                 while (dataReader.Read())
                 {
+                    string teamID = dataReader.GetString(0);
                     string teamName = dataReader.GetString(1);
                     string gM = dataReader.GetString(2);
                     string headCoach = dataReader.GetString(3);
@@ -127,6 +128,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Teams
                     int teamLoses = dataReader.GetInt32(7);
 
                     Team team = new Team(teamName, gM, headCoach, asstCoach, homeCourt);
+                    team.teamID = teamID;
                     team.teamWins = teamWins;
                     team.teamLoses = teamLoses;
                     allTeams.Add(team);

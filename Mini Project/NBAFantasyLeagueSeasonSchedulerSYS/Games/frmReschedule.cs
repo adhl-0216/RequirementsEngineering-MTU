@@ -30,12 +30,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
 
         private void frmReschedule_Load(object sender, EventArgs e)
         {
-            refreshDTG();
-            if (dtgGames.Rows.Count < 1)
-            {
-                btnSelect.Enabled = false;
-                btnReschedule.Enabled = false;
-            }
+            resetGUI();
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -106,20 +101,39 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 selectedGame.venue = txtVenue.Text;
 
                 selectedGame.sqlUpdateGame();
+                resetGUI();
             }
-
-            refreshDTG();
         }
 
         private void refreshDTG()
         {
             Game.sqlSelectAllGames(ref allGames);
-            allGames.RemoveAll(game => game.gameDate < DateTime.Now);
+            allGames.RemoveAll(game => game.gameDate < DateTime.Now.AddDays(-1) || game.recorded.Equals('Y'));
             allGames.Sort((x,y) => x.gameDate.CompareTo(y.gameDate));
-            allGames.RemoveAll(game => game.recorded.Equals('Y'));
 
             dtgGames.Rows.Clear();
             allGames.ForEach(game => dtgGames.Rows.Add(game.gameDate.ToString("yyyy/MM/dd"), game.gameID, game.home.teamID, game.away.teamID, game.gameTime, game.venue));
+            if (dtgGames.Rows.Count < 1)
+            {
+                btnSelect.Enabled = false;
+                btnReschedule.Enabled = false;
+            }
+        }
+
+        private void resetGUI()
+        {
+            btnReschedule.Enabled = false;
+            btnSelect.Text = "SELECT";
+            selectStatus = true;
+            dtpDate.Value = DateTime.Now;
+            dtpDate.Enabled = false;
+            dtpTime.Value = DateTime.Now;
+            dtpTime.Enabled = false;
+            lblGameID.Text = "GAME ID";
+            txtVenue.Clear();
+            txtVenue.Enabled = false;
+
+            refreshDTG();
         }
     }
 }

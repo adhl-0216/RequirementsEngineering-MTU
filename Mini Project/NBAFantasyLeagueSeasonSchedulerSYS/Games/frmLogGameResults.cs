@@ -94,6 +94,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
                 //reset GUI
                 refreshDTG();
                 enableInputs(false);
+
             }
         }
 
@@ -186,7 +187,7 @@ namespace NBAFantasyLeagueSeasonSchedulerSYS.Games
         private void refreshDTG()
         {
             Game.sqlSelectAllGames(ref allGames);
-            allGames.RemoveAll(game => game.recorded.Equals('Y') || game.gameDate > DateTime.Now);
+            allGames.RemoveAll(game => game.recorded.Equals('Y') || game.gameDate >= DateTime.Now.Date);
             allGames.Sort((x, y) => x.gameDate.CompareTo(y.gameDate));
 
             dtgGames.Rows.Clear();
